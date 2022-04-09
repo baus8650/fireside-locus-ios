@@ -9,21 +9,42 @@
 /* Begin PBXBuildFile section */
 		22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6027FF636900F9AA46 /* AppDelegate.swift */; };
 		22956B6327FF636900F9AA46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6227FF636900F9AA46 /* SceneDelegate.swift */; };
-		22956B6527FF636900F9AA46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6427FF636900F9AA46 /* ViewController.swift */; };
 		22956B6827FF636900F9AA46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22956B6627FF636900F9AA46 /* Main.storyboard */; };
 		22956B6A27FF636A00F9AA46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22956B6927FF636A00F9AA46 /* Assets.xcassets */; };
 		22956B6D27FF636A00F9AA46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22956B6B27FF636A00F9AA46 /* LaunchScreen.storyboard */; };
+		22956B7527FF639D00F9AA46 /* ResourceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7427FF639D00F9AA46 /* ResourceRequest.swift */; };
+		22956B7827FF687800F9AA46 /* CampersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7727FF687800F9AA46 /* CampersTableViewController.swift */; };
+		22956B7B27FF68B800F9AA46 /* Campers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7A27FF68B800F9AA46 /* Campers.swift */; };
+		22956B7D27FF708700F9AA46 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7C27FF708700F9AA46 /* Groups.swift */; };
+		22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7E27FF710800F9AA46 /* Cabin.swift */; };
+		22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */; };
+		22956B852800935900F9AA46 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22956B842800935900F9AA46 /* CalendarKit */; };
+		22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED61280094F000A537F1 /* ScheduleViewController.swift */; };
+		22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED662800BC1500A537F1 /* ScheduledEvent.swift */; };
+		22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */; };
+		22FAED722800EE1600A537F1 /* CamperSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED712800EE1600A537F1 /* CamperSearchDataSource.swift */; };
+		22FAED742800EE1D00A537F1 /* CamperSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED732800EE1D00A537F1 /* CamperSearchDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22956B5D27FF636900F9AA46 /* Fireside Locus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fireside Locus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22956B6027FF636900F9AA46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22956B6227FF636900F9AA46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		22956B6427FF636900F9AA46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		22956B6727FF636900F9AA46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22956B6927FF636A00F9AA46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22956B6C27FF636A00F9AA46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22956B6E27FF636A00F9AA46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22956B7427FF639D00F9AA46 /* ResourceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRequest.swift; sourceTree = "<group>"; };
+		22956B7727FF687800F9AA46 /* CampersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampersTableViewController.swift; sourceTree = "<group>"; };
+		22956B7A27FF68B800F9AA46 /* Campers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campers.swift; sourceTree = "<group>"; };
+		22956B7C27FF708700F9AA46 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		22956B7E27FF710800F9AA46 /* Cabin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cabin.swift; sourceTree = "<group>"; };
+		22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperDetailTableViewController.swift; sourceTree = "<group>"; };
+		22FAED61280094F000A537F1 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		22FAED662800BC1500A537F1 /* ScheduledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledEvent.swift; sourceTree = "<group>"; };
+		22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsTableViewController.swift; sourceTree = "<group>"; };
+		22FAED712800EE1600A537F1 /* CamperSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperSearchDataSource.swift; sourceTree = "<group>"; };
+		22FAED732800EE1D00A537F1 /* CamperSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperSearchDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22956B852800935900F9AA46 /* CalendarKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +78,57 @@
 		22956B5F27FF636900F9AA46 /* Fireside Locus */ = {
 			isa = PBXGroup;
 			children = (
+				22FAED702800EE0800A537F1 /* Table Methods */,
+				22956B8027FF743800F9AA46 /* Views */,
+				22956B7927FF68AE00F9AA46 /* Models */,
+				22956B7627FF685E00F9AA46 /* View Controllers */,
 				22956B6027FF636900F9AA46 /* AppDelegate.swift */,
 				22956B6227FF636900F9AA46 /* SceneDelegate.swift */,
-				22956B6427FF636900F9AA46 /* ViewController.swift */,
+				22956B7427FF639D00F9AA46 /* ResourceRequest.swift */,
 				22956B6627FF636900F9AA46 /* Main.storyboard */,
 				22956B6927FF636A00F9AA46 /* Assets.xcassets */,
 				22956B6B27FF636A00F9AA46 /* LaunchScreen.storyboard */,
 				22956B6E27FF636A00F9AA46 /* Info.plist */,
 			);
 			path = "Fireside Locus";
+			sourceTree = "<group>";
+		};
+		22956B7627FF685E00F9AA46 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				22956B7727FF687800F9AA46 /* CampersTableViewController.swift */,
+				22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */,
+				22FAED61280094F000A537F1 /* ScheduleViewController.swift */,
+				22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		22956B7927FF68AE00F9AA46 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22956B7A27FF68B800F9AA46 /* Campers.swift */,
+				22956B7C27FF708700F9AA46 /* Groups.swift */,
+				22956B7E27FF710800F9AA46 /* Cabin.swift */,
+				22FAED662800BC1500A537F1 /* ScheduledEvent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		22956B8027FF743800F9AA46 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		22FAED702800EE0800A537F1 /* Table Methods */ = {
+			isa = PBXGroup;
+			children = (
+				22FAED712800EE1600A537F1 /* CamperSearchDataSource.swift */,
+				22FAED732800EE1D00A537F1 /* CamperSearchDelegate.swift */,
+			);
+			path = "Table Methods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +147,9 @@
 			dependencies = (
 			);
 			name = "Fireside Locus";
+			packageProductDependencies = (
+				22956B842800935900F9AA46 /* CalendarKit */,
+			);
 			productName = "Fireside Locus";
 			productReference = 22956B5D27FF636900F9AA46 /* Fireside Locus.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +178,9 @@
 				Base,
 			);
 			mainGroup = 22956B5427FF636900F9AA46;
+			packageReferences = (
+				22956B832800935900F9AA46 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+			);
 			productRefGroup = 22956B5E27FF636900F9AA46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +208,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22956B6527FF636900F9AA46 /* ViewController.swift in Sources */,
+				22FAED722800EE1600A537F1 /* CamperSearchDataSource.swift in Sources */,
+				22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */,
+				22956B7527FF639D00F9AA46 /* ResourceRequest.swift in Sources */,
 				22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */,
+				22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */,
+				22FAED742800EE1D00A537F1 /* CamperSearchDelegate.swift in Sources */,
+				22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */,
+				22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */,
+				22956B7827FF687800F9AA46 /* CampersTableViewController.swift in Sources */,
 				22956B6327FF636900F9AA46 /* SceneDelegate.swift in Sources */,
+				22956B7B27FF68B800F9AA46 /* Campers.swift in Sources */,
+				22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */,
+				22956B7D27FF708700F9AA46 /* Groups.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22956B832800935900F9AA46 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22956B842800935900F9AA46 /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22956B832800935900F9AA46 /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22956B5527FF636900F9AA46 /* Project object */;
 }
