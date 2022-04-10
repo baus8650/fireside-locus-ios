@@ -11,7 +11,11 @@ class CampersTableViewController: UITableViewController {
 
     // MARK: - Properties
     
+    var sectionTitles = ["Cabin 1", "Cabin 2", "Cabin 3", "Cabin 4", "Cabin 5", "Cabin 6", "Cabin 7", "Cabin 8", "Cabin 9", "Cabin 10", "Cabin 11", "Cabin 12", "Unassigned"]
+    var sections = [String]()
     var campers = [Camper]()
+    var sortedCampers = [String: [Camper]]()
+    var newCamperList = [[Camper]]()
     let campersRequest = ResourceRequest<Campers>(resourcePath: "campers")
     
     override func viewDidLoad() {
@@ -40,7 +44,7 @@ class CampersTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else {
                 return nil
             }
-        let camper = campers[indexPath.row]
+        let camper = newCamperList[indexPath.section][indexPath.row]
         return CamperDetailTableViewController(coder: coder, camper: camper)
     }
     
@@ -62,27 +66,92 @@ class CampersTableViewController: UITableViewController {
                         $0.firstName < $1.firstName
                     }
                     self.campers = sortedCampers
+                    for i in sortedCampers {
+                        print("HERE IS THE CABIN: \(i.cabin!)")
+                        switch i.cabin! {
+                        case "Cabin 1":
+                            self.sortedCampers["Cabin 1", default: []].append(i)
+                        case "Cabin 2":
+                            self.sortedCampers["Cabin 2", default: []].append(i)
+                        case "Cabin 3":
+                            self.sortedCampers["Cabin 3", default: []].append(i)
+                        case "Cabin 4":
+                            self.sortedCampers["Cabin 4", default: []].append(i)
+                        case "Cabin 5":
+                            self.sortedCampers["Cabin 5", default: []].append(i)
+                        case "Cabin 6":
+                            self.sortedCampers["Cabin 6", default: []].append(i)
+                        case "Cabin 7":
+                            self.sortedCampers["Cabin 7", default: []].append(i)
+                        case "Cabin 8":
+                            self.sortedCampers["Cabin 8", default: []].append(i)
+                        case "Cabin 9":
+                            self.sortedCampers["Cabin 9", default: []].append(i)
+                        case "Cabin 10":
+                            self.sortedCampers["Cabin 10", default: []].append(i)
+                        case "Cabin 11":
+                            self.sortedCampers["Cabin 11", default: []].append(i)
+                        case "Cabin 12":
+                            self.sortedCampers["Cabin 12", default: []].append(i)
+                        default:
+                            self.sortedCampers["Unassigned", default: []].append(i)
+                        }
+                    }
+                    self.newCamperList = self.buildTableData(camperAssignments: self.sortedCampers, cabinList: self.sectionTitles)
                     self.tableView.reloadData()
                 }
             }
         }
     }
     
+    func buildTableData(camperAssignments: [String: [Camper]], cabinList: [String]) -> [[Camper]] {
+        var campers = [[Camper]]()
+        var emptyCabins = [String]()
+        print("HERE IS THE CAMPE ASSIGNMENTS",camperAssignments)
+        for cabin in cabinList {
+            print("CAMPER ASSIGNMENT LOOP: \(camperAssignments[cabin]) AND CABIN COMES AS \(cabin)")
+            if camperAssignments[cabin] == nil {
+                emptyCabins.append(cabin)
+            } else {
+                campers.append(camperAssignments[cabin]!)
+                print("CAMPER ASSIGNMENT LOOP: \(camperAssignments[cabin])")
+            }
+        }
+        var filteredSections = [String]()
+        if emptyCabins.count > 0 {
+            for i in sectionTitles {
+                if !emptyCabins.contains(i) {
+                    filteredSections.append(i)
+                }
+            }
+            sections = filteredSections
+        }
+        print("CAMPER SORTED LIST", campers, "FILTERED SECTIONS", filteredSections)
+        return campers
+    }
     
     // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return campers.count
+        return newCamperList[section].count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CamperCell", for: indexPath)
 
-        let camper = campers[indexPath.row]
+        let camper = newCamperList[indexPath.section][indexPath.row]
         cell.textLabel?.text = "\(camper.firstName) \(camper.lastName)"
-        cell.detailTextLabel?.text = camper.cabin ?? ""
+        cell.detailTextLabel?.text = camper.instrument
 
         return cell
     }
@@ -92,43 +161,40 @@ class CampersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let schedule = UIContextualAction(style: .normal, title: "Schedule") { (contextualAction, view, boolValue)  in
             
-            let destVC = self.parent?.tabBarController?.viewControllers![2] as! UINavigationController
-            
+            let destVC = self.parent?.tabBarController?.viewControllers![1] as! UINavigationController
+            destVC.popToRootViewController(animated: true)
             let scheduleVC = destVC.topViewController as! ScheduleDetailsTableViewController
             
             if scheduleVC.isViewLoaded {
-                scheduleVC.camperSearch = self.campers[indexPath.row]
-                self.parent?.tabBarController?.selectedIndex = 2
+                scheduleVC.camperSearch = self.newCamperList[indexPath.section][indexPath.row]
+                self.parent?.tabBarController?.selectedIndex = 1
             } else{
                 let _ = scheduleVC.view
-                scheduleVC.camperSearch = self.campers[indexPath.row]
-//                rowVC.generateMatrix(rowString: row)
-//                rowVC.rowTextField.text = row
-                self.parent?.tabBarController?.selectedIndex = 2
+                scheduleVC.camperSearch = self.newCamperList[indexPath.section][indexPath.row]
+                self.parent?.tabBarController?.selectedIndex = 1
             }
         }
         
         let today = UIContextualAction(style: .normal, title: "Today") { (contextualAction, view, boolValue)  in
             
-            let destVC = self.parent?.tabBarController?.viewControllers![2] as! UINavigationController
-            
+            let destVC = self.parent?.tabBarController?.viewControllers![1] as! UINavigationController
+            destVC.popToRootViewController(animated: true)
             let scheduleVC = ScheduleViewController()
             destVC.pushViewController(scheduleVC, animated: true)
-//            let scheduleVC = destVC.topViewController as! ScheduleViewController
             
             if scheduleVC.isViewLoaded {
-                scheduleVC.camper = self.campers[indexPath.row]
+                scheduleVC.camper = self.newCamperList[indexPath.section][indexPath.row]
                 let todayDate = DateFormatter()
                 todayDate.dateFormat = "yyy-MM-dd"
                 scheduleVC.specifiedDate = todayDate.string(from: Date.now)
-                self.parent?.tabBarController?.selectedIndex = 2
+                self.parent?.tabBarController?.selectedIndex = 1
             } else{
                 let _ = scheduleVC.view
-                scheduleVC.camper = self.campers[indexPath.row]
+                scheduleVC.camper = self.newCamperList[indexPath.section][indexPath.row]
                 let todayDate = DateFormatter()
                 todayDate.dateFormat = "yyy-MM-dd"
                 scheduleVC.specifiedDate = todayDate.string(from: Date.now)
-                self.parent?.tabBarController?.selectedIndex = 2
+                self.parent?.tabBarController?.selectedIndex = 1
             }
         }
 //        rgba(1,85,67,.9)

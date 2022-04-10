@@ -23,7 +23,9 @@ class ScheduleViewController: DayViewController {
     
     var specifiedDate: String? {
         didSet {
+            print(specifiedDate)
             updateDate(date: specifiedDate!)
+            self.reloadData()
         }
     }
     
@@ -59,7 +61,7 @@ class ScheduleViewController: DayViewController {
         getAllEvents()
         let todayDate = DateFormatter()
         todayDate.dateFormat = "yyy-MM-dd"
-        specifiedDate = todayDate.string(from: Date.now)
+//        specifiedDate = todayDate.string(from: Date.now)
 //        updateDate(date: specifiedDate!)
         self.reloadData()
         
