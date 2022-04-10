@@ -104,6 +104,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Cat-zQ-jHF" kind="show" destinationCreationSelector="filteredCampersSegue:" id="kv5-qE-STi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -116,6 +119,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xV-sM-fSB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2522" y="21"/>
+        </scene>
+        <!--Filtered Camper Table View Controller-->
+        <scene sceneID="6TE-qq-hAO">
+            <objects>
+                <tableViewController id="Cat-zQ-jHF" customClass="FilteredCamperTableViewController" customModule="Fireside_Locus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="RI4-c7-3pM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCamperCell" textLabel="aBI-g6-IxH" style="IBUITableViewCellStyleDefault" id="YON-kR-TDL">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YON-kR-TDL" id="iEM-uq-XYO">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aBI-g6-IxH">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cat-zQ-jHF" id="dYA-y5-6Pb"/>
+                            <outlet property="delegate" destination="Cat-zQ-jHF" id="3WT-7g-hDG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="coH-f2-Iw0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsg-pF-0UG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3320" y="21"/>
         </scene>
         <!--Campers-->
         <scene sceneID="CSS-Jv-gHo">
@@ -183,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Camper" id="VSH-H0-hse">
+                            <tableViewSection headerTitle="Select Camper" id="VSH-H0-hse">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CamperScheduleCell" rowHeight="300" id="WUg-uQ-pll">
                                         <rect key="frame" x="20" y="49.5" width="374" height="300"/>
@@ -194,12 +235,13 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Camper" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jy-We-vXD">
                                                     <rect key="frame" x="0.0" y="15" width="374" height="34"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dLc-cn-42s">
                                                     <rect key="frame" x="20" y="54" width="334" height="230"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CamperFetchCell" id="wZB-db-FEx">
                                                             <rect key="frame" x="0.0" y="44.5" width="334" height="43.5"/>
@@ -212,6 +254,7 @@
                                                     </prototypes>
                                                 </tableView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="9jy-We-vXD" firstAttribute="top" secondItem="WoQ-pB-7uK" secondAttribute="top" constant="15" id="5q4-qf-nnY"/>
                                                 <constraint firstItem="dLc-cn-42s" firstAttribute="top" secondItem="9jy-We-vXD" secondAttribute="bottom" constant="5" id="KH4-Sk-WB2"/>
@@ -223,10 +266,11 @@
                                                 <constraint firstItem="9jy-We-vXD" firstAttribute="leading" secondItem="WoQ-pB-7uK" secondAttribute="leading" id="rx0-jp-1CG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Week" id="whq-dZ-f65">
+                            <tableViewSection headerTitle="Select Week and Day" id="whq-dZ-f65">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekScheduleCell" rowHeight="60" id="YbV-iA-wfu">
                                         <rect key="frame" x="20" y="399.5" width="374" height="60"/>
@@ -244,6 +288,7 @@
                                                 <constraint firstItem="bHJ-q8-NL7" firstAttribute="centerX" secondItem="KeO-kP-8hg" secondAttribute="centerX" id="DzX-R1-KaD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -270,6 +315,7 @@
                                                 <constraint firstItem="c8R-SU-xFS" firstAttribute="centerY" secondItem="lFt-Y3-PcL" secondAttribute="centerY" id="mjV-DW-rMn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -294,6 +340,9 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

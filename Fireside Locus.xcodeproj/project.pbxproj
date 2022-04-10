@@ -19,6 +19,7 @@
 		22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7E27FF710800F9AA46 /* Cabin.swift */; };
 		22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */; };
 		22956B852800935900F9AA46 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22956B842800935900F9AA46 /* CalendarKit */; };
+		22B212FD280331C7006BA092 /* FilteredCamperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */; };
 		22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED61280094F000A537F1 /* ScheduleViewController.swift */; };
 		22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED662800BC1500A537F1 /* ScheduledEvent.swift */; };
 		22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */; };
@@ -40,6 +41,7 @@
 		22956B7C27FF708700F9AA46 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		22956B7E27FF710800F9AA46 /* Cabin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cabin.swift; sourceTree = "<group>"; };
 		22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperDetailTableViewController.swift; sourceTree = "<group>"; };
+		22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCamperTableViewController.swift; sourceTree = "<group>"; };
 		22FAED61280094F000A537F1 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		22FAED662800BC1500A537F1 /* ScheduledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledEvent.swift; sourceTree = "<group>"; };
 		22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsTableViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */,
 				22FAED61280094F000A537F1 /* ScheduleViewController.swift */,
 				22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */,
+				22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			files = (
 				22FAED722800EE1600A537F1 /* CamperSearchDataSource.swift in Sources */,
 				22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */,
+				22B212FD280331C7006BA092 /* FilteredCamperTableViewController.swift in Sources */,
 				22956B7527FF639D00F9AA46 /* ResourceRequest.swift in Sources */,
 				22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */,
 				22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */,

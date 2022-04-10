@@ -15,13 +15,16 @@ class CamperDetailTableViewController: UITableViewController {
         }
     }
     
+    var campers: [Camper]?
+    
     required init?(coder: NSCoder) {
-      fatalError("init(coder:) is not implemented")
+        fatalError("init(coder:) is not implemented")
     }
     
-    init?(coder: NSCoder, camper: Camper) {
-      self.camper = camper
-      super.init(coder: coder)
+    init?(coder: NSCoder, camper: Camper, campers: [Camper]) {
+        self.camper = camper
+        self.campers = campers
+        super.init(coder: coder)
     }
 
     override func viewDidLoad() {
@@ -44,7 +47,41 @@ class CamperDetailTableViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
-
+    
+    @IBSegueAction func filteredCampersSegue(_ coder: NSCoder) -> FilteredCamperTableViewController? {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return nil }
+        guard let campers = self.campers else { return nil }
+        var sectionLabel: [String]
+        var filterValue: String
+        switch indexPath.section {
+        case 0:
+            sectionLabel = ["First Name"]
+            filterValue = camper.firstName
+        case 1:
+            sectionLabel = ["Last Name"]
+            filterValue = camper.lastName
+        case 2:
+            sectionLabel = ["Age"]
+            filterValue = "\(camper.age)"
+        case 3:
+            sectionLabel = ["Instrument"]
+            filterValue = camper.instrument
+        case 4:
+            sectionLabel = ["Cabin"]
+            filterValue = camper.cabin ?? ""
+        case 5:
+            sectionLabel = ["Ensemble"]
+            filterValue = camper.ensemble
+        case 6:
+            sectionLabel = ["Groups"]
+            filterValue = camper.groups[indexPath.row]
+        default:
+            sectionLabel = ["unknown"]
+            filterValue = ""
+        }
+        return FilteredCamperTableViewController(coder: coder, campers: campers, sectionLabel: sectionLabel, filterValue: filterValue)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

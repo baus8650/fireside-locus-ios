@@ -24,6 +24,7 @@ class CampersTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         configureRefreshControl()
+        getAllcampers()
         tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -45,12 +46,13 @@ class CampersTableViewController: UITableViewController {
                 return nil
             }
         let camper = newCamperList[indexPath.section][indexPath.row]
-        return CamperDetailTableViewController(coder: coder, camper: camper)
+        return CamperDetailTableViewController(coder: coder, camper: camper, campers: self.campers)
     }
     
-    @objc func handleRefreshControl() {
+    func getAllcampers() {
+        campers = []
+        sortedCampers = [:]
         campersRequest.getAll { [weak self] campersResult in
-            print("getting campers")
             DispatchQueue.main.async {
                 self?.tableView.refreshControl?.endRefreshing()
             }
@@ -67,7 +69,6 @@ class CampersTableViewController: UITableViewController {
                     }
                     self.campers = sortedCampers
                     for i in sortedCampers {
-                        print("HERE IS THE CABIN: \(i.cabin!)")
                         switch i.cabin! {
                         case "Cabin 1":
                             self.sortedCampers["Cabin 1", default: []].append(i)
@@ -97,6 +98,7 @@ class CampersTableViewController: UITableViewController {
                             self.sortedCampers["Unassigned", default: []].append(i)
                         }
                     }
+                    self.newCamperList = []
                     self.newCamperList = self.buildTableData(camperAssignments: self.sortedCampers, cabinList: self.sectionTitles)
                     self.tableView.reloadData()
                 }
@@ -104,17 +106,18 @@ class CampersTableViewController: UITableViewController {
         }
     }
     
+    @objc func handleRefreshControl() {
+        getAllcampers()
+    }
+    
     func buildTableData(camperAssignments: [String: [Camper]], cabinList: [String]) -> [[Camper]] {
         var campers = [[Camper]]()
         var emptyCabins = [String]()
-        print("HERE IS THE CAMPE ASSIGNMENTS",camperAssignments)
         for cabin in cabinList {
-            print("CAMPER ASSIGNMENT LOOP: \(camperAssignments[cabin]) AND CABIN COMES AS \(cabin)")
             if camperAssignments[cabin] == nil {
                 emptyCabins.append(cabin)
             } else {
                 campers.append(camperAssignments[cabin]!)
-                print("CAMPER ASSIGNMENT LOOP: \(camperAssignments[cabin])")
             }
         }
         var filteredSections = [String]()
@@ -126,7 +129,6 @@ class CampersTableViewController: UITableViewController {
             }
             sections = filteredSections
         }
-        print("CAMPER SORTED LIST", campers, "FILTERED SECTIONS", filteredSections)
         return campers
     }
     
@@ -138,6 +140,20 @@ class CampersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor(named: "luzerneColor")
+        header.textLabel?.text = header.textLabel?.text?.capitalized
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        header.textLabel?.frame = header.bounds
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
