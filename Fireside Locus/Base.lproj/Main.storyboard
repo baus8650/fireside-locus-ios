@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="SIK-up-dHL">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search by camper" id="SIK-up-dHL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -74,6 +74,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Qaf-1c-FGI"/>
+                    <connections>
+                        <outlet property="searchBar" destination="SIK-up-dHL" id="7OE-QR-Bka"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNa-w7-HkA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

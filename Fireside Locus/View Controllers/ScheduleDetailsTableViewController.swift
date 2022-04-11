@@ -11,10 +11,8 @@ import CalendarKit
 class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDelegate {
     
     let formatter = DateFormatter()
-//    var startDate: Date?
     var selectedDate: String?
-    @IBOutlet var weekPicker: UIPickerView!
-    @IBOutlet var dayPicker: UIPickerView!
+    
     var campers = [Camper]()
     let campersRequest = ResourceRequest<Campers>(resourcePath: "campers")
     
@@ -26,11 +24,6 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
     
     var searchResults = [Camper]()
     
-    @IBOutlet var camperSearchTable: UITableView! {
-        didSet {
-            camperSearchTable.register(UITableViewCell.self, forCellReuseIdentifier: "CamperScheduleCell")
-        }
-    }
     var isSearching: Bool? {
         didSet {
             if isSearching! {
@@ -49,6 +42,26 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
     var camperSearchDelegate: CamperSearchDelegate?
     
     @IBOutlet var camperSearchField: UITextField!
+    @IBOutlet var weekPicker: UIPickerView!
+    @IBOutlet var camperSearchTable: UITableView! {
+        didSet {
+            camperSearchTable.register(UITableViewCell.self, forCellReuseIdentifier: "CamperScheduleCell")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor(named: "luzerneColor")
+        header.textLabel?.text = header.textLabel?.text?.capitalized
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        header.textLabel?.frame = header.bounds
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +74,12 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
         camperSearchField.delegate = self
         getAllCampers()
         formatter.dateFormat = "yyy-MM-dd"
-//        startDate = formatter.date(from: "2022-06-19")
+        tableView.keyboardDismissMode = .onDrag
+        
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     func getAllCampers() {
@@ -75,64 +93,6 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
         }
     }
     
-
-    // MARK: - Table view data source
-
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        switch indexPath.row {
-//        case 0:
-//        }
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ScheduleDetailsToSchedule" {
             if let destVC = segue.destination as? ScheduleViewController {
@@ -146,8 +106,6 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
             }
         }
     }
-    
-
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         if textField.tag == 0 {
@@ -164,23 +122,24 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
             else{
                 getSearchArrayContains(searchText)
             }
-            print("SEARCH TEXT: ",searchText)
+            
         }
 
         return true
     }
     
     func getSearchArrayContains(_ text : String) {
-//        var predicate: NSPredicate = NSPredicate(format: "firstName CONTAINS[c] %@", text)
-////        print("campers \(campers)")
-//        searchResults = (campers as NSArray).filtered(using: predicate) as! [Camper]
         searchResults = campers.filter { $0.firstName.lowercased().contains(text.lowercased()) || $0.lastName.lowercased().contains(text.lowercased()) }
+        
         camperSearchDataSource?.searchResults = searchResults
         camperSearchDelegate?.campers = searchResults
-//        print("Search results \(searchResults)")
+    
         isSearching = true
+        
         camperSearchTable.reloadData()
     }
+    
+    
     
 }
 
@@ -206,3 +165,5 @@ extension ScheduleDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         }
     }
 }
+
+

@@ -18,10 +18,13 @@ class CamperSearchDelegate: NSCoder, UITableViewDelegate {
         self.campers = campers
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isSearching {
             let parentVC = parentViewController as? ScheduleDetailsTableViewController
             parentVC?.camperSearch = campers[indexPath.row]
+            parentVC?.hideKeyboard()
         }
     }
 }

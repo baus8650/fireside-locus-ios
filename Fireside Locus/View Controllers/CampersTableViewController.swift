@@ -7,17 +7,21 @@
 
 import UIKit
 
-class CampersTableViewController: UITableViewController {
+class CampersTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Properties
+    
+    var isSearching: Bool = false
     
     var sectionTitles = ["Cabin 1", "Cabin 2", "Cabin 3", "Cabin 4", "Cabin 5", "Cabin 6", "Cabin 7", "Cabin 8", "Cabin 9", "Cabin 10", "Cabin 11", "Cabin 12", "Unassigned"]
     var sections = [String]()
     var campers = [Camper]()
+    var searchCampers = [Camper]()
     var sortedCampers = [String: [Camper]]()
     var newCamperList = [[Camper]]()
     let campersRequest = ResourceRequest<Campers>(resourcePath: "campers")
     
+    @IBOutlet var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
@@ -26,7 +30,8 @@ class CampersTableViewController: UITableViewController {
         configureRefreshControl()
         getAllcampers()
         tableView.reloadData()
-        
+        searchBar.delegate = self
+        tableView.keyboardDismissMode = .onDrag
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -135,11 +140,19 @@ class CampersTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        if isSearching {
+            return 1
+        } else {
+            return sections.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        if isSearching {
+            return "Search Results"
+        } else {
+            return sections[section]
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -157,15 +170,23 @@ class CampersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return newCamperList[section].count
+        if isSearching {
+            return searchCampers.count
+        } else {
+            return newCamperList[section].count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CamperCell", for: indexPath)
-
-        let camper = newCamperList[indexPath.section][indexPath.row]
+        let camper: Camper
+        if isSearching {
+            camper = searchCampers[indexPath.row]
+        } else {
+            camper = newCamperList[indexPath.section][indexPath.row]
+        }
+        
         cell.textLabel?.text = "\(camper.firstName) \(camper.lastName)"
         cell.detailTextLabel?.text = camper.instrument
 
@@ -213,86 +234,32 @@ class CampersTableViewController: UITableViewController {
                 self.parent?.tabBarController?.selectedIndex = 1
             }
         }
-//        rgba(1,85,67,.9)
-        schedule.backgroundColor = UIColor(red: 1/255, green: 85/255, blue: 67/255, alpha: 0.9)
-        today.backgroundColor = .systemBlue
+        today.backgroundColor = UIColor(red: 1/255, green: 85/255, blue: 67/255, alpha: 0.9)
+        schedule.backgroundColor = UIColor(red: 205/255, green: 153/255, blue: 18/255, alpha: 0.9)
         let swipeActions = UISwipeActionsConfiguration(actions: [schedule, today])
         
         return swipeActions
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension UIColor {
-    public convenience init?(hex: String) {
-        let r, g, b, a: CGFloat
-        
-        if hex.hasPrefix("#") {
-            let start = hex.index(hex.startIndex, offsetBy: 1)
-            let hexColor = String(hex[start...])
-            
-            if hexColor.count == 8 {
-                let scanner = Scanner(string: hexColor)
-                var hexNumber: UInt64 = 0
-                
-                if scanner.scanHexInt64(&hexNumber) {
-                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
-                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
-                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
-                    a = CGFloat(hexNumber & 0x000000ff) / 255
-                    
-                    self.init(red: r, green: g, blue: b, alpha: a)
-                    return
-                }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+     
+        if searchText == "" {
+            isSearching = false
+            searchCampers = campers
+            tableView.reloadData()
+        } else {
+            isSearching = true
+            searchCampers = campers.filter {
+                $0.firstName.lowercased().contains(searchText.lowercased()) || $0.lastName.lowercased().contains(searchText.lowercased()) || "\($0.firstName.lowercased()) \($0.lastName.lowercased())".contains(searchText.lowercased())
             }
+            
+            tableView.reloadData()
         }
         
-        return nil
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
 }
