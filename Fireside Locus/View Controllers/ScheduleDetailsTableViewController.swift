@@ -99,7 +99,6 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
                 destVC.camper = camperSearch
                 let weekNum = weekPicker.selectedRow(inComponent: 0)
                 let dayNum = weekPicker.selectedRow(inComponent: 1)
-                let startDate = Calendar.current.date(from: DateComponents(year: 2022, month: 6, day: 19))
                 let newDate = Calendar.current.date(from: DateComponents(year: 2022, month: 6, day: 19 + ((weekNum * 7)+dayNum)))
                 destVC.specifiedDate = formatter.string(from: newDate!)
                 
@@ -112,7 +111,8 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
             var searchText  = textField.text! + string
 
             if string  == "" {
-                searchText = (searchText as String).substring(to: searchText.index(before: searchText.endIndex))
+                searchText = String(searchText[..<searchText.endIndex])
+//                searchText = (searchText as String).substring(to: searchText.index(before: searchText.endIndex))
             }
 
             if searchText == "" {

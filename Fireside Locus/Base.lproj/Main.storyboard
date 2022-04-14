@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="vi4-M1-YFf">
             <objects>
-                <tabBarController id="Spu-9r-gVX" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainVC" id="Spu-9r-gVX" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JU4-ic-5ct">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -183,7 +183,6 @@
         <!--Schedule-->
         <scene sceneID="3xT-Yb-Bxc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3iw-Xh-2Xl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="VA4-ll-wFw" customClass="ScheduleViewController" customModule="Fireside_Locus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="idr-MB-7MY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -194,6 +193,7 @@
                     <tabBarItem key="tabBarItem" title="Schedule" image="calendar" catalog="system" id="k2A-35-4oT"/>
                     <navigationItem key="navigationItem" id="DW6-HA-zB6"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iw-Xh-2Xl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2522" y="727"/>
         </scene>
@@ -237,7 +237,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Camper" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jy-We-vXD">
-                                                    <rect key="frame" x="0.0" y="15" width="374" height="34"/>
+                                                    <rect key="frame" x="35" y="15" width="304" height="34"/>
                                                     <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -259,14 +259,14 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="9jy-We-vXD" firstAttribute="leading" relation="lessThanOrEqual" secondItem="WoQ-pB-7uK" secondAttribute="leadingMargin" constant="15" id="27O-iX-TIu"/>
                                                 <constraint firstItem="9jy-We-vXD" firstAttribute="top" secondItem="WoQ-pB-7uK" secondAttribute="top" constant="15" id="5q4-qf-nnY"/>
                                                 <constraint firstItem="dLc-cn-42s" firstAttribute="top" secondItem="9jy-We-vXD" secondAttribute="bottom" constant="5" id="KH4-Sk-WB2"/>
-                                                <constraint firstAttribute="trailing" secondItem="9jy-We-vXD" secondAttribute="trailing" id="M4z-gJ-dJx"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dLc-cn-42s" secondAttribute="trailing" id="Qui-qC-5Hw"/>
                                                 <constraint firstItem="dLc-cn-42s" firstAttribute="leading" secondItem="WoQ-pB-7uK" secondAttribute="leadingMargin" id="a8c-tf-hh2"/>
+                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="9jy-We-vXD" secondAttribute="trailing" constant="15" id="bRb-xV-ZVT"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="dLc-cn-42s" secondAttribute="bottom" constant="5" id="etD-fb-7ji"/>
                                                 <constraint firstItem="9jy-We-vXD" firstAttribute="centerX" secondItem="WoQ-pB-7uK" secondAttribute="centerX" id="nJS-uF-JG2"/>
-                                                <constraint firstItem="9jy-We-vXD" firstAttribute="leading" secondItem="WoQ-pB-7uK" secondAttribute="leading" id="rx0-jp-1CG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -309,7 +309,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="View Schedule"/>
                                                     <connections>
-                                                        <segue destination="VA4-ll-wFw" kind="push" identifier="ScheduleDetailsToSchedule" id="XJf-QP-4e5"/>
+                                                        <segue destination="VA4-ll-wFw" kind="show" identifier="ScheduleDetailsToSchedule" id="XJf-QP-4e5"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

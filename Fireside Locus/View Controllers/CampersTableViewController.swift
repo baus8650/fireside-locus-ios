@@ -22,6 +22,14 @@ class CampersTableViewController: UITableViewController, UISearchBarDelegate {
     let campersRequest = ResourceRequest<Campers>(resourcePath: "campers")
     
     @IBOutlet var searchBar: UISearchBar!
+    @IBSegueAction func makeCamperDetailTableViewController(_ coder: NSCoder) -> CamperDetailTableViewController? {
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+                return nil
+            }
+        let camper = newCamperList[indexPath.section][indexPath.row]
+        return CamperDetailTableViewController(coder: coder, camper: camper, campers: self.campers)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
@@ -32,26 +40,21 @@ class CampersTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData()
         searchBar.delegate = self
         tableView.keyboardDismissMode = .onDrag
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        navigationItem.leftBarButtonItem = logoutButton
     }
-
+    
     // MARK: - Helper Functions
+    
+    @objc func logout() {
+        Auth().logout()
+    }
     
     func configureRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
-    }
-    
-    @IBSegueAction func makeCamperDetailTableViewController(_ coder: NSCoder) -> CamperDetailTableViewController? {
-        guard let indexPath = tableView.indexPathForSelectedRow else {
-                return nil
-            }
-        let camper = newCamperList[indexPath.section][indexPath.row]
-        return CamperDetailTableViewController(coder: coder, camper: camper, campers: self.campers)
     }
     
     func getAllcampers() {
@@ -69,7 +72,7 @@ class CampersTableViewController: UITableViewController, UISearchBarDelegate {
                 
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    var sortedCampers = campers.campers.sorted {
+                    let sortedCampers = campers.campers.sorted {
                         $0.firstName < $1.firstName
                     }
                     self.campers = sortedCampers

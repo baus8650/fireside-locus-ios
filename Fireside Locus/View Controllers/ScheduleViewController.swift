@@ -23,7 +23,7 @@ class ScheduleViewController: DayViewController {
     
     var specifiedDate: String? {
         didSet {
-            print(specifiedDate)
+            
             updateDate(date: specifiedDate!)
             self.reloadData()
         }
@@ -103,7 +103,7 @@ class ScheduleViewController: DayViewController {
     func filterEvents(events: [ScheduledEvent], groups: [String]) -> [ScheduledEvent] {
         let groupsSet = Set(groups)
         let filteredEvents = events.filter({groupsSet.contains($0.attendee.first ?? "")})
-        print("Filtered Events \(filteredEvents)")
+        
         return filteredEvents
     }
     
@@ -112,11 +112,8 @@ class ScheduleViewController: DayViewController {
         
         let startFormatter = DateFormatter()
         startFormatter.dateFormat = "MM/dd/yyyy"
-        let startDate = startFormatter.date(from: "08/08/2021")
             var oneDayComponents = DateComponents()
             oneDayComponents.day = 1
-            
-        let endDate = calendar.date(byAdding: oneDayComponents, to: startDate!)!
 
         var calendarKitEvents = [Event]()
         let formatter = DateFormatter()

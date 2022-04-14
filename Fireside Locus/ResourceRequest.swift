@@ -27,16 +27,16 @@ struct ResourceRequest<ResourceType> where ResourceType: Codable {
     }
     
     func getAll(completion: @escaping (Result<ResourceType, ResourceRequestError>) -> Void) {
-        print("get all called \(resourceURL)")
+        
       let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
         guard let jsonData = data else {
           completion(.failure(.noData))
           return
         }
         do {
-            print("trying to decode")
+            
           let resources = try JSONDecoder().decode(ResourceType.self, from: jsonData)
-            print("resources = \(resources)")
+            
           completion(.success(resources))
         } catch {
           completion(.failure(.decodingError))
