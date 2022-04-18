@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CamperModel" representedClassName="CamperModel" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="cabin" optional="YES" attributeType="String"/>
+        <attribute name="ensemble" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="groups" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="instrument" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="program" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ScheduledEventModel" representedClassName="ScheduledEventModel" syncable="YES" codeGenerationType="class">
+        <attribute name="attendee" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="endTime" optional="YES" attributeType="String"/>
+        <attribute name="eventLocation" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData"/>
+        <attribute name="startTime" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CamperModel" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="ScheduledEventModel" positionX="-54" positionY="54" width="128" height="119"/>
+    </elements>
+</model>

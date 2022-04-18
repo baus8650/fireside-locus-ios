@@ -8,9 +8,9 @@
 import Foundation
 
 enum ResourceRequestError: Error {
-  case noData
-  case decodingError
-  case encodingError
+    case noData
+    case decodingError
+    case encodingError
 }
 
 struct ResourceRequest<ResourceType> where ResourceType: Codable {
@@ -19,30 +19,31 @@ struct ResourceRequest<ResourceType> where ResourceType: Codable {
     let resourceURL: URL
     
     init(resourcePath: String) {
-      guard let resourceURL = URL(string: baseURL) else {
-        fatalError("Failed to convert baseURL to a URL")
-      }
-      self.resourceURL =
+        guard let resourceURL = URL(string: baseURL) else {
+            fatalError("Failed to convert baseURL to a URL")
+        }
+        self.resourceURL =
         resourceURL.appendingPathComponent(resourcePath)
     }
     
     func getAll(completion: @escaping (Result<ResourceType, ResourceRequestError>) -> Void) {
         
-      let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
-        guard let jsonData = data else {
-          completion(.failure(.noData))
-          return
+        let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _ in
+            guard let jsonData = data else {
+                completion(.failure(.noData))
+                return
+            }
+            do {
+                
+                let resources = try JSONDecoder().decode(ResourceType.self, from: jsonData)
+                DispatchQueue.main.async {
+                    completion(.success(resources))
+                }
+            } catch {
+                completion(.failure(.decodingError))
+            }
         }
-        do {
-            
-          let resources = try JSONDecoder().decode(ResourceType.self, from: jsonData)
-            
-          completion(.success(resources))
-        } catch {
-          completion(.failure(.decodingError))
-        }
-      }
-      dataTask.resume()
+        dataTask.resume()
     }
     
 }

@@ -10,12 +10,11 @@ import CalendarKit
 
 class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDelegate {
     
+
     let formatter = DateFormatter()
     var selectedDate: String?
-    
     var campers = [Camper]()
-    let campersRequest = ResourceRequest<Campers>(resourcePath: "campers")
-    
+    var camperViewModel: CamperViewModel!
     var camperSearch: Camper? {
         didSet {
             camperSearchField.text = "\(camperSearch!.firstName) \(camperSearch!.lastName)"
@@ -72,25 +71,21 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
         camperSearchDelegate = CamperSearchDelegate(viewController: self, campers: campers)
         camperSearchTable.delegate = camperSearchDelegate
         camperSearchField.delegate = self
-        getAllCampers()
+        camperViewModel = CamperViewModel()
+        updateData()
         formatter.dateFormat = "yyy-MM-dd"
         tableView.keyboardDismissMode = .onDrag
         
     }
     
-    func hideKeyboard() {
-        view.endEditing(true)
+    func updateData() {
+        camperViewModel.sortedFlattenedCampers.bind { campers in
+            self.campers = campers
+        }
     }
     
-    func getAllCampers() {
-        campersRequest.getAll { [weak self] campersResult in
-            switch campersResult {
-            case .failure:
-                print("There was an error fetching Campers")
-            case .success(let campers):
-                    self?.campers = campers.campers
-            }
-        }
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,7 +107,6 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
 
             if string  == "" {
                 searchText = String(searchText[..<searchText.endIndex])
-//                searchText = (searchText as String).substring(to: searchText.index(before: searchText.endIndex))
             }
 
             if searchText == "" {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22546077280DC17C007EB1A4 /* CamperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22546076280DC17C007EB1A4 /* CamperViewModel.swift */; };
+		22546079280DC183007EB1A4 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22546078280DC183007EB1A4 /* EventViewModel.swift */; };
+		2254607B280DC18E007EB1A4 /* CounselorScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254607A280DC18E007EB1A4 /* CounselorScheduleViewModel.swift */; };
+		2254607D280DC1B9007EB1A4 /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254607C280DC1B9007EB1A4 /* Binder.swift */; };
 		22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6027FF636900F9AA46 /* AppDelegate.swift */; };
 		22956B6327FF636900F9AA46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6227FF636900F9AA46 /* SceneDelegate.swift */; };
 		22956B6827FF636900F9AA46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22956B6627FF636900F9AA46 /* Main.storyboard */; };
@@ -22,10 +26,13 @@
 		22B212FD280331C7006BA092 /* FilteredCamperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */; };
 		22E4FAF7280729F400EA194F /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAF6280729F400EA194F /* Auth.swift */; };
 		22E4FAF928072A2000EA194F /* Auth+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAF828072A2000EA194F /* Auth+Keychain.swift */; };
-		22E4FAFB28072A5A00EA194F /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAFA28072A5A00EA194F /* Token.swift */; };
+		22E4FAFB28072A5A00EA194F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAFA28072A5A00EA194F /* User.swift */; };
 		22E4FAFD28072B1800EA194F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E4FAFC28072B1800EA194F /* Login.storyboard */; };
 		22E4FAFF28072C5B00EA194F /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAFE28072C5B00EA194F /* LoginTableViewController.swift */; };
 		22E4FB0128072E2700EA194F /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB0028072E2700EA194F /* ErrorPresenter.swift */; };
+		22E4FB052809CCE900EA194F /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB042809CCE900EA194F /* AdminTableViewController.swift */; };
+		22E4FB09280B891600EA194F /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB08280B891600EA194F /* DataStorage.swift */; };
+		22E4FB0C280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB0A280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld */; };
 		22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED61280094F000A537F1 /* ScheduleViewController.swift */; };
 		22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED662800BC1500A537F1 /* ScheduledEvent.swift */; };
 		22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */; };
@@ -34,6 +41,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22546076280DC17C007EB1A4 /* CamperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperViewModel.swift; sourceTree = "<group>"; };
+		22546078280DC183007EB1A4 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		2254607A280DC18E007EB1A4 /* CounselorScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorScheduleViewModel.swift; sourceTree = "<group>"; };
+		2254607C280DC1B9007EB1A4 /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
 		22956B5D27FF636900F9AA46 /* Fireside Locus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fireside Locus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22956B6027FF636900F9AA46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22956B6227FF636900F9AA46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,10 +61,13 @@
 		22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCamperTableViewController.swift; sourceTree = "<group>"; };
 		22E4FAF6280729F400EA194F /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		22E4FAF828072A2000EA194F /* Auth+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+Keychain.swift"; sourceTree = "<group>"; };
-		22E4FAFA28072A5A00EA194F /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		22E4FAFA28072A5A00EA194F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22E4FAFC28072B1800EA194F /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		22E4FAFE28072C5B00EA194F /* LoginTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		22E4FB0028072E2700EA194F /* ErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPresenter.swift; sourceTree = "<group>"; };
+		22E4FB042809CCE900EA194F /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		22E4FB08280B891600EA194F /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		22E4FB0B280BC2AE00EA194F /* FiresideLocusModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiresideLocusModel.xcdatamodel; sourceTree = "<group>"; };
 		22FAED61280094F000A537F1 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		22FAED662800BC1500A537F1 /* ScheduledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledEvent.swift; sourceTree = "<group>"; };
 		22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsTableViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +87,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22546075280DC171007EB1A4 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				22546076280DC17C007EB1A4 /* CamperViewModel.swift */,
+				22546078280DC183007EB1A4 /* EventViewModel.swift */,
+				2254607A280DC18E007EB1A4 /* CounselorScheduleViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		22956B5427FF636900F9AA46 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +116,7 @@
 		22956B5F27FF636900F9AA46 /* Fireside Locus */ = {
 			isa = PBXGroup;
 			children = (
+				22546075280DC171007EB1A4 /* View Models */,
 				22E4FAF5280729E800EA194F /* Utilities */,
 				22FAED702800EE0800A537F1 /* Table Methods */,
 				22956B8027FF743800F9AA46 /* Views */,
@@ -105,6 +130,7 @@
 				22956B6B27FF636A00F9AA46 /* LaunchScreen.storyboard */,
 				22956B6E27FF636A00F9AA46 /* Info.plist */,
 				22E4FAFC28072B1800EA194F /* Login.storyboard */,
+				22E4FB0A280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld */,
 			);
 			path = "Fireside Locus";
 			sourceTree = "<group>";
@@ -118,6 +144,7 @@
 				22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */,
 				22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */,
 				22E4FAFE28072C5B00EA194F /* LoginTableViewController.swift */,
+				22E4FB042809CCE900EA194F /* AdminTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -129,7 +156,7 @@
 				22956B7C27FF708700F9AA46 /* Groups.swift */,
 				22956B7E27FF710800F9AA46 /* Cabin.swift */,
 				22FAED662800BC1500A537F1 /* ScheduledEvent.swift */,
-				22E4FAFA28072A5A00EA194F /* Token.swift */,
+				22E4FAFA28072A5A00EA194F /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,6 +174,8 @@
 				22E4FAF6280729F400EA194F /* Auth.swift */,
 				22E4FAF828072A2000EA194F /* Auth+Keychain.swift */,
 				22E4FB0028072E2700EA194F /* ErrorPresenter.swift */,
+				22E4FB08280B891600EA194F /* DataStorage.swift */,
+				2254607C280DC1B9007EB1A4 /* Binder.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -238,24 +267,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2254607B280DC18E007EB1A4 /* CounselorScheduleViewModel.swift in Sources */,
 				22FAED722800EE1600A537F1 /* CamperSearchDataSource.swift in Sources */,
 				22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */,
+				2254607D280DC1B9007EB1A4 /* Binder.swift in Sources */,
 				22B212FD280331C7006BA092 /* FilteredCamperTableViewController.swift in Sources */,
 				22956B7527FF639D00F9AA46 /* ResourceRequest.swift in Sources */,
 				22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */,
+				22E4FB052809CCE900EA194F /* AdminTableViewController.swift in Sources */,
 				22E4FAF7280729F400EA194F /* Auth.swift in Sources */,
+				22E4FB0C280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld in Sources */,
 				22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */,
 				22E4FAF928072A2000EA194F /* Auth+Keychain.swift in Sources */,
 				22FAED742800EE1D00A537F1 /* CamperSearchDelegate.swift in Sources */,
 				22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */,
 				22E4FB0128072E2700EA194F /* ErrorPresenter.swift in Sources */,
+				22546079280DC183007EB1A4 /* EventViewModel.swift in Sources */,
+				22546077280DC17C007EB1A4 /* CamperViewModel.swift in Sources */,
+				22E4FB09280B891600EA194F /* DataStorage.swift in Sources */,
 				22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */,
 				22E4FAFF28072C5B00EA194F /* LoginTableViewController.swift in Sources */,
 				22956B7827FF687800F9AA46 /* CampersTableViewController.swift in Sources */,
 				22956B6327FF636900F9AA46 /* SceneDelegate.swift in Sources */,
 				22956B7B27FF68B800F9AA46 /* Campers.swift in Sources */,
 				22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */,
-				22E4FAFB28072A5A00EA194F /* Token.swift in Sources */,
+				22E4FAFB28072A5A00EA194F /* User.swift in Sources */,
 				22956B7D27FF708700F9AA46 /* Groups.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +531,19 @@
 			productName = CalendarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		22E4FB0A280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22E4FB0B280BC2AE00EA194F /* FiresideLocusModel.xcdatamodel */,
+			);
+			currentVersion = 22E4FB0B280BC2AE00EA194F /* FiresideLocusModel.xcdatamodel */;
+			path = FiresideLocusModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 22956B5527FF636900F9AA46 /* Project object */;
 }

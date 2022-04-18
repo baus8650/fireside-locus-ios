@@ -28,8 +28,6 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let loginButton = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(login))
-//        navigationItem.rightBarButtonItem = loginButton
         emailField.delegate = self
         passwordField.delegate = self
     }
@@ -62,24 +60,27 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
             ErrorPresenter.showError(message: "Please enter your password", on: self)
             return
         }
-    
-    Auth().login(username: email, password: password) { result in
-        switch result {
-        case .success:
-            DispatchQueue.main.async {
-                let scene = UIApplication.shared.connectedScenes.first
-                if let sceneDelegate: SceneDelegate = (scene?.delegate as? SceneDelegate) {
-                    let rootController =
-                      UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainVC")
-                    sceneDelegate.window?.rootViewController = rootController
+        
+        Auth().login(username: email, password: password) { result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    Auth().setUpCoreData()
+                    Auth().fetchCampers()
+                    Auth().fetchEvents()
+                    let scene = UIApplication.shared.connectedScenes.first
+                    if let sceneDelegate: SceneDelegate = (scene?.delegate as? SceneDelegate) {
+                        let rootController =
+                        UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainVC")
+                        sceneDelegate.window?.rootViewController = rootController
+                    }
                 }
+            case .failure:
+                let message = "Could not login. Check your credentials and try again"
+                ErrorPresenter.showError(message: message, on: self)
             }
-        case .failure:
-            let message = "Could not login. Check your credentials and try again"
-            ErrorPresenter.showError(message: message, on: self)
         }
     }
-}
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailField.resignFirstResponder()
@@ -87,5 +88,5 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
         login()
         return true
     }
-
+    
 }
