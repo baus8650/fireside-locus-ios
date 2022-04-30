@@ -185,6 +185,7 @@ class CampersTableViewController: UITableViewController, UISearchBarDelegate {
         }
         today.backgroundColor = UIColor(red: 1/255, green: 85/255, blue: 67/255, alpha: 0.9)
         schedule.backgroundColor = UIColor(red: 205/255, green: 153/255, blue: 18/255, alpha: 0.9)
+        
         let swipeActions = UISwipeActionsConfiguration(actions: [schedule, today])
         
         return swipeActions

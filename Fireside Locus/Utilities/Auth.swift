@@ -21,7 +21,7 @@ class Auth {
     var camperRequest = ResourceRequest<Campers>(resourcePath: "campers")
     var events: [ScheduledEvent]?
     var eventRequest = ResourceRequest<[ScheduledEvent]>(resourcePath: "events")
-    
+    var counselorRequest = ResourceRequest<[Counselor]>(resourcePath: "counselors")
     
     var user: User? {
         get {
@@ -66,6 +66,54 @@ class Auth {
                 self.saveEvents(events: events)
             }
         }
+    }
+    
+    func fetchCounselors() {
+        counselorRequest.getAll { counselors in
+            switch counselors {
+            case .failure:
+                print("There was an error fetching counselors.")
+            case .success(let counselors):
+                self.saveCounselors(counselors: counselors)
+            }
+        }
+    }
+    
+    func saveCounselors(counselors: [Counselor]) {
+        DispatchQueue.main.async(execute: {
+        for counselor in counselors {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            self.context = appDelegate.persistentContainer.viewContext
+            
+            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CounselorModel")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", NSNumber(integerLiteral: counselor.id))
+            
+            let results = try? self.context.fetch(fetchRequest)
+            
+            if results?.count == 0 {
+                let savedEntry = NSEntityDescription.insertNewObject(forEntityName: "CounselorModel", into: self.context)
+                savedEntry.setValue(counselor.id, forKey: "id")
+                savedEntry.setValue(counselor.name, forKey: "name")
+                savedEntry.setValue(counselor.cabin, forKey: "cabin")
+                savedEntry.setValue(counselor.year, forKey: "year")
+                savedEntry.setValue(counselor.instrument, forKey: "instrument")
+
+            } else {
+                let editCounselor = results?.first
+                editCounselor?.setValue(counselor.id, forKey: "id")
+                editCounselor?.setValue(counselor.name, forKey: "name")
+                editCounselor?.setValue(counselor.cabin, forKey: "cabin")
+                editCounselor?.setValue(counselor.year, forKey: "year")
+                editCounselor?.setValue(counselor.instrument, forKey: "instrument")
+            }
+        }
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        })
     }
     
     func saveEvents(events: [ScheduledEvent]) {
