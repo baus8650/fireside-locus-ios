@@ -11,18 +11,19 @@ class TwoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var positionOneView: UIView! {
         didSet {
-            positionOneView.backgroundColor = .clear
+            positionOneView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
             positionOneView.layer.borderWidth = 1
         }
     }
         @IBOutlet var positionTwoView: UIView! {
             didSet {
-                positionTwoView.backgroundColor = .clear
+                positionTwoView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
                 positionTwoView.layer.borderWidth = 1
             }
         }
     @IBOutlet var cellBody: UIView! {
         didSet {
+            cellBody.layer.borderColor = UIColor(named: "borderColor")?.cgColor
             cellBody.layer.borderWidth = 3
         }
     }

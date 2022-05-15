@@ -26,6 +26,10 @@
 		22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B7E27FF710800F9AA46 /* Cabin.swift */; };
 		22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */; };
 		22956B852800935900F9AA46 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22956B842800935900F9AA46 /* CalendarKit */; };
+		229B2E6928307F5B00335D71 /* CounselorOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B2E6728307F5B00335D71 /* CounselorOptionsTableViewCell.swift */; };
+		229B2E6A28307F5B00335D71 /* CounselorOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B2E6828307F5B00335D71 /* CounselorOptionsTableViewCell.xib */; };
+		229B2E6D2830928200335D71 /* RVS-AutofillTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 229B2E6C2830928200335D71 /* RVS-AutofillTextField */; };
+		22A1467F281D968F0027CC7C /* ConcertCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1467E281D968F0027CC7C /* ConcertCollectionViewCell.swift */; };
 		22B212FD280331C7006BA092 /* FilteredCamperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */; };
 		22C653EB281B8A34007FACF4 /* FourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C653EA281B8A34007FACF4 /* FourCollectionViewCell.swift */; };
 		22C653ED281B8E3B007FACF4 /* TwoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C653EC281B8E3B007FACF4 /* TwoCollectionViewCell.swift */; };
@@ -73,6 +77,9 @@
 		22956B7C27FF708700F9AA46 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		22956B7E27FF710800F9AA46 /* Cabin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cabin.swift; sourceTree = "<group>"; };
 		22956B8127FFB17C00F9AA46 /* CamperDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperDetailTableViewController.swift; sourceTree = "<group>"; };
+		229B2E6728307F5B00335D71 /* CounselorOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorOptionsTableViewCell.swift; sourceTree = "<group>"; };
+		229B2E6828307F5B00335D71 /* CounselorOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounselorOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		22A1467E281D968F0027CC7C /* ConcertCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertCollectionViewCell.swift; sourceTree = "<group>"; };
 		22B212FC280331C7006BA092 /* FilteredCamperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCamperTableViewController.swift; sourceTree = "<group>"; };
 		22C653EA281B8A34007FACF4 /* FourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourCollectionViewCell.swift; sourceTree = "<group>"; };
 		22C653EC281B8E3B007FACF4 /* TwoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229B2E6D2830928200335D71 /* RVS-AutofillTextField in Frameworks */,
 				22956B852800935900F9AA46 /* CalendarKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +206,9 @@
 				22C653EC281B8E3B007FACF4 /* TwoCollectionViewCell.swift */,
 				22C653EE281B91FA007FACF4 /* OneCollectionViewCell.swift */,
 				22C653F0281B9419007FACF4 /* DayCollectionViewCell.swift */,
+				22A1467E281D968F0027CC7C /* ConcertCollectionViewCell.swift */,
+				229B2E6728307F5B00335D71 /* CounselorOptionsTableViewCell.swift */,
+				229B2E6828307F5B00335D71 /* CounselorOptionsTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 			name = "Fireside Locus";
 			packageProductDependencies = (
 				22956B842800935900F9AA46 /* CalendarKit */,
+				229B2E6C2830928200335D71 /* RVS-AutofillTextField */,
 			);
 			productName = "Fireside Locus";
 			productReference = 22956B5D27FF636900F9AA46 /* Fireside Locus.app */;
@@ -282,6 +294,7 @@
 			mainGroup = 22956B5427FF636900F9AA46;
 			packageReferences = (
 				22956B832800935900F9AA46 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+				229B2E6B2830928200335D71 /* XCRemoteSwiftPackageReference "RVS_AutofillTextField" */,
 			);
 			productRefGroup = 22956B5E27FF636900F9AA46 /* Products */;
 			projectDirPath = "";
@@ -298,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E4FAFD28072B1800EA194F /* Login.storyboard in Resources */,
+				229B2E6A28307F5B00335D71 /* CounselorOptionsTableViewCell.xib in Resources */,
 				22956B6D27FF636A00F9AA46 /* LaunchScreen.storyboard in Resources */,
 				22956B6A27FF636A00F9AA46 /* Assets.xcassets in Resources */,
 				22956B6827FF636900F9AA46 /* Main.storyboard in Resources */,
@@ -340,6 +354,7 @@
 				22546077280DC17C007EB1A4 /* CamperViewModel.swift in Sources */,
 				22E4FB09280B891600EA194F /* DataStorage.swift in Sources */,
 				22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */,
+				22A1467F281D968F0027CC7C /* ConcertCollectionViewCell.swift in Sources */,
 				22E4FAFF28072C5B00EA194F /* LoginTableViewController.swift in Sources */,
 				22956B7827FF687800F9AA46 /* CampersTableViewController.swift in Sources */,
 				22C653EB281B8A34007FACF4 /* FourCollectionViewCell.swift in Sources */,
@@ -349,6 +364,7 @@
 				22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */,
 				22E4FAFB28072A5A00EA194F /* User.swift in Sources */,
 				22956B7D27FF708700F9AA46 /* Groups.swift in Sources */,
+				229B2E6928307F5B00335D71 /* CounselorOptionsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +594,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		229B2E6B2830928200335D71 /* XCRemoteSwiftPackageReference "RVS_AutofillTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RiftValleySoftware/RVS_AutofillTextField.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -585,6 +609,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22956B832800935900F9AA46 /* XCRemoteSwiftPackageReference "CalendarKit" */;
 			productName = CalendarKit;
+		};
+		229B2E6C2830928200335D71 /* RVS-AutofillTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 229B2E6B2830928200335D71 /* XCRemoteSwiftPackageReference "RVS_AutofillTextField" */;
+			productName = "RVS-AutofillTextField";
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -21,7 +21,7 @@ class Auth {
     var camperRequest = ResourceRequest<Campers>(resourcePath: "campers")
     var events: [ScheduledEvent]?
     var eventRequest = ResourceRequest<[ScheduledEvent]>(resourcePath: "events")
-    var counselorRequest = ResourceRequest<[Counselor]>(resourcePath: "counselors")
+    var counselorRequest = ResourceRequest<Counselors>(resourcePath: "counselors")
     
     var user: User? {
         get {
@@ -74,7 +74,7 @@ class Auth {
             case .failure:
                 print("There was an error fetching counselors.")
             case .success(let counselors):
-                self.saveCounselors(counselors: counselors)
+                self.saveCounselors(counselors: counselors.counselors)
             }
         }
     }
@@ -87,25 +87,31 @@ class Auth {
             
             
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CounselorModel")
-            fetchRequest.predicate = NSPredicate(format: "id == %@", NSNumber(integerLiteral: counselor.id))
+            fetchRequest.predicate = NSPredicate(format: "name == %@", counselor.name)
             
             let results = try? self.context.fetch(fetchRequest)
             
             if results?.count == 0 {
                 let savedEntry = NSEntityDescription.insertNewObject(forEntityName: "CounselorModel", into: self.context)
-                savedEntry.setValue(counselor.id, forKey: "id")
+//                savedEntry.setValue(counselor.id, forKey: "id")
                 savedEntry.setValue(counselor.name, forKey: "name")
                 savedEntry.setValue(counselor.cabin, forKey: "cabin")
                 savedEntry.setValue(counselor.year, forKey: "year")
                 savedEntry.setValue(counselor.instrument, forKey: "instrument")
+                savedEntry.setValue(counselor.nightwatchPreferences, forKey: "nightwatchPreferences")
+                savedEntry.setValue(counselor.recreationPreferences, forKey: "recreationPreferences")
+                savedEntry.setValue(counselor.roles, forKey: "roles")
 
             } else {
                 let editCounselor = results?.first
-                editCounselor?.setValue(counselor.id, forKey: "id")
+//                editCounselor?.setValue(counselor.id, forKey: "id")
                 editCounselor?.setValue(counselor.name, forKey: "name")
                 editCounselor?.setValue(counselor.cabin, forKey: "cabin")
                 editCounselor?.setValue(counselor.year, forKey: "year")
                 editCounselor?.setValue(counselor.instrument, forKey: "instrument")
+                editCounselor?.setValue(counselor.nightwatchPreferences, forKey: "nightwatchPreferences")
+                editCounselor?.setValue(counselor.recreationPreferences, forKey: "recreationPreferences")
+                editCounselor?.setValue(counselor.roles, forKey: "roles")
             }
         }
         do {

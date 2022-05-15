@@ -5,13 +5,19 @@
 //  Created by Tim Bausch on 4/28/22.
 //
 
+import RVS_AutofillTextField
 import UIKit
 
 protocol UpdateFourShiftDelegate {
-    func updateFourShifts(choiceOne: String, choiceTwo: String, choiceThree: String, choiceFour: String, cancel: Bool, indexPath: IndexPath)
+    func updateFourShifts(choiceOne: Counselor?, choiceTwo: Counselor?, choiceThree: Counselor?, choiceFour: Counselor?, cancel: Bool, indexPath: IndexPath)
+    func updateCounselorList(counselors: [Counselor], selectedIndexPath: IndexPath)
 }
 
-class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate {
+class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate, RVS_AutofillTextFieldDataSource, RVS_AutofillTextFieldDelegate {
+    var textDictionary: [RVS_AutofillTextFieldDataSourceType] = []
+    
+    
+    
 
     var selectedIndexPath: IndexPath?
     
@@ -20,10 +26,19 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate 
     var editThree: String = ""
     var editFour: String = ""
     
-    @IBOutlet var choiceOne: UITextField!
-    @IBOutlet var choiceTwo: UITextField!
-    @IBOutlet var choiceThree: UITextField!
-    @IBOutlet var choiceFour: UITextField!
+    var allCounselors: [Counselor]?
+    var masterCounselorList: [Counselor]? {
+        didSet {
+            generateTextDictionary(counselors: masterCounselorList ?? [])
+        }
+    }
+    var selectedCounselorList: [Counselor?]?
+    
+    @IBOutlet var choiceOne: RVS_AutofillTextField!
+    //    @IBOutlet var choiceOne: UITextField!
+    @IBOutlet var choiceTwo: RVS_AutofillTextField!
+    @IBOutlet var choiceThree: RVS_AutofillTextField!
+    @IBOutlet var choiceFour: RVS_AutofillTextField!
     @IBOutlet var cancelSwitch: UISwitch!
     
     @IBAction func switchTouched(_ sender: Any) {
@@ -42,15 +57,31 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+//        allCounselors = masterCounselorList ?? []
         choiceOne.text = editOne
         choiceTwo.text = editTwo
         choiceThree.text = editThree
         choiceFour.text = editFour
         
         choiceOne.delegate = self
+        choiceOne.dataSource = self
         choiceTwo.delegate = self
+        choiceTwo.dataSource = self
         choiceThree.delegate = self
+        choiceThree.dataSource = self
         choiceFour.delegate = self
+        choiceFour.dataSource = self
+        choiceOne.tableFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        choiceOne.tableBackgroundColor = UIColor(named: "luzerneColor")?.withAlphaComponent(0.92) ?? .systemBackground
+        
+        choiceTwo.tableFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        choiceTwo.tableBackgroundColor = UIColor(named: "luzerneColor")?.withAlphaComponent(0.92) ?? .systemBackground
+        
+        choiceThree.tableFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        choiceThree.tableBackgroundColor = UIColor(named: "luzerneColor")?.withAlphaComponent(0.92) ?? .systemBackground
+        
+        choiceFour.tableFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        choiceFour.tableBackgroundColor = UIColor(named: "luzerneColor")?.withAlphaComponent(0.92) ?? .systemBackground
         
 //        selectedIndexPath = IndexPath()
         // Uncomment the following line to preserve selection between presentations
@@ -60,11 +91,62 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    func generateTextDictionary(counselors: [Counselor]) {
+        var ret = [RVS_AutofillTextFieldDataSourceType]()
+        for i in counselors {
+            ret.append(RVS_AutofillTextFieldDataSourceType(value: i.name))
+        }
+        textDictionary = ret
+    }
+    
+    func checkForSelection() {
+        masterCounselorList = allCounselors
+        if choiceOne.text != "" {
+            masterCounselorList = masterCounselorList?.filter { $0.name != choiceOne.text }
+        }
+        if choiceTwo.text != "" {
+            masterCounselorList = masterCounselorList?.filter { $0.name != choiceTwo.text }
+        }
+        if choiceThree.text != "" {
+            masterCounselorList = masterCounselorList?.filter { $0.name != choiceThree.text }
+        }
+        if choiceFour.text != "" {
+            masterCounselorList = masterCounselorList?.filter { $0.name != choiceFour.text }
+        }
+            
+    }
+    
+    func autoFillTextField(_ autofillTextField: RVS_AutofillTextField, selectionWasMade: RVS_AutofillTextFieldDataSourceType) {
+        masterCounselorList = masterCounselorList?.filter { $0.name != selectionWasMade.value}
+        autofillTextField.text = selectionWasMade.value
+        generateTextDictionary(counselors: masterCounselorList ?? [])
+    }
+    
     func save() {
-        updateFourShiftsDelegate?.updateFourShifts(choiceOne: choiceOne.text ?? "", choiceTwo: choiceTwo.text ?? "", choiceThree: choiceThree.text ?? "", choiceFour: choiceFour.text ?? "", cancel: isCanceled ?? false, indexPath: selectedIndexPath!)
+        print(choiceOne.text)
+        let convertedCounselors = convertToCounselor(one: choiceOne.text ?? editOne, two: choiceTwo.text ?? editTwo, three: choiceThree.text ?? editThree, four: choiceFour.text ?? editFour)
+        print("Attempted Conversion \(convertedCounselors)")
+        updateFourShiftsDelegate?.updateFourShifts(choiceOne: convertedCounselors[0] ?? nil, choiceTwo: convertedCounselors[1] ?? nil, choiceThree: convertedCounselors[2] ?? nil, choiceFour: convertedCounselors[3] ?? nil, cancel: isCanceled ?? false, indexPath: selectedIndexPath!)
+        updateFourShiftsDelegate?.updateCounselorList(counselors: masterCounselorList!, selectedIndexPath: selectedIndexPath!)
         dismiss(animated: true)
     }
 
+    func convertToCounselor(one: String, two: String, three: String, four: String) -> [Counselor?] {
+        print("from convert \(one) and all counselors \(allCounselors)")
+        let counselorOne: Counselor? = allCounselors?.filter { $0.name == one }.first
+        let counselorTwo: Counselor? = allCounselors?.filter { $0.name == two }.first
+        let counselorThree: Counselor? = allCounselors?.filter { $0.name == three }.first
+        let counselorFour: Counselor? = allCounselors?.filter { $0.name == four }.first
+        print("converted again \(counselorOne)")
+        return [counselorOne, counselorTwo, counselorThree, counselorFour]
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text == "" {
+            checkForSelection()
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -137,4 +219,6 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate 
     }
     */
 
+    
+    
 }

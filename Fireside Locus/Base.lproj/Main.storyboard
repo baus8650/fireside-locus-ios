@@ -384,7 +384,7 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MPK-Ku-l0R">
                                                 <rect key="frame" x="0.0" y="0.0" width="1650" height="690"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lf2-gs-dKP">
                                                     <size key="itemSize" width="210" height="90"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -413,7 +413,6 @@
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Basketball Court" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVp-ZR-XAF">
                                                                                     <rect key="frame" x="52.5" y="5" width="105" height="16"/>
-                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -425,7 +424,6 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="aZk-Kd-sy9" firstAttribute="centerX" secondItem="Qrh-6v-hHX" secondAttribute="centerX" id="7c0-fc-aJC"/>
                                                                                 <constraint firstItem="ZVp-ZR-XAF" firstAttribute="top" secondItem="Qrh-6v-hHX" secondAttribute="top" constant="5" id="QjO-Zt-iMk"/>
@@ -438,7 +436,6 @@
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="North Practice Village" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeI-jW-ZO7">
                                                                                     <rect key="frame" x="36" y="5" width="138" height="16"/>
-                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -450,7 +447,6 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="CeI-jW-ZO7" firstAttribute="top" secondItem="DDW-Cz-dAN" secondAttribute="top" constant="5" id="CCx-vx-ebm"/>
                                                                                 <constraint firstItem="CeI-jW-ZO7" firstAttribute="centerX" secondItem="DDW-Cz-dAN" secondAttribute="centerX" id="btL-Q9-q2H"/>
@@ -463,7 +459,6 @@
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-ml-vzQ">
                                                                                     <rect key="frame" x="88" y="5" width="34.5" height="16"/>
-                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -475,7 +470,6 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="eSx-ml-vzQ" firstAttribute="centerX" secondItem="TG5-cl-StQ" secondAttribute="centerX" id="HuO-dp-6KD"/>
                                                                                 <constraint firstItem="VN4-3g-Keg" firstAttribute="centerX" secondItem="TG5-cl-StQ" secondAttribute="centerX" id="Kri-BC-fWo"/>
@@ -488,7 +482,6 @@
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THA-tu-baJ">
                                                                                     <rect key="frame" x="88" y="5" width="34.5" height="16"/>
-                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -500,7 +493,6 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="THA-tu-baJ" firstAttribute="top" secondItem="RHB-WN-5Oe" secondAttribute="top" constant="5" id="Grh-oC-fWx"/>
                                                                                 <constraint firstItem="xIV-eX-L3k" firstAttribute="centerX" secondItem="RHB-WN-5Oe" secondAttribute="centerX" id="azG-Rc-fni"/>
@@ -509,7 +501,6 @@
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
@@ -572,7 +563,6 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="Hjv-rd-Z6a" firstAttribute="top" secondItem="ZRf-B3-khN" secondAttribute="bottom" constant="10" id="Fnb-D5-Suq"/>
                                                                                 <constraint firstItem="Hjv-rd-Z6a" firstAttribute="centerX" secondItem="9uG-1i-uvr" secondAttribute="centerX" id="Ntk-nI-aLc"/>
@@ -596,7 +586,6 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="UIG-0Y-i8M" firstAttribute="centerX" secondItem="9gi-wb-Nxu" secondAttribute="centerX" id="3R9-2G-q5p"/>
                                                                                 <constraint firstItem="UIG-0Y-i8M" firstAttribute="top" secondItem="9gi-wb-Nxu" secondAttribute="top" constant="5" id="Eka-aw-4PN"/>
@@ -605,7 +594,6 @@
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
@@ -685,10 +673,47 @@
                                                             <outlet property="dayTitle" destination="fBr-c4-CjB" id="C0w-9l-HSE"/>
                                                         </connections>
                                                     </collectionViewCell>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ConcertCell" id="5Kg-EB-VhC" customClass="ConcertCollectionViewCell" customModule="Fireside_Locus" customModuleProvider="target">
+                                                        <rect key="frame" x="845" y="110" width="210" height="90"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5Dl-1o-xIH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="90"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpg-im-bZW">
+                                                                    <rect key="frame" x="83.5" y="5" width="43.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="UYQ-Zg-KuU">
+                                                                    <rect key="frame" x="15" y="39.5" width="180" height="32"/>
+                                                                    <segments>
+                                                                        <segment title="AM"/>
+                                                                        <segment title="PM"/>
+                                                                        <segment title="No"/>
+                                                                    </segments>
+                                                                    <connections>
+                                                                        <action selector="concertPressed:" destination="5Kg-EB-VhC" eventType="valueChanged" id="HrP-o0-RVg"/>
+                                                                    </connections>
+                                                                </segmentedControl>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="UYQ-Zg-KuU" firstAttribute="centerY" secondItem="5Dl-1o-xIH" secondAttribute="centerY" constant="10" id="Fpr-yk-enK"/>
+                                                                <constraint firstAttribute="trailing" secondItem="UYQ-Zg-KuU" secondAttribute="trailing" constant="15" id="Mo6-nm-rIQ"/>
+                                                                <constraint firstItem="fpg-im-bZW" firstAttribute="centerX" secondItem="5Dl-1o-xIH" secondAttribute="centerX" id="oZw-yp-OXY"/>
+                                                                <constraint firstItem="fpg-im-bZW" firstAttribute="top" secondItem="5Dl-1o-xIH" secondAttribute="top" constant="5" id="rim-AU-AyD"/>
+                                                                <constraint firstItem="UYQ-Zg-KuU" firstAttribute="leading" secondItem="5Dl-1o-xIH" secondAttribute="leading" constant="15" id="whg-MM-9y9"/>
+                                                            </constraints>
+                                                        </collectionViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="concertSelector" destination="UYQ-Zg-KuU" id="rdP-Uw-RN9"/>
+                                                            <outlet property="titleLabel" destination="fpg-im-bZW" id="3gg-M6-boI"/>
+                                                        </connections>
+                                                    </collectionViewCell>
                                                 </cells>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="MPK-Ku-l0R" secondAttribute="bottom" id="4Lm-7y-Hwb"/>
                                             <constraint firstItem="MPK-Ku-l0R" firstAttribute="leading" secondItem="a6N-dR-013" secondAttribute="leading" id="Buk-sM-BNU"/>
@@ -776,10 +801,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice one..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ID-8n-ic4">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice one..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ID-8n-ic4" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -796,10 +829,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice two..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lJ-yv-dcv">
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice two..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lJ-yv-dcv" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -816,10 +857,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice three..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8s-L8-UWJ">
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice three..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8s-L8-UWJ" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -836,10 +885,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice four..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tgm-oz-7kQ">
+                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice four..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tgm-oz-7kQ" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -914,10 +971,10 @@
                     </tableView>
                     <connections>
                         <outlet property="cancelSwitch" destination="DHH-bx-doG" id="MlM-7f-7k8"/>
-                        <outlet property="choiceFour" destination="Tgm-oz-7kQ" id="XoI-Ur-bkA"/>
-                        <outlet property="choiceOne" destination="0ID-8n-ic4" id="Zcp-oi-4Dd"/>
-                        <outlet property="choiceThree" destination="D8s-L8-UWJ" id="yHx-fv-oNd"/>
-                        <outlet property="choiceTwo" destination="5lJ-yv-dcv" id="YT2-pr-Xk7"/>
+                        <outlet property="choiceFour" destination="Tgm-oz-7kQ" id="25l-lE-vYN"/>
+                        <outlet property="choiceOne" destination="0ID-8n-ic4" id="8Q8-qH-8Ct"/>
+                        <outlet property="choiceThree" destination="D8s-L8-UWJ" id="iEm-a5-rB9"/>
+                        <outlet property="choiceTwo" destination="5lJ-yv-dcv" id="2pZ-fR-H9x"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xok-cF-FgI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1233,6 +1290,11 @@
             <point key="canvasLocation" x="847.7386934673367" y="2323.741007194245"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="0ID-8n-ic4">
+            <size key="intrinsicContentSize" width="113" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>

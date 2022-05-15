@@ -8,5 +8,5 @@
 import Foundation
 
 struct Shift {
-    var counselors: [String]
+    var counselors: [Counselor?]
 }

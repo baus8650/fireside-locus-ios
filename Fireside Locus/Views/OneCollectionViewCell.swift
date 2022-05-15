@@ -11,6 +11,7 @@ class OneCollectionViewCell: UICollectionViewCell {
     @IBOutlet var positionOneLabel: UILabel!
     @IBOutlet var cellBody: UIView! {
         didSet {
+            cellBody.layer.borderColor = UIColor(named: "borderColor")?.cgColor
             cellBody.layer.borderWidth = 3
         }
     }

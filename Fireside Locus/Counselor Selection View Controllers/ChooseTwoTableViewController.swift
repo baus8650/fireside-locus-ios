@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UpdateTwoShiftDelegate {
-    func updateTwoShifts(choiceOne: String, choiceTwo: String, cancel: Bool, indexPath: IndexPath)
+    func updateTwoShifts(choiceOne: Counselor?, choiceTwo: Counselor?, cancel: Bool, indexPath: IndexPath)
 }
 
 class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate {
@@ -16,6 +16,12 @@ class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate {
     var isCanceled: Bool = false
     var updateTwoShiftDelegate: UpdateTwoShiftDelegate?
     var selectedIndexPath: IndexPath?
+    
+    var editOne: String = ""
+    var editTwo: String = ""
+    
+    var masterCounselorList: [Counselor]?
+    var selectedCounselorList: [Counselor?]?
     
     @IBOutlet var choiceOne: UITextField!
     @IBOutlet var choiceTwo: UITextField!
@@ -34,11 +40,22 @@ class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func save() {
-        updateTwoShiftDelegate?.updateTwoShifts(choiceOne: choiceOne.text ?? "", choiceTwo: choiceTwo.text ?? "", cancel: isCanceled, indexPath: selectedIndexPath!)
+        let convertedCounselors = convertToCounselor(one: choiceOne.text ?? "", two: choiceTwo.text ?? "")
+        updateTwoShiftDelegate?.updateTwoShifts(choiceOne: convertedCounselors[1] ?? nil, choiceTwo: convertedCounselors[0] ?? nil, cancel: isCanceled, indexPath: selectedIndexPath!)
         dismiss(animated: true)
     }
+    
+    func convertToCounselor(one: String, two: String) -> [Counselor?] {
+        let counselorOne: Counselor? = masterCounselorList?.filter { $0.name == one }.first
+        let counselorTwo: Counselor? = masterCounselorList?.filter { $0.name == two }.first
+        return [counselorOne, counselorTwo]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        choiceOne.text = editOne
+        choiceTwo.text = editTwo
 
         choiceOne.delegate = self
         choiceTwo.delegate = self

@@ -16,6 +16,9 @@
         <attribute name="id" optional="YES" attributeType="Transformable"/>
         <attribute name="instrument" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nightwatchPreferences" optional="YES" attributeType="Transformable"/>
+        <attribute name="recreationPreferences" optional="YES" attributeType="Transformable"/>
+        <attribute name="roles" optional="YES" attributeType="Transformable"/>
         <attribute name="year" optional="YES" attributeType="Transformable"/>
     </entity>
     <entity name="ScheduledEventModel" representedClassName="ScheduledEventModel" syncable="YES" codeGenerationType="class">
@@ -28,7 +31,7 @@
     </entity>
     <elements>
         <element name="CamperModel" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="CounselorModel" positionX="-54" positionY="63" width="128" height="149"/>
         <element name="ScheduledEventModel" positionX="-54" positionY="54" width="128" height="119"/>
-        <element name="CounselorModel" positionX="-54" positionY="63" width="128" height="104"/>
     </elements>
 </model>

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UpdateOneShiftDelegate {
-    func updateOneShift(counselor: String, cancel: Bool, indexPath: IndexPath)
+    func updateOneShift(counselor: Counselor?, cancel: Bool, indexPath: IndexPath)
 }
 
 class ChooseOneTableViewController: UITableViewController, UITextFieldDelegate {
@@ -16,6 +16,11 @@ class ChooseOneTableViewController: UITableViewController, UITextFieldDelegate {
     var updateDelegate: UpdateOneShiftDelegate?
     var isCanceled: Bool = false
     var selectedIndexPath: IndexPath?
+    
+    var editOne: String = ""
+    
+    var masterCounselorList: [Counselor]?
+    var selectedCounselorList: [Counselor?]?
     
     @IBOutlet var counselor: UITextField!
     @IBOutlet var cancelButton: UISwitch!
@@ -30,12 +35,20 @@ class ChooseOneTableViewController: UITableViewController, UITextFieldDelegate {
         save()
     }
     
+    func convertToCounselor(one: String) -> [Counselor?] {
+        let counselorOne: Counselor? = masterCounselorList?.filter { $0.name == one }.first
+        
+        return [counselorOne]
+    }
+    
     func save() {
-        updateDelegate?.updateOneShift(counselor: counselor.text ?? "", cancel: isCanceled, indexPath: selectedIndexPath!)
+        let convertedCounselor = convertToCounselor(one: counselor.text ?? "")
+        updateDelegate?.updateOneShift(counselor: convertedCounselor[0] ?? nil, cancel: isCanceled, indexPath: selectedIndexPath!)
         dismiss(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        counselor.text = editOne
         counselor.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

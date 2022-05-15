@@ -17,30 +17,35 @@ class FourCollectionViewCell: UICollectionViewCell {
     @IBOutlet var positionOneView: UIView! {
         didSet {
             positionOneView.layer.borderWidth = 1
-            positionOneView.backgroundColor = .clear
+            positionOneView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+//            positionOneView.backgroundColor = .clear
         }
     }
     @IBOutlet var positionTwoView: UIView! {
         didSet {
             positionTwoView.layer.borderWidth = 1
-            positionTwoView.backgroundColor = .clear
+            positionTwoView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+//            positionTwoView.backgroundColor = .clear
         }
     }
     @IBOutlet var positionThreeView: UIView! {
         didSet {
             positionThreeView.layer.borderWidth = 1
-            positionThreeView.backgroundColor = .clear
+            positionThreeView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+//            positionThreeView.backgroundColor = .clear
         }
     }
     @IBOutlet var positionFourView: UIView! {
         didSet {
             positionFourView.layer.borderWidth = 1
-            positionFourView.backgroundColor = .clear
+            positionFourView.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+//            positionFourView.backgroundColor = .clear
         }
     }
     @IBOutlet var cellBody: UIView! {
         didSet {
             cellBody.layer.borderWidth = 3
+            cellBody.layer.borderColor = UIColor(named: "borderColor")?.cgColor
         }
     }
     
