@@ -1019,10 +1019,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice one..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-nG-qpn">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice one..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OsL-nG-qpn" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1039,10 +1047,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice two..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-Yp-sVg">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choice two..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tH-Yp-sVg" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1113,8 +1129,8 @@
                     </tableView>
                     <connections>
                         <outlet property="cancelSwitch" destination="UuF-wd-NeI" id="Tzr-cY-OMT"/>
-                        <outlet property="choiceOne" destination="OsL-nG-qpn" id="Ywf-0n-48s"/>
-                        <outlet property="choiceTwo" destination="7tH-Yp-sVg" id="zQK-Rb-T6C"/>
+                        <outlet property="choiceOne" destination="OsL-nG-qpn" id="NcC-EO-F1f"/>
+                        <outlet property="choiceTwo" destination="7tH-Yp-sVg" id="UNX-cp-pk9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KIa-Pl-kf5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1159,10 +1175,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Counselor..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MoH-uO-mYh">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Counselor..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MoH-uO-mYh" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
                                                     <rect key="frame" x="20" y="8" width="335" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumAutofillCount">
+                                                            <integer key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1293,6 +1317,15 @@
     <designables>
         <designable name="0ID-8n-ic4">
             <size key="intrinsicContentSize" width="113" height="34"/>
+        </designable>
+        <designable name="5lJ-yv-dcv">
+            <size key="intrinsicContentSize" width="112.5" height="34"/>
+        </designable>
+        <designable name="D8s-L8-UWJ">
+            <size key="intrinsicContentSize" width="122.5" height="34"/>
+        </designable>
+        <designable name="Tgm-oz-7kQ">
+            <size key="intrinsicContentSize" width="114" height="34"/>
         </designable>
     </designables>
     <resources>

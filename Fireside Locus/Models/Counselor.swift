@@ -11,7 +11,7 @@ struct Counselors: Codable {
     var counselors: [Counselor]
 }
 
-struct Counselor: Codable {
+struct Counselor: Codable, Hashable {
 //    var id: Int
     var name: String
     var cabin: String

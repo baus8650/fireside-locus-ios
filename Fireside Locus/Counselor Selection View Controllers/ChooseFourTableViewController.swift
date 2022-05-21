@@ -14,10 +14,8 @@ protocol UpdateFourShiftDelegate {
 }
 
 class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate, RVS_AutofillTextFieldDataSource, RVS_AutofillTextFieldDelegate {
+    
     var textDictionary: [RVS_AutofillTextFieldDataSourceType] = []
-    
-    
-    
 
     var selectedIndexPath: IndexPath?
     
@@ -26,6 +24,15 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     var editThree: String = ""
     var editFour: String = ""
     
+    var offList: [Counselor]? {
+        didSet {
+            print("IN OFF LIST DIDSET BEFORE FILTERING (in choose four) \(self.masterCounselorList)")
+            print("ALSO IN FOUR, HERE IS THE OFF LIST FROM DID SET \(self.offList)")
+            self.masterCounselorList = filterDaysOff(daysOff: self.offList ?? [], counselors: self.masterCounselorList ?? [])
+            print("IN OFF LIST DIDSET \(self.masterCounselorList)")
+        }
+    }
+    var referenceList: [Counselor]?
     var allCounselors: [Counselor]?
     var masterCounselorList: [Counselor]? {
         didSet {
@@ -82,13 +89,18 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
         
         choiceFour.tableFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
         choiceFour.tableBackgroundColor = UIColor(named: "luzerneColor")?.withAlphaComponent(0.92) ?? .systemBackground
-        
-//        selectedIndexPath = IndexPath()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func filterDaysOff(daysOff: [Counselor], counselors: [Counselor]) -> [Counselor] {
+        print("in the filter \(counselors)")
+        let filteredCounselors = counselors.filter { counselor in
+            return !daysOff.contains(where: { off in
+                return counselor.name == off.name
+            })
+        }
+        print("JUST FILTERED \(filteredCounselors.count)")
+        return filteredCounselors
     }
     
     func generateTextDictionary(counselors: [Counselor]) {
@@ -100,7 +112,9 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     func checkForSelection() {
-        masterCounselorList = allCounselors
+        
+        masterCounselorList = referenceList
+        masterCounselorList = filterDaysOff(daysOff: offList ?? [], counselors: masterCounselorList ?? [])
         if choiceOne.text != "" {
             masterCounselorList = masterCounselorList?.filter { $0.name != choiceOne.text }
         }
@@ -123,9 +137,8 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     func save() {
-        print(choiceOne.text)
         let convertedCounselors = convertToCounselor(one: choiceOne.text ?? editOne, two: choiceTwo.text ?? editTwo, three: choiceThree.text ?? editThree, four: choiceFour.text ?? editFour)
-        print("Attempted Conversion \(convertedCounselors)")
+        
         updateFourShiftsDelegate?.updateFourShifts(choiceOne: convertedCounselors[0] ?? nil, choiceTwo: convertedCounselors[1] ?? nil, choiceThree: convertedCounselors[2] ?? nil, choiceFour: convertedCounselors[3] ?? nil, cancel: isCanceled ?? false, indexPath: selectedIndexPath!)
         updateFourShiftsDelegate?.updateCounselorList(counselors: masterCounselorList!, selectedIndexPath: selectedIndexPath!)
         dismiss(animated: true)
