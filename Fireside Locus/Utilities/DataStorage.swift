@@ -14,21 +14,19 @@ enum CamperResult {
 }
 
 class DataStorage {
- 
+    
     // MARK: - Camper Data
     
     var campers = [Camper]()
     var camperRequest = ResourceRequest<Campers>(resourcePath: "campers")
     
     func getAllCampers() {
-        print("Called get all campers)")
         camperRequest.getAll { campersResult in
             switch campersResult {
             case .failure:
                 print("There was an error fetching Campers")
             case .success(let campers):
-                print(self)
-                    self.campers = campers.campers
+                self.campers = campers.campers
                 
                 
             }

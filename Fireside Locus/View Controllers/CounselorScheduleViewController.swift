@@ -11,9 +11,13 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     
 //    let margin: CGFloat = 1
     
+    
+    
     let titleLabels = ["","8:30 – 12:00", "12:30 – 4:00", "6:30 – Cabin In", "Evening Activity", "Nightwatch", "Day Off", "MOT", "Activity", "Arts & Crafts/North Village", "South Village", "Beach", "Store", "North Practice Cabins", "South Practice Cabins", "Roam"]
     
     let days = ["Sunday", "Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    
+    var concertList = [0,0,0,0,0,0,0]
     
     var masterList: [[Shift]]?
     var shiftViewModel: ShiftViewModel? 
@@ -24,24 +28,37 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     var sundaySupervisionList: [Counselor]?
     var sundayRecList: [Counselor]?
     var sundayOffList: [Counselor]?
+    var sundayNightWatch: [Counselor]?
+    
     var mondaySupervisionList: [Counselor]?
     var mondayRecList: [Counselor]?
     var mondayOffList: [Counselor]?
+    var mondayNightWatch: [Counselor]?
+    
     var tuesdaySupervisionList: [Counselor]?
     var tuesdayRecList: [Counselor]?
     var tuesdayOffList: [Counselor]?
+    var tuesdayNightWatch: [Counselor]?
+    
     var wednesdaySupervisionList: [Counselor]?
     var wednesdayRecList: [Counselor]?
     var wednesdayOffList: [Counselor]?
+    var wednesdayNightWatch: [Counselor]?
+    
     var thursdaySupervisionList: [Counselor]?
     var thursdayRecList: [Counselor]?
     var thursdayOffList: [Counselor]?
+    var thursdayNightWatch: [Counselor]?
+    
     var fridaySupervisionList: [Counselor]?
     var fridayRecList: [Counselor]?
     var fridayOffList: [Counselor]?
+    var fridayNightWatch: [Counselor]?
+    
     var saturdaySupervisionList: [Counselor]?
     var saturdayRecList: [Counselor]?
     var saturdayOffList: [Counselor]?
+    var saturdayNightWatch: [Counselor]?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
@@ -96,7 +113,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.counselorFour.text = masterList?[indexPath.row][indexPath.section].counselors[3]?.name ?? ""
                 return cell
             }
-        } else if indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 5 || indexPath.section == 6 || indexPath.section == 11 {
+        } else if indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 5 || indexPath.section == 11 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TwoCell", for: indexPath) as! TwoCollectionViewCell
             if indexPath.section == 3 {
 //                cell.backgroundColor = .white
@@ -162,9 +179,27 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
                 return cell
             }
+        } else if indexPath.section == 6 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThreeCell", for: indexPath) as! ThreeCollectionViewCell
+            
+            cell.titleLabel.text = titleLabels[indexPath.section]
+            //                cell.titleLabel.textColor = .black
+            //                cell.positionOneLabel.textColor = .black
+            //                cell.positionTwoLabel.textColor = .black
+            cell.viewOne.layer.borderWidth = 0
+            cell.viewTwo.layer.borderWidth = 0
+            cell.viewThree.layer.borderWidth = 0
+            cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
+            cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
+            cell.counselorThree.text = masterList?[indexPath.row][indexPath.section].counselors[2]?.name ?? ""
+            return cell
         } else if indexPath.section == 16 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConcertCell", for: indexPath) as! ConcertCollectionViewCell
             cell.titleLabel.text = "\(days[indexPath.row]) Concert?"
+            cell.concertSelector.addTarget(self, action: #selector(segmentValueChanged(_:)), for: .valueChanged)
+            
+            // set the tag property of your segmented control to uniquely identify each segmented control in the value change event
+            cell.concertSelector.tag = indexPath.row
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OneCell", for: indexPath) as! OneCollectionViewCell
@@ -207,6 +242,30 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         // Do any additional setup after loading the view.
     }
     
+    @objc func segmentValueChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.tag {
+        case 0:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        case 1:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        case 2:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        case 3:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        case 4:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        case 5:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        case 6:
+            concertList[sender.tag] = sender.selectedSegmentIndex
+        default:
+            break
+        }
+        
+        print(concertList)
+    }
+    
     func updateData() {
         counselorViewModel?.counselorList.bind(listener: { counselor in
             self.counselors = counselor
@@ -224,12 +283,55 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             self.fridayRecList = counselor
             self.saturdaySupervisionList = counselor
             self.saturdayRecList = counselor
-//            print(counselor)
         })
+        shiftViewModel?.masterList.bind(listener: { shift in
+            self.masterList = shift
+        })
+    }
+    
+    func passData() {
+        shiftViewModel?.sundaySupervisionList = self.sundaySupervisionList
+        shiftViewModel?.sundayRecList = self.sundayRecList
+        shiftViewModel?.sundayOffList = self.sundayOffList
+        shiftViewModel?.sundayNightWatch = self.sundayNightWatch
+        
+        shiftViewModel?.mondaySupervisionList = self.mondaySupervisionList
+        shiftViewModel?.mondayRecList = self.mondayRecList
+        shiftViewModel?.mondayOffList = self.mondayOffList
+        shiftViewModel?.mondayNightWatch = self.mondayNightWatch
+        
+        shiftViewModel?.tuesdaySupervisionList = self.tuesdaySupervisionList
+        shiftViewModel?.tuesdayRecList = self.tuesdayRecList
+        shiftViewModel?.tuesdayOffList = self.tuesdayOffList
+        shiftViewModel?.tuesdayNightWatch = self.tuesdayNightWatch
+        
+        shiftViewModel?.wednesdaySupervisionList = self.wednesdaySupervisionList
+        shiftViewModel?.wednesdayRecList = self.wednesdayRecList
+        shiftViewModel?.wednesdayOffList = self.wednesdayOffList
+        shiftViewModel?.wednesdayNightWatch = self.wednesdayNightWatch
+        
+        shiftViewModel?.thursdaySupervisionList = self.thursdaySupervisionList
+        shiftViewModel?.thursdayRecList = self.thursdayRecList
+        shiftViewModel?.thursdayOffList = self.thursdayOffList
+        shiftViewModel?.thursdayNightWatch = self.thursdayNightWatch
+        
+        shiftViewModel?.fridaySupervisionList = self.fridaySupervisionList
+        shiftViewModel?.fridayRecList = self.fridayRecList
+        shiftViewModel?.fridayOffList = self.fridayOffList
+        shiftViewModel?.fridayNightWatch = self.fridayNightWatch
+        
+        shiftViewModel?.saturdaySupervisionList = self.saturdaySupervisionList
+        shiftViewModel?.saturdayRecList = self.saturdayRecList
+        shiftViewModel?.saturdayOffList = self.saturdayOffList
+        shiftViewModel?.saturdayNightWatch = self.saturdayNightWatch
     }
     
     @objc
     func populateTable() {
+        shiftViewModel?.concertList.value = self.concertList
+        passData()
+        shiftViewModel?.compileSingleLists()
+        shiftViewModel?.populateSchedule()
         printButton.isEnabled = true
     }
     
@@ -242,9 +344,12 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         if indexPath.section == 1 || indexPath.section == 2 {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "FourChoice", sender: nil)
-        } else if indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 5 || indexPath.section == 6 || indexPath.section == 11 {
+        } else if indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 5 || indexPath.section == 11 {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "TwoChoice", sender: nil)
+        } else if indexPath.section == 6 {
+            selectedIndexPath = indexPath
+            performSegue(withIdentifier: "DayOffSelect", sender: nil)
         } else {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "SingleChoice", sender: nil)
@@ -252,13 +357,11 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     }
     
     func filterDaysOff(daysOff: [Counselor], counselors: [Counselor]) -> [Counselor] {
-        print("in the filter \(counselors)")
         let filteredCounselors = counselors.filter { counselor in
             return !daysOff.contains(where: { off in
                 return counselor.name == off.name
             })
         }
-        print("JUST FILTERED \(filteredCounselors.count)")
         return filteredCounselors
     }
 
@@ -266,7 +369,6 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("IN PREPARE FOR BEFORE ANY SEGUE; SUNDAY SUPERVISION LIST: \(sundaySupervisionList?.count) REC LIST: \(sundayRecList?.count)")
         if segue.identifier == "FourChoice" {
             let destVC = segue.destination as! ChooseFourTableViewController
             destVC.selectedIndexPath = selectedIndexPath
@@ -279,6 +381,10 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                     destVC.masterCounselorList = sundayRecList
                     destVC.referenceList = sundayRecList
                 }
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = saturdayNightWatch
+                }
                 destVC.offList = sundayOffList
             case 1:
                 if selectedIndexPath!.section <= 3 {
@@ -287,6 +393,10 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 } else {
                     destVC.masterCounselorList = mondayRecList
                     destVC.referenceList = mondayRecList
+                }
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = sundayNightWatch
                 }
                 destVC.offList = mondayOffList
             case 2:
@@ -297,6 +407,10 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                     destVC.masterCounselorList = tuesdayRecList
                     destVC.referenceList = tuesdayRecList
                 }
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = mondayNightWatch
+                }
                 destVC.offList = tuesdayOffList
             case 3:
                 if selectedIndexPath!.section <= 3 {
@@ -306,7 +420,11 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                     destVC.masterCounselorList = wednesdayRecList
                     destVC.referenceList = wednesdayRecList
                 }
-                destVC.offList = wednesdayOffList
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = wednesdayNightWatch
+                }
+                destVC.offList = tuesdayOffList
             case 4:
                 if selectedIndexPath!.section <= 3 {
                     destVC.masterCounselorList = thursdaySupervisionList
@@ -314,6 +432,10 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 } else {
                     destVC.masterCounselorList = thursdayRecList
                     destVC.referenceList = thursdayRecList
+                }
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = wednesdayNightWatch
                 }
                 destVC.offList = thursdayOffList
             case 5:
@@ -324,6 +446,10 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                     destVC.masterCounselorList = fridayRecList
                     destVC.referenceList = fridayRecList
                 }
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = thursdayNightWatch
+                }
                 destVC.offList = fridayOffList
             case 6:
                 if selectedIndexPath!.section <= 3 {
@@ -332,6 +458,10 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 } else {
                     destVC.masterCounselorList = saturdayRecList
                     destVC.referenceList = saturdayRecList
+                }
+                if selectedIndexPath!.section == 1 {
+                    // This is not a mistake. I need to feed the previous day's nightwatch assignment in order to prevent them from being secheduled for a morning shift.
+                    destVC.nightWatch = fridayNightWatch
                 }
                 destVC.offList = saturdayOffList
             default:
@@ -491,6 +621,86 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             destVC.allCounselors = counselors
             destVC.editOne = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[0]?.name ?? ""
             destVC.updateDelegate = self
+        } else if segue.identifier == "DayOffSelect" {
+            let destVC = segue.destination as! DayOffTableViewController
+            destVC.selectedIndexPath = selectedIndexPath
+            destVC.updateTwoShiftDelegate = self
+            var offListCheck = [sundayOffList, mondayOffList, tuesdayOffList, wednesdayOffList, thursdayOffList, fridayOffList, saturdayOffList]
+            var compact = offListCheck.compactMap({ $0 })
+            var flat = compact.flatMap({$0})
+            print("HERES OFF LIST CHECK \(flat)")
+            destVC.offListCheck = flat
+            switch selectedIndexPath?.row {
+            case 0:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = sundaySupervisionList
+                    destVC.referenceList = sundaySupervisionList
+                } else {
+                    destVC.masterCounselorList = sundayRecList
+                    destVC.referenceList = sundayRecList
+                }
+                destVC.offList = sundayOffList
+            case 1:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = mondaySupervisionList
+                    destVC.referenceList = mondaySupervisionList
+                } else {
+                    destVC.masterCounselorList = mondayRecList
+                    destVC.referenceList = mondayRecList
+                }
+                destVC.offList = mondayOffList
+            case 2:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = tuesdaySupervisionList
+                    destVC.referenceList = tuesdaySupervisionList
+                } else {
+                    destVC.masterCounselorList = tuesdayRecList
+                    destVC.referenceList = tuesdayRecList
+                }
+                destVC.offList = tuesdayOffList
+            case 3:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = wednesdaySupervisionList
+                    destVC.referenceList = wednesdaySupervisionList
+                } else {
+                    destVC.masterCounselorList = wednesdayRecList
+                    destVC.referenceList = wednesdayRecList
+                }
+                destVC.offList = wednesdayOffList
+            case 4:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = thursdaySupervisionList
+                    destVC.referenceList = thursdaySupervisionList
+                } else {
+                    destVC.masterCounselorList = thursdayRecList
+                    destVC.referenceList = thursdayRecList
+                }
+                destVC.offList = thursdayOffList
+            case 5:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = fridaySupervisionList
+                    destVC.referenceList = fridaySupervisionList
+                } else {
+                    destVC.masterCounselorList = fridayRecList
+                    destVC.referenceList = fridayRecList
+                }
+                destVC.offList = fridayOffList
+            case 6:
+                if selectedIndexPath!.section <= 3 {
+                    destVC.masterCounselorList = saturdaySupervisionList
+                    destVC.referenceList = saturdaySupervisionList
+                } else {
+                    destVC.masterCounselorList = saturdayRecList
+                    destVC.referenceList = saturdayRecList
+                }
+                destVC.offList = saturdayOffList
+            default:
+                print("No day specification")
+            }
+            destVC.allCounselors = counselors
+            destVC.editOne = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[0]?.name ?? ""
+            destVC.editTwo = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[1]?.name ?? ""
+            destVC.editThree = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[2]?.name ?? ""
         }
     }
     
@@ -523,7 +733,6 @@ extension CounselorScheduleViewController: UpdateFourShiftDelegate {
             shiftViewModel?.masterList.bind(listener: { shifts in
                 self.masterList = shifts
             })
-            print("Here's the master list: \(shiftViewModel?.masterList.value)")
         } else {
             print("cancelled")
         }
@@ -587,7 +796,6 @@ extension CounselorScheduleViewController: UpdateFourShiftDelegate {
 extension CounselorScheduleViewController: UpdateTwoShiftDelegate {
     
     func updateTwoShifts(choiceOne: Counselor?, choiceTwo: Counselor?, cancel: Bool, indexPath: IndexPath) {
-        print("HERE IS CHOICE ONE FROM TWO",choiceOne)
         if cancel == false {
             let localList = [choiceOne ?? nil, choiceTwo ?? nil]
             shiftViewModel?.insertCounselors(indexPath: indexPath, counselors: localList)
@@ -602,6 +810,7 @@ extension CounselorScheduleViewController: UpdateTwoShiftDelegate {
     
     func updateTwoCounselorList(counselors: [Counselor], selectedIndexPath: IndexPath) {
 //        print("UPDATING LIST \(selectedIndexPath.row), counselors: \(counselors)")
+        print("UPDATE TWO HERE IS THE MASTER LIST COUNT \(counselors.count)")
         switch selectedIndexPath.row {
         case 0:
             if selectedIndexPath.section == 6 {
@@ -676,7 +885,6 @@ extension CounselorScheduleViewController: UpdateTwoShiftDelegate {
         switch selectedIndexPath.row {
         case 0:
             self.sundayOffList = counselors.compactMap { $0 }
-            print("HERE IS THE SUNDAY OFF LIST ",sundayOffList)
         case 1:
             self.mondayOffList = counselors.compactMap { $0 }
         case 2:
@@ -689,6 +897,27 @@ extension CounselorScheduleViewController: UpdateTwoShiftDelegate {
             self.fridayOffList = counselors.compactMap { $0 }
         case 6:
             self.saturdayOffList = counselors.compactMap { $0 }
+        default:
+            print("No day specification")
+        }
+    }
+    
+    func updateNightWatch(counselors: [Counselor?], selectedIndexPath: IndexPath) {
+        switch selectedIndexPath.row {
+        case 0:
+            self.sundayNightWatch = counselors.compactMap { $0 }
+        case 1:
+            self.mondayNightWatch = counselors.compactMap { $0 }
+        case 2:
+            self.tuesdayNightWatch = counselors.compactMap { $0 }
+        case 3:
+            self.wednesdayNightWatch = counselors.compactMap { $0 }
+        case 4:
+            self.thursdayNightWatch = counselors.compactMap { $0 }
+        case 5:
+            self.fridayNightWatch = counselors.compactMap { $0 }
+        case 6:
+            self.saturdayNightWatch = counselors.compactMap { $0 }
         default:
             print("No day specification")
         }
@@ -760,5 +989,42 @@ extension CounselorScheduleViewController: UpdateOneShiftDelegate {
         }
     }
     
+}
+
+extension CounselorScheduleViewController: UpdateOffShiftDelegate {
+    
+    func updateThreeShifts(choiceOne: Counselor?, choiceTwo: Counselor?, choiceThree: Counselor?, cancel: Bool, indexPath: IndexPath) {
+        if cancel == false {
+            let localList = [choiceOne ?? nil, choiceTwo ?? nil, choiceThree ?? nil]
+            shiftViewModel?.insertCounselors(indexPath: indexPath, counselors: localList)
+            shiftViewModel?.masterList.bind(listener: { shifts in
+                self.masterList = shifts
+            })
+        } else {
+            print("cancelled")
+        }
+        self.counselorTable.reloadData()
+    }
+    
+    func updateOffList(counselors: [Counselor?], selectedIndexPath: IndexPath) {
+        switch selectedIndexPath.row {
+        case 0:
+            self.sundayOffList = counselors.compactMap { $0 }
+        case 1:
+            self.mondayOffList = counselors.compactMap { $0 }
+        case 2:
+            self.tuesdayOffList = counselors.compactMap { $0 }
+        case 3:
+            self.wednesdayOffList = counselors.compactMap { $0 }
+        case 4:
+            self.thursdayOffList = counselors.compactMap { $0 }
+        case 5:
+            self.fridayOffList = counselors.compactMap { $0 }
+        case 6:
+            self.saturdayOffList = counselors.compactMap { $0 }
+        default:
+            print("No day specification")
+        }
+    }
 }
 

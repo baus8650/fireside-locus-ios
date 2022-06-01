@@ -14,6 +14,9 @@
 		22588CF0281066D800661012 /* CounselorScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22588CEF281066D800661012 /* CounselorScheduleViewController.swift */; };
 		22588CF8281335A600661012 /* Counselor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22588CF7281335A600661012 /* Counselor.swift */; };
 		22588CFA2813364500661012 /* CounselorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22588CF92813364500661012 /* CounselorViewModel.swift */; };
+		22861CFF28470C0700CEFC57 /* DayOffTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22861CFE28470C0700CEFC57 /* DayOffTableViewController.swift */; };
+		22861D0128471A2F00CEFC57 /* ThreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22861D0028471A2F00CEFC57 /* ThreeCollectionViewCell.swift */; };
+		22861D03284740A300CEFC57 /* DayOffConflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22861D02284740A300CEFC57 /* DayOffConflict.swift */; };
 		22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6027FF636900F9AA46 /* AppDelegate.swift */; };
 		22956B6327FF636900F9AA46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22956B6227FF636900F9AA46 /* SceneDelegate.swift */; };
 		22956B6827FF636900F9AA46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22956B6627FF636900F9AA46 /* Main.storyboard */; };
@@ -64,6 +67,9 @@
 		22588CEF281066D800661012 /* CounselorScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorScheduleViewController.swift; sourceTree = "<group>"; };
 		22588CF7281335A600661012 /* Counselor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counselor.swift; sourceTree = "<group>"; };
 		22588CF92813364500661012 /* CounselorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorViewModel.swift; sourceTree = "<group>"; };
+		22861CFE28470C0700CEFC57 /* DayOffTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOffTableViewController.swift; sourceTree = "<group>"; };
+		22861D0028471A2F00CEFC57 /* ThreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeCollectionViewCell.swift; sourceTree = "<group>"; };
+		22861D02284740A300CEFC57 /* DayOffConflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOffConflict.swift; sourceTree = "<group>"; };
 		22956B5D27FF636900F9AA46 /* Fireside Locus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fireside Locus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22956B6027FF636900F9AA46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22956B6227FF636900F9AA46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +201,7 @@
 				22E4FAFA28072A5A00EA194F /* User.swift */,
 				22588CF7281335A600661012 /* Counselor.swift */,
 				22C653F9281CAD30007FACF4 /* Shift.swift */,
+				22861D02284740A300CEFC57 /* DayOffConflict.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 				22A1467E281D968F0027CC7C /* ConcertCollectionViewCell.swift */,
 				229B2E6728307F5B00335D71 /* CounselorOptionsTableViewCell.swift */,
 				229B2E6828307F5B00335D71 /* CounselorOptionsTableViewCell.xib */,
+				22861D0028471A2F00CEFC57 /* ThreeCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +227,7 @@
 				22C653F3281BA31F007FACF4 /* ChooseFourTableViewController.swift */,
 				22C653F5281BB014007FACF4 /* ChooseTwoTableViewController.swift */,
 				22C653F7281C7E04007FACF4 /* ChooseOneTableViewController.swift */,
+				22861CFE28470C0700CEFC57 /* DayOffTableViewController.swift */,
 			);
 			path = "Counselor Selection View Controllers";
 			sourceTree = "<group>";
@@ -338,8 +347,10 @@
 				22E4FAF7280729F400EA194F /* Auth.swift in Sources */,
 				22E4FB0C280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld in Sources */,
 				22588CF8281335A600661012 /* Counselor.swift in Sources */,
+				22861D0128471A2F00CEFC57 /* ThreeCollectionViewCell.swift in Sources */,
 				22C653FC281CB16C007FACF4 /* ShiftViewModel.swift in Sources */,
 				22588CF0281066D800661012 /* CounselorScheduleViewController.swift in Sources */,
+				22861CFF28470C0700CEFC57 /* DayOffTableViewController.swift in Sources */,
 				22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */,
 				22E4FAF928072A2000EA194F /* Auth+Keychain.swift in Sources */,
 				22FAED742800EE1D00A537F1 /* CamperSearchDelegate.swift in Sources */,
@@ -347,6 +358,7 @@
 				22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */,
 				22588CFA2813364500661012 /* CounselorViewModel.swift in Sources */,
 				22C653F4281BA31F007FACF4 /* ChooseFourTableViewController.swift in Sources */,
+				22861D03284740A300CEFC57 /* DayOffConflict.swift in Sources */,
 				22C653F1281B9419007FACF4 /* DayCollectionViewCell.swift in Sources */,
 				22C653FA281CAD30007FACF4 /* Shift.swift in Sources */,
 				22E4FB0128072E2700EA194F /* ErrorPresenter.swift in Sources */,

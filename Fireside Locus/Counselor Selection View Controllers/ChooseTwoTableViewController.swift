@@ -12,6 +12,7 @@ protocol UpdateTwoShiftDelegate {
     func updateTwoShifts(choiceOne: Counselor?, choiceTwo: Counselor?, cancel: Bool, indexPath: IndexPath)
     func updateTwoCounselorList(counselors: [Counselor], selectedIndexPath: IndexPath)
     func updateCounselorsDaysOff(counselors: [Counselor?], selectedIndexPath: IndexPath)
+    func updateNightWatch(counselors: [Counselor?], selectedIndexPath: IndexPath)
 }
 
 class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate, RVS_AutofillTextFieldDataSource, RVS_AutofillTextFieldDelegate {
@@ -27,9 +28,7 @@ class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate, 
     
     var offList: [Counselor]? {
         didSet {
-            print("IN OFF LIST DIDSET BEFORE FILTERING \(self.offList?.count)")
             self.masterCounselorList = filterDaysOff(daysOff: self.offList ?? [], counselors: self.masterCounselorList ?? [])
-            print("IN OFF LIST DIDSET \(self.masterCounselorList)")
         }
     }
     var allCounselors: [Counselor]?
@@ -40,6 +39,8 @@ class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate, 
         }
     }
     var selectedCounselorList: [Counselor?]?
+    
+//    var nightWatch: [Counselor]?
     
     @IBOutlet var choiceOne: RVS_AutofillTextField!
     @IBOutlet var choiceTwo: RVS_AutofillTextField!
@@ -58,28 +59,26 @@ class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate, 
     }
     
     func filterDaysOff(daysOff: [Counselor], counselors: [Counselor]) -> [Counselor] {
-        print("in the filter \(counselors)")
         let filteredCounselors = counselors.filter { counselor in
             return !daysOff.contains(where: { off in
                 return counselor.name == off.name
             })
         }
-        print("JUST FILTERED \(filteredCounselors.count)")
         return filteredCounselors
     }
     
     func save() {
         let convertedCounselors = convertToCounselor(one: choiceOne.text ?? editOne, two: choiceTwo.text ?? editTwo)
         if selectedIndexPath!.section == 6 {
-            print("IN SAVE IN TWO",convertedCounselors)
             updateTwoShiftDelegate?.updateCounselorsDaysOff(counselors: [convertedCounselors[0] ?? nil, convertedCounselors[1] ?? nil], selectedIndexPath: selectedIndexPath!)
+        } else if selectedIndexPath!.section == 5 {
+            updateTwoShiftDelegate?.updateNightWatch(counselors: [convertedCounselors[0] ?? nil, convertedCounselors[1] ?? nil], selectedIndexPath: selectedIndexPath!)
         }
         
         updateTwoShiftDelegate?.updateTwoShifts(choiceOne: convertedCounselors[0] ?? nil, choiceTwo: convertedCounselors[1] ?? nil, cancel: isCanceled, indexPath: selectedIndexPath!)
 //        if choiceOne.text == "" && choiceTwo.text == "" {
 //            updateTwoShiftDelegate?.updateTwoCounselorList(counselors: allCounselors!, selectedIndexPath: selectedIndexPath!)
 //        } else {
-        print("Saving from choose two \(masterCounselorList?.count)")
             updateTwoShiftDelegate?.updateTwoCounselorList(counselors: masterCounselorList!, selectedIndexPath: selectedIndexPath!)
 //        }
         dismiss(animated: true)
@@ -121,52 +120,94 @@ class ChooseTwoTableViewController: UITableViewController, UITextFieldDelegate, 
     
     func checkForSelection() {
 
-        print("IN CHECK SELECTION TWO MASTER LIST COUNT \(masterCounselorList?.count)")
         masterCounselorList = referenceList
-        print("IN CHECK SELECTION TWO RESET TO REFERENCE MASTER LIST COUNT \(masterCounselorList?.count)")
         if selectedIndexPath!.section == 6 {
-            
-//            var newOffList = [Counselor?]()
             var counselorOne: Counselor?
             var counselorTwo: Counselor?
-            if choiceOne.text == "" && choiceTwo.text == "" {
-                print("IN THAT FANCY NEW BLOCK HERE IS THE OFF LIST \(offList)")
-            } else {
+            
+//            if choiceOne.text == "" && choiceTwo.text == "" {
+//            } else {
                 if choiceOne.text != "" {
                     counselorOne = allCounselors?.filter { $0.name == choiceOne.text }.first
                 }
                 if choiceTwo.text != "" {
                     counselorOne = allCounselors?.filter { $0.name == choiceTwo.text }.first
                 }
-            }
+//            }
             var localList = [counselorOne, counselorTwo]
             
-//            newOffList = localList.compactMap( { $0 })
-            print("IN THAT FANCY NEW BLOCK HERE IS THE OFF LIST BEFORE APPENDING TO MASTER LIST \(offList) AND MASTER LIST HAS COUNT OF \(masterCounselorList?.count)")
-            for i in offList! {
+            for i in offList ?? [] {
                 masterCounselorList!.append(i)
                 referenceList!.append(i)
             }
-            print("SHOULD HAVE APPENDED FOR FANCY \(masterCounselorList?.count)")
-//            offList = []
             offList = localList.compactMap( { $0 })
-            print("HERE IS THE NEW OFF LIST \(offList)")
+            
+//        } else if selectedIndexPath!.section == 5 {
+//            var counselorOne: Counselor?
+//            var counselorTwo: Counselor?
+//
+//            if choiceOne.text != "" {
+//                counselorOne = allCounselors?.filter { $0.name == choiceOne.text }.first
+//            } else {
+//                counselorOne = allCounselors?.filter { $0.name == editOne }.first
+//            }
+//            if choiceTwo.text != "" {
+//                counselorTwo = allCounselors?.filter { $0.name == choiceTwo.text }.first
+//            } else {
+//                counselorTwo = allCounselors?.filter { $0.name == editTwo }.first
+//            }
+//
+//            var localList = [counselorOne, counselorTwo]
+            
+        } else {
+            
+            var counselorOne: Counselor?
+            var counselorTwo: Counselor?
+
+//            if choiceOne.text == "" && choiceTwo.text == "" {
+//            } else {
+                if choiceOne.text != "" {
+                    counselorOne = allCounselors?.filter { $0.name == choiceOne.text }.first
+                } else {
+                    counselorOne = allCounselors?.filter { $0.name == editOne }.first
+                }
+                if choiceTwo.text != "" {
+                    counselorTwo = allCounselors?.filter { $0.name == choiceTwo.text }.first
+                } else {
+                    counselorTwo = allCounselors?.filter { $0.name == editTwo }.first
+                }
+//            }
+            var localList = [counselorOne, counselorTwo]
+            for i in localList {
+                if i != nil {
+                    masterCounselorList!.append(i!)
+                    referenceList!.append(i!)
+                }
+            }
+            var referenceSet = Set(referenceList!)
+            referenceList = Array(referenceSet)
+            var masterSet = Set(masterCounselorList!)
+            masterCounselorList = Array(masterSet)
+            
+            
             
         }
         masterCounselorList = filterDaysOff(daysOff: offList ?? [], counselors: masterCounselorList ?? [])
-        print("FILTER FOR DAYS OFF, DAYS OFF COUNT \(offList?.count) AND MASTER LIST COUNT \(masterCounselorList?.count)")
         if choiceOne.text != "" {
             masterCounselorList = masterCounselorList?.filter { $0.name != choiceOne.text }
         }
         if choiceTwo.text != "" {
             masterCounselorList = masterCounselorList?.filter { $0.name != choiceTwo.text }
         }
-        print("AT THE VERY END MASTER COUNT \(masterCounselorList?.count)")
         
     }
     
     func autoFillTextField(_ autofillTextField: RVS_AutofillTextField, selectionWasMade: RVS_AutofillTextFieldDataSourceType) {
-        masterCounselorList = masterCounselorList?.filter { $0.name != selectionWasMade.value}
+        if selectedIndexPath!.section == 5 {
+            
+        } else {
+            masterCounselorList = masterCounselorList?.filter { $0.name != selectionWasMade.value}
+        }
         autofillTextField.text = selectionWasMade.value
         generateTextDictionary(counselors: masterCounselorList ?? [])
     }

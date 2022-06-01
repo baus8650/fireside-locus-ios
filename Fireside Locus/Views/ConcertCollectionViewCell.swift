@@ -9,8 +9,13 @@ import UIKit
 
 class ConcertCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var concertSelector: UISegmentedControl!
+    @IBOutlet var concertSelector: UISegmentedControl! {
+        didSet {
+            concertSelector.selectedSegmentIndex = 0
+        }
+    }
     @IBAction func concertPressed(_ sender: Any) {
+        
     }
     
     

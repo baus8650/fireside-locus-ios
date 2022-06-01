@@ -16,7 +16,7 @@ protocol UpdateFourShiftDelegate {
 class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate, RVS_AutofillTextFieldDataSource, RVS_AutofillTextFieldDelegate {
     
     var textDictionary: [RVS_AutofillTextFieldDataSourceType] = []
-
+    
     var selectedIndexPath: IndexPath?
     
     var editOne: String = ""
@@ -26,17 +26,30 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     
     var offList: [Counselor]? {
         didSet {
-            print("IN OFF LIST DIDSET BEFORE FILTERING (in choose four) \(self.masterCounselorList)")
-            print("ALSO IN FOUR, HERE IS THE OFF LIST FROM DID SET \(self.offList)")
             self.masterCounselorList = filterDaysOff(daysOff: self.offList ?? [], counselors: self.masterCounselorList ?? [])
-            print("IN OFF LIST DIDSET \(self.masterCounselorList)")
         }
     }
     var referenceList: [Counselor]?
     var allCounselors: [Counselor]?
     var masterCounselorList: [Counselor]? {
         didSet {
-            generateTextDictionary(counselors: masterCounselorList ?? [])
+            if selectedIndexPath?.section == 1 {
+                
+            } else {
+                generateTextDictionary(counselors: masterCounselorList ?? [])
+            }
+        }
+    }
+    
+    var nightWatch: [Counselor]? {
+        didSet {
+            if selectedIndexPath?.section == 1 {
+                print("HERE IS THE NIGHTWATCH FOR MONDAY \(self.nightWatch)")
+                self.masterCounselorList = filterDaysOff(daysOff: self.nightWatch ?? [], counselors: self.masterCounselorList ?? [])
+                generateTextDictionary(counselors: masterCounselorList ?? [])
+            } else {
+                generateTextDictionary(counselors: masterCounselorList ?? [])
+            }
         }
     }
     var selectedCounselorList: [Counselor?]?
@@ -64,7 +77,7 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        allCounselors = masterCounselorList ?? []
+        //        allCounselors = masterCounselorList ?? []
         choiceOne.text = editOne
         choiceTwo.text = editTwo
         choiceThree.text = editThree
@@ -89,7 +102,7 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
         
         choiceFour.tableFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
         choiceFour.tableBackgroundColor = UIColor(named: "luzerneColor")?.withAlphaComponent(0.92) ?? .systemBackground
-
+        
     }
     
     func filterDaysOff(daysOff: [Counselor], counselors: [Counselor]) -> [Counselor] {
@@ -114,6 +127,47 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     func checkForSelection() {
         
         masterCounselorList = referenceList
+        
+        var counselorOne: Counselor?
+        var counselorTwo: Counselor?
+        var counselorThree: Counselor?
+        var counselorFour: Counselor?
+        
+        //            if choiceOne.text == "" && choiceTwo.text == "" {
+        //            } else {
+        if choiceOne.text != "" {
+            counselorOne = allCounselors?.filter { $0.name == choiceOne.text }.first
+        } else {
+            counselorOne = allCounselors?.filter { $0.name == editOne }.first
+        }
+        if choiceTwo.text != "" {
+            counselorTwo = allCounselors?.filter { $0.name == choiceTwo.text }.first
+        } else {
+            counselorTwo = allCounselors?.filter { $0.name == editTwo }.first
+        }
+        if choiceThree.text != "" {
+            counselorThree = allCounselors?.filter { $0.name == choiceThree.text }.first
+        } else {
+            counselorThree = allCounselors?.filter { $0.name == editThree }.first
+        }
+        if choiceFour.text != "" {
+            counselorFour = allCounselors?.filter { $0.name == choiceFour.text }.first
+        } else {
+            counselorFour = allCounselors?.filter { $0.name == editFour }.first
+        }
+        //            }
+        var localList = [counselorOne, counselorTwo, counselorThree, counselorFour]
+        for i in localList {
+            if i != nil {
+                masterCounselorList!.append(i!)
+                referenceList!.append(i!)
+            }
+        }
+        var referenceSet = Set(referenceList!)
+        referenceList = Array(referenceSet)
+        var masterSet = Set(masterCounselorList!)
+        masterCounselorList = Array(masterSet)
+        
         masterCounselorList = filterDaysOff(daysOff: offList ?? [], counselors: masterCounselorList ?? [])
         if choiceOne.text != "" {
             masterCounselorList = masterCounselorList?.filter { $0.name != choiceOne.text }
@@ -127,7 +181,7 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
         if choiceFour.text != "" {
             masterCounselorList = masterCounselorList?.filter { $0.name != choiceFour.text }
         }
-            
+        
     }
     
     func autoFillTextField(_ autofillTextField: RVS_AutofillTextField, selectionWasMade: RVS_AutofillTextFieldDataSourceType) {
@@ -143,14 +197,12 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
         updateFourShiftsDelegate?.updateCounselorList(counselors: masterCounselorList!, selectedIndexPath: selectedIndexPath!)
         dismiss(animated: true)
     }
-
+    
     func convertToCounselor(one: String, two: String, three: String, four: String) -> [Counselor?] {
-        print("from convert \(one) and all counselors \(allCounselors)")
         let counselorOne: Counselor? = allCounselors?.filter { $0.name == one }.first
         let counselorTwo: Counselor? = allCounselors?.filter { $0.name == two }.first
         let counselorThree: Counselor? = allCounselors?.filter { $0.name == three }.first
         let counselorFour: Counselor? = allCounselors?.filter { $0.name == four }.first
-        print("converted again \(counselorOne)")
         return [counselorOne, counselorTwo, counselorThree, counselorFour]
     }
     
@@ -161,77 +213,77 @@ class ChooseFourTableViewController: UITableViewController, UITextFieldDelegate,
     }
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 7
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         save()
         return true
     }
     
     /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     
     
 }

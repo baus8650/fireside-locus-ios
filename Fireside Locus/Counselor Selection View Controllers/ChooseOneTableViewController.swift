@@ -26,7 +26,6 @@ class ChooseOneTableViewController: UITableViewController, UITextFieldDelegate, 
     var offList: [Counselor]? {
         didSet {
             self.masterCounselorList = filterDaysOff(daysOff: self.offList ?? [], counselors: self.masterCounselorList ?? [])
-            print("IN OFF LIST DIDSET \(self.masterCounselorList)")
         }
     }
     var referenceList: [Counselor]?
@@ -52,13 +51,11 @@ class ChooseOneTableViewController: UITableViewController, UITextFieldDelegate, 
     }
     
     func filterDaysOff(daysOff: [Counselor], counselors: [Counselor]) -> [Counselor] {
-        var filteredCounselors = [Counselor]()
-        for i in counselors {
-            for o in daysOff {
-                if o.name != i.name {
-                    filteredCounselors.append(i)
-                }
-            }
+        
+        let filteredCounselors = counselors.filter { counselor in
+            return !daysOff.contains(where: { off in
+                return counselor.name == off.name
+            })
         }
         return filteredCounselors
     }
@@ -73,6 +70,25 @@ class ChooseOneTableViewController: UITableViewController, UITextFieldDelegate, 
     
     func checkForSelection() {
         masterCounselorList = referenceList
+        
+        var counselorOne: Counselor?
+        if counselor.text != "" {
+            counselorOne = allCounselors?.filter { $0.name == counselor.text }.first
+        } else {
+            counselorOne = allCounselors?.filter { $0.name == editOne }.first
+        }
+        var localList = [counselorOne]
+        for i in localList {
+            if i != nil {
+                masterCounselorList!.append(i!)
+                referenceList!.append(i!)
+            }
+        }
+        var referenceSet = Set(referenceList!)
+        referenceList = Array(referenceSet)
+        var masterSet = Set(masterCounselorList!)
+        masterCounselorList = Array(masterSet)
+        
         masterCounselorList = filterDaysOff(daysOff: offList ?? [], counselors: masterCounselorList ?? [])
         if counselor.text != "" {
             masterCounselorList = masterCounselorList?.filter { $0.name != counselor.text }

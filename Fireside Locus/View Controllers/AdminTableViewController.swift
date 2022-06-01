@@ -16,7 +16,7 @@ class AdminTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableSetUp()
-        print("sections \(sections), rows \(rows)")
+        
         tableView.reloadData()
         title = "Admin Portal"
         // Uncomment the following line to preserve selection between presentations
@@ -34,7 +34,6 @@ class AdminTableViewController: UITableViewController {
             rows = [["Rosters"], ["Account"]]
             sections = ["Reference", "Settings"]
         }
-//        print("sections \(sections), rows \(rows)")
 //        tableView.reloadData()
     }
 
@@ -42,13 +41,11 @@ class AdminTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        print(sections)
         return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("ROW NUMBER \(section)")
         return rows[section].count
     }
 
