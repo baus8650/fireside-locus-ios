@@ -6,18 +6,25 @@
 //
 
 import UIKit
+import CoreData
+import RVS_AutofillTextField
 
-class CounselorScheduleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CounselorScheduleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RVS_AutofillTextFieldDataSource, RVS_AutofillTextFieldDelegate, UITextFieldDelegate {
     
 //    let margin: CGFloat = 1
     
-    
+    var textDictionary: [RVS_AutofillTextFieldDataSourceType] = []
     
     let titleLabels = ["","8:30 – 12:00", "12:30 – 4:00", "6:30 – Cabin In", "Evening Activity", "Nightwatch", "Day Off", "MOT", "Activity", "Arts & Crafts/North Village", "South Village", "Beach", "Store", "North Practice Cabins", "South Practice Cabins", "Roam"]
     
     let days = ["Sunday", "Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     
+    let roles = ["Box Office", "Brass TA", "Camp Store", "Front of House", "Head Counselor", "Orchestra Assistant", "Piano TA", "Social Media Assistant", "Stage Manager", "Stage Manager Substitute", "String TA", "Theory TA", "Woodwind TA"]
+    
+    var counselorNamesSearch = [String]()
+    
     var concertList = [0,0,0,0,0,0,0]
+    var auditionList = [0,0,0,0,0,0,0]
     
     var masterList: [[Shift]]?
     var shiftViewModel: ShiftViewModel? 
@@ -60,6 +67,11 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     var saturdayOffList: [Counselor]?
     var saturdayNightWatch: [Counselor]?
     
+    var searchTerm: String?
+    
+//    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchBar: RVS_AutofillTextField!
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
@@ -88,12 +100,75 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
 //                cell.positionTwoTitle.textColor = .black
 //                cell.positionThreeTitle.textColor = .black
 //                cell.positionFourTitle.textColor = .black
-                
                 cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
                 cell.counselorThree.text = masterList?[indexPath.row][indexPath.section].counselors[2]?.name ?? ""
                 cell.counselorFour.text = masterList?[indexPath.row][indexPath.section].counselors[3]?.name ?? ""
                 
+                let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+                let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+                let counselorThree = masterList?[indexPath.row][indexPath.section].counselors[2]
+                let counselorFour = masterList?[indexPath.row][indexPath.section].counselors[3]
+                
+                if let searchRoles = counselorOne?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                        cell.counselorOne.textColor = .red
+                    } else {
+                        cell.counselorOne.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorTwo?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                        cell.counselorTwo.textColor = .red
+                    } else {
+                        cell.counselorTwo.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorThree?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorThree?.name == searchTerm ?? "" {
+                        cell.counselorThree.textColor = .red
+                    } else {
+                        cell.counselorThree.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorFour?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorFour?.name == searchTerm ?? "" {
+                        cell.counselorFour.textColor = .red
+                    } else {
+                        cell.counselorFour.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+//                if masterList?[indexPath.row][indexPath.section].counselors[0]?.name == searchTerm ?? ""  {
+//                    cell.counselorOne.textColor = .red
+//                } else {
+//                    cell.counselorOne.textColor = UIColor(named: "textColor")
+//                }
+//
+//                if masterList?[indexPath.row][indexPath.section].counselors[1]?.name == searchTerm ?? ""  {
+//                    cell.counselorTwo.textColor = .red
+//                } else {
+//                    cell.counselorTwo.textColor = UIColor(named: "textColor")
+//                }
+//
+//                if masterList?[indexPath.row][indexPath.section].counselors[2]?.name == searchTerm ?? ""  {
+//                    cell.counselorThree.textColor = .red
+//                } else {
+//                    cell.counselorThree.textColor = UIColor(named: "textColor")
+//                }
+//
+//                if masterList?[indexPath.row][indexPath.section].counselors[3]?.name == searchTerm ?? ""  {
+//                    cell.counselorFour.textColor = .red
+//                } else {
+//                    cell.counselorFour.textColor = UIColor(named: "textColor")
+//                }
+                
+                
+                
+                //|| masterList?[indexPath.row][indexPath.section].counselors[0]?.roles.contains(searchTerm ?? "")
                 return cell
             } else {
 //                cell.backgroundColor = .white
@@ -111,6 +186,43 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
                 cell.counselorThree.text = masterList?[indexPath.row][indexPath.section].counselors[2]?.name ?? ""
                 cell.counselorFour.text = masterList?[indexPath.row][indexPath.section].counselors[3]?.name ?? ""
+                
+                let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+                let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+                let counselorThree = masterList?[indexPath.row][indexPath.section].counselors[2]
+                let counselorFour = masterList?[indexPath.row][indexPath.section].counselors[3]
+                
+                if let searchRoles = counselorOne?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                        cell.counselorOne.textColor = .red
+                    } else {
+                        cell.counselorOne.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorTwo?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                        cell.counselorTwo.textColor = .red
+                    } else {
+                        cell.counselorTwo.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorThree?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorThree?.name == searchTerm ?? "" {
+                        cell.counselorThree.textColor = .red
+                    } else {
+                        cell.counselorThree.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorFour?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorFour?.name == searchTerm ?? "" {
+                        cell.counselorFour.textColor = .red
+                    } else {
+                        cell.counselorFour.textColor = UIColor(named: "textColor")
+                    }
+                }
                 return cell
             }
         } else if indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 5 || indexPath.section == 11 {
@@ -125,6 +237,27 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
 //                cell.positionTwoLabel.textColor = .black
                 cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
+                
+                let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+                let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+                
+                if let searchRoles = counselorOne?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                        cell.counselorOne.textColor = .red
+                    } else {
+                        cell.counselorOne.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorTwo?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                        cell.counselorTwo.textColor = .red
+                    } else {
+                        cell.counselorTwo.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+            
                 return cell
             } else if indexPath.section == 4 {
 //                cell.backgroundColor = .white
@@ -138,6 +271,18 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.positionTwoView.layer.borderWidth = 0
                 cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
+                
+                if masterList?[indexPath.row][indexPath.section].counselors[0]?.name == searchTerm ?? ""  {
+                    cell.counselorOne.textColor = .red
+                } else {
+                    cell.counselorOne.textColor = UIColor(named: "textColor")
+                }
+                
+                if masterList?[indexPath.row][indexPath.section].counselors[1]?.name == searchTerm ?? ""  {
+                    cell.counselorTwo.textColor = .red
+                } else {
+                    cell.counselorTwo.textColor = UIColor(named: "textColor")
+                }
                 return cell
             } else if indexPath.section == 5 {
 //                cell.backgroundColor = .white
@@ -151,6 +296,26 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.positionTwoView.layer.borderWidth = 1
                 cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
+                
+                let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+                let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+                
+                if let searchRoles = counselorOne?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                        cell.counselorOne.textColor = .red
+                    } else {
+                        cell.counselorOne.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorTwo?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                        cell.counselorTwo.textColor = .red
+                    } else {
+                        cell.counselorTwo.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
                 return cell
             } else if indexPath.section == 6 {
 //                cell.backgroundColor = .white
@@ -164,6 +329,26 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.positionTwoView.layer.borderWidth = 0
                 cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
+                
+                let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+                let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+                
+                if let searchRoles = counselorOne?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                        cell.counselorOne.textColor = .red
+                    } else {
+                        cell.counselorOne.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorTwo?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                        cell.counselorTwo.textColor = .red
+                    } else {
+                        cell.counselorTwo.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
                 return cell
             } else {
 //                cell.backgroundColor = .white
@@ -177,6 +362,26 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 cell.positionTwoView.layer.borderWidth = 0
                 cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
                 cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
+                
+                let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+                let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+                
+                if let searchRoles = counselorOne?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                        cell.counselorOne.textColor = .red
+                    } else {
+                        cell.counselorOne.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
+                if let searchRoles = counselorTwo?.roles {
+                    if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                        cell.counselorTwo.textColor = .red
+                    } else {
+                        cell.counselorTwo.textColor = UIColor(named: "textColor")
+                    }
+                }
+                
                 return cell
             }
         } else if indexPath.section == 6 {
@@ -192,14 +397,69 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
             cell.counselorTwo.text = masterList?[indexPath.row][indexPath.section].counselors[1]?.name ?? ""
             cell.counselorThree.text = masterList?[indexPath.row][indexPath.section].counselors[2]?.name ?? ""
+            
+            let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+            let counselorTwo = masterList?[indexPath.row][indexPath.section].counselors[1]
+            let counselorThree = masterList?[indexPath.row][indexPath.section].counselors[2]
+            
+            if let searchRoles = counselorOne?.roles {
+                if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                    cell.counselorOne.textColor = .red
+                } else {
+                    cell.counselorOne.textColor = UIColor(named: "textColor")
+                }
+            }
+            
+            if let searchRoles = counselorTwo?.roles {
+                if searchRoles.contains(searchTerm ?? "") || counselorTwo?.name == searchTerm ?? "" {
+                    cell.counselorTwo.textColor = .red
+                } else {
+                    cell.counselorTwo.textColor = UIColor(named: "textColor")
+                }
+            }
+            
+            if let searchRoles = counselorThree?.roles {
+                if searchRoles.contains(searchTerm ?? "") || counselorThree?.name == searchTerm ?? "" {
+                    cell.counselorThree.textColor = .red
+                } else {
+                    cell.counselorThree.textColor = UIColor(named: "textColor")
+                }
+            }
+            
             return cell
         } else if indexPath.section == 16 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConcertCell", for: indexPath) as! ConcertCollectionViewCell
-            cell.titleLabel.text = "\(days[indexPath.row]) Concert?"
+//            cell.titleLabel.text = "\(days[indexPath.row]) Day Specifics?"
+            switch indexPath.row {
+            case 0:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            case 1:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            case 2:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            case 3:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            case 4:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            case 5:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            case 6:
+                cell.concertSelector.selectedSegmentIndex = concertList[indexPath.row]
+                cell.auditionSelector.selectedSegmentIndex = auditionList[indexPath.row]
+            default:
+                break
+            }
             cell.concertSelector.addTarget(self, action: #selector(segmentValueChanged(_:)), for: .valueChanged)
-            
+            cell.auditionSelector.addTarget(self, action: #selector(auditionValueChanged(_:)), for: .valueChanged)
             // set the tag property of your segmented control to uniquely identify each segmented control in the value change event
             cell.concertSelector.tag = indexPath.row
+            cell.auditionSelector.tag = indexPath.row
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OneCell", for: indexPath) as! OneCollectionViewCell
@@ -207,6 +467,18 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             cell.positionOneLabel.text = titleLabels[indexPath.section]
 //            cell.positionOneLabel.textColor = .black
             cell.counselorOne.text = masterList?[indexPath.row][indexPath.section].counselors[0]?.name ?? ""
+
+            let counselorOne = masterList?[indexPath.row][indexPath.section].counselors[0]
+
+            
+            if let searchRoles = counselorOne?.roles {
+                if searchRoles.contains(searchTerm ?? "") || counselorOne?.name == searchTerm ?? "" {
+                    cell.counselorOne.textColor = .red
+                } else {
+                    cell.counselorOne.textColor = UIColor(named: "textColor")
+                }
+            }
+            
             return cell
         }
     
@@ -219,6 +491,8 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             return CGSize(width: 180, height: 260)
         } else if indexPath.section == 3 || indexPath.section == 4 ||  indexPath.section == 5 || indexPath.section == 6 || indexPath.section == 11 {
             return CGSize(width: 180, height: 160)
+        } else if indexPath.section == 16 {
+            return CGSize(width: 180, height: 150)
         } else {
             return CGSize(width: 180, height: 60)
         }
@@ -232,15 +506,33 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         super.viewDidLoad()
         counselorTable.dataSource = self
         counselorTable.delegate = self
-        shiftViewModel = ShiftViewModel()
+//        searchBar.delegate = self
+        searchBar.delegate = self
+        searchBar.dataSource = self
+        shiftViewModel = ShiftViewModel(viewController: self)
+        shiftViewModel?.delegate = self
         counselorViewModel = CounselorViewModel()
         populateButton = UIBarButtonItem(title: "Populate", style: .plain, target: self, action: #selector(populateTable))
         printButton = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(printSchedule))
         printButton.isEnabled = false
         navigationItem.rightBarButtonItems = [printButton, populateButton]
+        counselorTable.keyboardDismissMode = .onDrag
         updateData()
         // Do any additional setup after loading the view.
     }
+    
+    func generateTextDictionary(counselors: [String], roles: [String]) {
+        var ret = [RVS_AutofillTextFieldDataSourceType]()
+        var newList = counselors + roles
+        for i in newList {
+            ret.append(RVS_AutofillTextFieldDataSourceType(value: i))
+        }
+        textDictionary = ret
+    }
+    
+//    func populateNamesForSearch() {
+//        counselors.map { counselorNamesSearch.append($0.name) }
+//    }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
         
@@ -266,9 +558,37 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         print(concertList)
     }
     
+    
+    
+    @objc func auditionValueChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.tag {
+        case 0:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        case 1:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        case 2:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        case 3:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        case 4:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        case 5:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        case 6:
+            auditionList[sender.tag] = sender.selectedSegmentIndex
+        default:
+            break
+        }
+        
+        print(auditionList)
+    }
+    
     func updateData() {
-        counselorViewModel?.counselorList.bind(listener: { counselor in
+        counselorViewModel?.counselorList.bind(listener: { [self] counselor in
             self.counselors = counselor
+            self.counselorNamesSearch = counselor.map { $0.name }
+            generateTextDictionary(counselors: self.counselorNamesSearch, roles: self.roles)
             self.sundaySupervisionList = counselor
             self.sundayRecList = counselor
             self.mondaySupervisionList = counselor
@@ -290,55 +610,65 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     }
     
     func passData() {
+        shiftViewModel?.masterCounselorList = self.counselors
+        
         shiftViewModel?.sundaySupervisionList = self.sundaySupervisionList
         shiftViewModel?.sundayRecList = self.sundayRecList
         shiftViewModel?.sundayOffList = self.sundayOffList
-        shiftViewModel?.sundayNightWatch = self.sundayNightWatch
+        shiftViewModel?.sundayNightWatch = self.sundayNightWatch ?? [nil,nil]
         
         shiftViewModel?.mondaySupervisionList = self.mondaySupervisionList
         shiftViewModel?.mondayRecList = self.mondayRecList
         shiftViewModel?.mondayOffList = self.mondayOffList
-        shiftViewModel?.mondayNightWatch = self.mondayNightWatch
+        shiftViewModel?.mondayNightWatch = self.mondayNightWatch ?? [nil,nil]
         
         shiftViewModel?.tuesdaySupervisionList = self.tuesdaySupervisionList
         shiftViewModel?.tuesdayRecList = self.tuesdayRecList
         shiftViewModel?.tuesdayOffList = self.tuesdayOffList
-        shiftViewModel?.tuesdayNightWatch = self.tuesdayNightWatch
+        shiftViewModel?.tuesdayNightWatch = self.tuesdayNightWatch ?? [nil,nil]
         
         shiftViewModel?.wednesdaySupervisionList = self.wednesdaySupervisionList
         shiftViewModel?.wednesdayRecList = self.wednesdayRecList
         shiftViewModel?.wednesdayOffList = self.wednesdayOffList
-        shiftViewModel?.wednesdayNightWatch = self.wednesdayNightWatch
+        shiftViewModel?.wednesdayNightWatch = self.wednesdayNightWatch ?? [nil,nil]
         
         shiftViewModel?.thursdaySupervisionList = self.thursdaySupervisionList
         shiftViewModel?.thursdayRecList = self.thursdayRecList
         shiftViewModel?.thursdayOffList = self.thursdayOffList
-        shiftViewModel?.thursdayNightWatch = self.thursdayNightWatch
+        shiftViewModel?.thursdayNightWatch = self.thursdayNightWatch ?? [nil,nil]
         
         shiftViewModel?.fridaySupervisionList = self.fridaySupervisionList
         shiftViewModel?.fridayRecList = self.fridayRecList
         shiftViewModel?.fridayOffList = self.fridayOffList
-        shiftViewModel?.fridayNightWatch = self.fridayNightWatch
+        shiftViewModel?.fridayNightWatch = self.fridayNightWatch ?? [nil,nil]
         
         shiftViewModel?.saturdaySupervisionList = self.saturdaySupervisionList
         shiftViewModel?.saturdayRecList = self.saturdayRecList
         shiftViewModel?.saturdayOffList = self.saturdayOffList
-        shiftViewModel?.saturdayNightWatch = self.saturdayNightWatch
+        shiftViewModel?.saturdayNightWatch = self.saturdayNightWatch ?? [nil,nil]
     }
     
     @objc
     func populateTable() {
         shiftViewModel?.concertList.value = self.concertList
+        print(shiftViewModel?.concertList.value, concertList)
+        shiftViewModel?.auditionList.value = self.auditionList
         passData()
         shiftViewModel?.compileSingleLists()
         shiftViewModel?.populateSchedule()
         printButton.isEnabled = true
+        shiftViewModel?.masterList.bind(listener: { shift in
+            self.masterList = shift
+        })
+        counselorTable.reloadData()
     }
     
     @objc
     func printSchedule() {
-        
+        performSegue(withIdentifier: "toPrintSupervision", sender: nil)
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 || indexPath.section == 2 {
@@ -350,6 +680,8 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         } else if indexPath.section == 6 {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "DayOffSelect", sender: nil)
+        } else if indexPath.section == 16 {
+            
         } else {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "SingleChoice", sender: nil)
@@ -364,8 +696,37 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         }
         return filteredCounselors
     }
-
     
+    
+    
+    func autoFillTextField(_ autofillTextField: RVS_AutofillTextField, selectionWasMade: RVS_AutofillTextFieldDataSourceType) {
+        searchTerm = ""
+        searchTerm = selectionWasMade.value
+        print("HERE'S THE SEARCH TERM \(searchTerm)")
+        counselorTable.reloadData()
+//        if selectedIndexPath!.section == 5 {
+//
+//        } else {
+//            masterCounselorList = masterCounselorList?.filter { $0.name != selectionWasMade.value}
+//        }
+//        autofillTextField.text = selectionWasMade.value
+//        generateTextDictionary(counselors: masterCounselorList ?? [])
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let searchText = searchBar.text! + string
+        
+        if searchText == "" {
+            searchTerm = ""
+            counselorTable.reloadData()
+        }
+        print("HERE IS THE SEARCH BAR TEXT",searchBar.text)
+        if searchBar.text!.count <= 1 {
+            searchTerm = ""
+            counselorTable.reloadData()
+        }
+        return true
+    }
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -628,7 +989,6 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             var offListCheck = [sundayOffList, mondayOffList, tuesdayOffList, wednesdayOffList, thursdayOffList, fridayOffList, saturdayOffList]
             var compact = offListCheck.compactMap({ $0 })
             var flat = compact.flatMap({$0})
-            print("HERES OFF LIST CHECK \(flat)")
             destVC.offListCheck = flat
             switch selectedIndexPath?.row {
             case 0:
@@ -701,6 +1061,134 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             destVC.editOne = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[0]?.name ?? ""
             destVC.editTwo = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[1]?.name ?? ""
             destVC.editThree = masterList?[selectedIndexPath!.row][selectedIndexPath!.section].counselors[2]?.name ?? ""
+        } else if segue.identifier == "toPrintSupervision" {
+            let destVC = segue.destination as! SupervisionPrintViewController
+            destVC.loadViewIfNeeded()
+            // sunday
+            
+            destVC.sundayMorningBasketballContent.text = masterList?[0][1].counselors[0]?.name ?? ""
+            destVC.sundayMorningNorthPracticeVillageContent.text = masterList?[0][1].counselors[1]?.name ?? ""
+            destVC.sundayMorningSouthPracticeVillageContent.text = masterList?[0][1].counselors[2]?.name ?? ""
+            destVC.sundayMorningTentThreeContent.text = masterList?[0][1].counselors[3]?.name ?? ""
+            destVC.sundayAfternoonBasketballContent.text = masterList?[0][2].counselors[0]?.name ?? ""
+            destVC.sundayAfternoonNorthPracticeVillageContent.text = masterList?[0][2].counselors[1]?.name ?? ""
+            destVC.sundayAfternoonSouthPracticeVillageContent.text = masterList?[0][2].counselors[2]?.name ?? ""
+            destVC.sundayAfternoonTentThreeContent.text = masterList?[0][2].counselors[3]?.name ?? ""
+            destVC.sundayEveningNorthContent.text = masterList?[0][3].counselors[0]?.name ?? ""
+            destVC.sundayEveningSouthContent.text = masterList?[0][3].counselors[1]?.name ?? ""
+//            destVC.sundayEveningActivityContent
+            destVC.sundayNightwatchOneContent.text = masterList?[0][5].counselors[0]?.name ?? ""
+            destVC.sundayNightwatchTwoContent.text = masterList?[0][5].counselors[1]?.name ?? ""
+            destVC.sundayDayOffContentOne.text = masterList?[0][6].counselors[0]?.name ?? ""
+            destVC.sundayDayOffContentTwo.text = masterList?[0][6].counselors[1]?.name ?? ""
+            
+            // monday
+            
+            destVC.mondayMorningBasketballContent.text = masterList?[1][1].counselors[0]?.name ?? ""
+            destVC.mondayMorningNorthPracticeVillageContent.text = masterList?[1][1].counselors[1]?.name ?? ""
+            destVC.mondayMorningSouthPracticeVillageContent.text = masterList?[1][1].counselors[2]?.name ?? ""
+            destVC.mondayMorningTentThreeContent.text = masterList?[1][1].counselors[3]?.name ?? ""
+            destVC.mondayAfternoonBasketballContent.text = masterList?[1][2].counselors[0]?.name ?? ""
+            destVC.mondayAfternoonNorthPracticeVillageContent.text = masterList?[1][2].counselors[1]?.name ?? ""
+            destVC.mondayAfternoonSouthPracticeVillageContent.text = masterList?[1][2].counselors[2]?.name ?? ""
+            destVC.mondayAfternoonTentThreeContent.text = masterList?[1][2].counselors[3]?.name ?? ""
+            destVC.mondayEveningNorthContent.text = masterList?[1][3].counselors[0]?.name ?? ""
+            destVC.mondayEveningSouthContent.text = masterList?[1][3].counselors[1]?.name ?? ""
+            //            destVC.mondayEveningActivityContent
+            destVC.mondayNightwatchOneContent.text = masterList?[1][5].counselors[0]?.name ?? ""
+            destVC.mondayNightwatchTwoContent.text = masterList?[1][5].counselors[1]?.name ?? ""
+            destVC.mondayDayOffContentOne.text = masterList?[1][6].counselors[0]?.name ?? ""
+            destVC.mondayDayOffContentTwo.text = masterList?[1][6].counselors[1]?.name ?? ""
+            
+            // tuesday
+            
+            destVC.tuesdayMorningBasketballContent.text = masterList?[2][1].counselors[0]?.name ?? ""
+            destVC.tuesdayMorningNorthPracticeVillageContent.text = masterList?[2][1].counselors[1]?.name ?? ""
+            destVC.tuesdayMorningSouthPracticeVillageContent.text = masterList?[2][1].counselors[2]?.name ?? ""
+            destVC.tuesdayMorningTentThreeContent.text = masterList?[2][1].counselors[3]?.name ?? ""
+            destVC.tuesdayAfternoonBasketballContent.text = masterList?[2][2].counselors[0]?.name ?? ""
+            destVC.tuesdayAfternoonNorthPracticeVillageContent.text = masterList?[2][2].counselors[1]?.name ?? ""
+            destVC.tuesdayAfternoonSouthPracticeVillageContent.text = masterList?[2][2].counselors[2]?.name ?? ""
+            destVC.tuesdayAfternoonTentThreeContent.text = masterList?[2][2].counselors[3]?.name ?? ""
+            destVC.tuesdayEveningNorthContent.text = masterList?[2][3].counselors[0]?.name ?? ""
+            destVC.tuesdayEveningSouthContent.text = masterList?[2][3].counselors[1]?.name ?? ""
+            //            destVC.tuesdayEveningActivityContent
+            destVC.tuesdayNightwatchOneContent.text = masterList?[2][5].counselors[0]?.name ?? ""
+            destVC.tuesdayNightwatchTwoContent.text = masterList?[2][5].counselors[1]?.name ?? ""
+            destVC.tuesdayDayOffContentOne.text = masterList?[2][6].counselors[0]?.name ?? ""
+            destVC.tuesdayDayOffContentTwo.text = masterList?[2][6].counselors[1]?.name ?? ""
+            
+            // wednesday
+            
+            destVC.wednesdayMorningBasketballContent.text = masterList?[3][1].counselors[0]?.name ?? ""
+            destVC.wednesdayMorningNorthPracticeVillageContent.text = masterList?[3][1].counselors[1]?.name ?? ""
+            destVC.wednesdayMorningSouthPracticeVillageContent.text = masterList?[3][1].counselors[2]?.name ?? ""
+            destVC.wednesdayMorningTentThreeContent.text = masterList?[3][1].counselors[3]?.name ?? ""
+            destVC.wednesdayAfternoonBasketballContent.text = masterList?[3][2].counselors[0]?.name ?? ""
+            destVC.wednesdayAfternoonNorthPracticeVillageContent.text = masterList?[3][2].counselors[1]?.name ?? ""
+            destVC.wednesdayAfternoonSouthPracticeVillageContent.text = masterList?[3][2].counselors[2]?.name ?? ""
+            destVC.wednesdayAfternoonTentThreeContent.text = masterList?[3][2].counselors[3]?.name ?? ""
+            destVC.wednesdayEveningNorthContent.text = masterList?[3][3].counselors[0]?.name ?? ""
+            destVC.wednesdayEveningSouthContent.text = masterList?[3][3].counselors[1]?.name ?? ""
+            //            destVC.wednesdayEveningActivityContent
+            destVC.wednesdayNightwatchOneContent.text = masterList?[3][5].counselors[0]?.name ?? ""
+            destVC.wednesdayNightwatchTwoContent.text = masterList?[3][5].counselors[1]?.name ?? ""
+            destVC.wednesdayDayOffContentOne.text = masterList?[3][6].counselors[0]?.name ?? ""
+            destVC.wednesdayDayOffContentTwo.text = masterList?[3][6].counselors[1]?.name ?? ""
+            
+            // thursday
+            
+            destVC.thursdayMorningBasketballContent.text = masterList?[4][1].counselors[0]?.name ?? ""
+            destVC.thursdayMorningNorthPracticeVillageContent.text = masterList?[4][1].counselors[1]?.name ?? ""
+            destVC.thursdayMorningSouthPracticeVillageContent.text = masterList?[4][1].counselors[2]?.name ?? ""
+            destVC.thursdayMorningTentThreeContent.text = masterList?[4][1].counselors[3]?.name ?? ""
+            destVC.thursdayAfternoonBasketballContent.text = masterList?[4][2].counselors[0]?.name ?? ""
+            destVC.thursdayAfternoonNorthPracticeVillageContent.text = masterList?[4][2].counselors[1]?.name ?? ""
+            destVC.thursdayAfternoonSouthPracticeVillageContent.text = masterList?[4][2].counselors[2]?.name ?? ""
+            destVC.thursdayAfternoonTentThreeContent.text = masterList?[4][2].counselors[3]?.name ?? ""
+            destVC.thursdayEveningNorthContent.text = masterList?[4][3].counselors[0]?.name ?? ""
+            destVC.thursdayEveningSouthContent.text = masterList?[4][3].counselors[1]?.name ?? ""
+            //            destVC.thursdayEveningActivityContent
+            destVC.thursdayNightwatchOneContent.text = masterList?[4][5].counselors[0]?.name ?? ""
+            destVC.thursdayNightwatchTwoContent.text = masterList?[4][5].counselors[1]?.name ?? ""
+            destVC.thursdayDayOffContentOne.text = masterList?[4][6].counselors[0]?.name ?? ""
+            destVC.thursdayDayOffContentTwo.text = masterList?[4][6].counselors[1]?.name ?? ""
+            
+            // friday
+            
+            destVC.fridayMorningBasketballContent.text = masterList?[5][1].counselors[0]?.name ?? ""
+            destVC.fridayMorningNorthPracticeVillageContent.text = masterList?[5][1].counselors[1]?.name ?? ""
+            destVC.fridayMorningSouthPracticeVillageContent.text = masterList?[5][1].counselors[2]?.name ?? ""
+            destVC.fridayMorningTentThreeContent.text = masterList?[5][1].counselors[3]?.name ?? ""
+            destVC.fridayAfternoonBasketballContent.text = masterList?[5][2].counselors[0]?.name ?? ""
+            destVC.fridayAfternoonNorthPracticeVillageContent.text = masterList?[5][2].counselors[1]?.name ?? ""
+            destVC.fridayAfternoonSouthPracticeVillageContent.text = masterList?[5][2].counselors[2]?.name ?? ""
+            destVC.fridayAfternoonTentThreeContent.text = masterList?[5][2].counselors[3]?.name ?? ""
+            destVC.fridayEveningNorthContent.text = masterList?[5][3].counselors[0]?.name ?? ""
+            destVC.fridayEveningSouthContent.text = masterList?[5][3].counselors[1]?.name ?? ""
+            //            destVC.fridayEveningActivityContent
+            destVC.fridayNightwatchOneContent.text = masterList?[5][5].counselors[0]?.name ?? ""
+            destVC.fridayNightwatchTwoContent.text = masterList?[5][5].counselors[1]?.name ?? ""
+            destVC.fridayDayOffContentOne.text = masterList?[5][6].counselors[0]?.name ?? ""
+            destVC.fridayDayOffContentTwo.text = masterList?[5][6].counselors[1]?.name ?? ""
+            
+            // saturday
+            
+            destVC.saturdayMorningBasketballContent.text = masterList?[6][1].counselors[0]?.name ?? ""
+            destVC.saturdayMorningNorthPracticeVillageContent.text = masterList?[6][1].counselors[1]?.name ?? ""
+            destVC.saturdayMorningSouthPracticeVillageContent.text = masterList?[6][1].counselors[2]?.name ?? ""
+            destVC.saturdayMorningTentThreeContent.text = masterList?[6][1].counselors[3]?.name ?? ""
+            destVC.saturdayAfternoonBasketballContent.text = masterList?[6][2].counselors[0]?.name ?? ""
+            destVC.saturdayAfternoonNorthPracticeVillageContent.text = masterList?[6][2].counselors[1]?.name ?? ""
+            destVC.saturdayAfternoonSouthPracticeVillageContent.text = masterList?[6][2].counselors[2]?.name ?? ""
+            destVC.saturdayAfternoonTentThreeContent.text = masterList?[6][2].counselors[3]?.name ?? ""
+            destVC.saturdayEveningNorthContent.text = masterList?[6][3].counselors[0]?.name ?? ""
+            destVC.saturdayEveningSouthContent.text = masterList?[6][3].counselors[1]?.name ?? ""
+            //            destVC.saturdayEveningActivityContent
+            destVC.saturdayNightwatchOneContent.text = masterList?[6][5].counselors[0]?.name ?? ""
+            destVC.saturdayNightwatchTwoContent.text = masterList?[6][5].counselors[1]?.name ?? ""
+            destVC.saturdayDayOffContentOne.text = masterList?[6][6].counselors[0]?.name ?? ""
+            destVC.saturdayDayOffContentTwo.text = masterList?[6][6].counselors[1]?.name ?? ""
         }
     }
     
@@ -1028,3 +1516,58 @@ extension CounselorScheduleViewController: UpdateOffShiftDelegate {
     }
 }
 
+
+extension CounselorScheduleViewController: ShiftDelegate {
+    func reloadTable() {
+        counselorTable.reloadData()
+    }
+    
+    func presentAlert(counselor: Counselor) {
+        let ac = UIAlertController(title: "Unable to Place", message: "The algorithm was unable to assign a nightwatch position for \(counselor.name). What would you like to do?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Rerun Algorithm", style: .destructive, handler: { (action) -> Void in
+//            self.shiftViewModel?.clearNightwatch()
+//            self.shiftViewModel?.assignNightwatch()
+            self.populateTable()
+//            self.counselorConflict()
+        }))
+        ac.addAction(UIAlertAction(title: "Assign Manually", style: .default, handler: { (action) -> Void in
+            self.shiftViewModel?.assignRecShifts()
+        }))
+        present(ac, animated: true)
+    }
+    
+    func updateRecLists(sunday: [Counselor], monday: [Counselor], tuesday: [Counselor], wednesday: [Counselor], thursday: [Counselor], friday: [Counselor], saturday: [Counselor]) {
+        self.sundayRecList = sunday
+        self.mondayRecList = monday
+        self.tuesdayRecList = tuesday
+        self.wednesdayRecList = wednesday
+        self.thursdayRecList = thursday
+        self.fridayRecList = friday
+        self.saturdayRecList = saturday
+    }
+    
+    func updateSupervisionShifts(sunday: [Counselor], monday: [Counselor], tuesday: [Counselor], wednesday: [Counselor], thursday: [Counselor], friday: [Counselor], saturday: [Counselor]) {
+        self.sundaySupervisionList = sunday
+        self.mondaySupervisionList = monday
+        self.tuesdaySupervisionList = tuesday
+        self.wednesdaySupervisionList = wednesday
+        self.thursdaySupervisionList = thursday
+        self.fridaySupervisionList = friday
+        self.saturdaySupervisionList = saturday
+    }
+    
+}
+
+//extension CounselorScheduleViewController: UITextFieldDelegate {
+////    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+////
+////        if counselorNamesSearch.contains(searchText) {
+////            searchTerm = searchText
+////            counselorTable.reloadData()
+////        } else if roles.contains(searchText) {
+////            searchTerm = searchText
+////            counselorTable.reloadData()
+////        }
+////
+////    }
+//}

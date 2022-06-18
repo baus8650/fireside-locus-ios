@@ -11,7 +11,12 @@ class ConcertCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var concertSelector: UISegmentedControl! {
         didSet {
-            concertSelector.selectedSegmentIndex = 0
+//            concertSelector.selectedSegmentIndex = 0
+        }
+    }
+    @IBOutlet var auditionSelector: UISegmentedControl! {
+        didSet {
+//            auditionSelector.selectedSegmentIndex = 0
         }
     }
     @IBAction func concertPressed(_ sender: Any) {

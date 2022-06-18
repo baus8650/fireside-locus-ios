@@ -78,7 +78,7 @@ class ScheduleViewController: DayViewController {
         
         for i in events {
             let ckEvent = Event()
-            ckEvent.text = "\(i.title)\n\(i.eventLocation)"
+            ckEvent.text = "\(i.title) - \(i.eventLocation)"
             ckEvent.dateInterval = DateInterval(start: formatter.date(from: i.startTime)!, end: formatter.date(from: i.endTime)!)
             ckEvent.color = UIColor(named: "luzerneColor") ?? UIColor(named: "default")!
             calendarKitEvents.append(ckEvent)

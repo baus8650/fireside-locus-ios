@@ -43,6 +43,7 @@
 		22C653F8281C7E04007FACF4 /* ChooseOneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C653F7281C7E04007FACF4 /* ChooseOneTableViewController.swift */; };
 		22C653FA281CAD30007FACF4 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C653F9281CAD30007FACF4 /* Shift.swift */; };
 		22C653FC281CB16C007FACF4 /* ShiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C653FB281CB16C007FACF4 /* ShiftViewModel.swift */; };
+		22DE2A53285BF05D00197973 /* SupervisionPrintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE2A52285BF05D00197973 /* SupervisionPrintViewController.swift */; };
 		22E4FAF7280729F400EA194F /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAF6280729F400EA194F /* Auth.swift */; };
 		22E4FAF928072A2000EA194F /* Auth+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAF828072A2000EA194F /* Auth+Keychain.swift */; };
 		22E4FAFB28072A5A00EA194F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FAFA28072A5A00EA194F /* User.swift */; };
@@ -52,6 +53,7 @@
 		22E4FB052809CCE900EA194F /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB042809CCE900EA194F /* AdminTableViewController.swift */; };
 		22E4FB09280B891600EA194F /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB08280B891600EA194F /* DataStorage.swift */; };
 		22E4FB0C280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB0A280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld */; };
+		22E58474285D4BE8005A0F44 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E58473285D4BE8005A0F44 /* PDFCreator.swift */; };
 		22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED61280094F000A537F1 /* ScheduleViewController.swift */; };
 		22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED662800BC1500A537F1 /* ScheduledEvent.swift */; };
 		22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */; };
@@ -96,6 +98,7 @@
 		22C653F7281C7E04007FACF4 /* ChooseOneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOneTableViewController.swift; sourceTree = "<group>"; };
 		22C653F9281CAD30007FACF4 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		22C653FB281CB16C007FACF4 /* ShiftViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftViewModel.swift; sourceTree = "<group>"; };
+		22DE2A52285BF05D00197973 /* SupervisionPrintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisionPrintViewController.swift; sourceTree = "<group>"; };
 		22E4FAF6280729F400EA194F /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		22E4FAF828072A2000EA194F /* Auth+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+Keychain.swift"; sourceTree = "<group>"; };
 		22E4FAFA28072A5A00EA194F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		22E4FB042809CCE900EA194F /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		22E4FB08280B891600EA194F /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		22E4FB0B280BC2AE00EA194F /* FiresideLocusModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiresideLocusModel.xcdatamodel; sourceTree = "<group>"; };
+		22E58473285D4BE8005A0F44 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		22FAED61280094F000A537F1 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		22FAED662800BC1500A537F1 /* ScheduledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledEvent.swift; sourceTree = "<group>"; };
 		22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsTableViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				22E4FAFE28072C5B00EA194F /* LoginTableViewController.swift */,
 				22E4FB042809CCE900EA194F /* AdminTableViewController.swift */,
 				22588CEF281066D800661012 /* CounselorScheduleViewController.swift */,
+				22DE2A52285BF05D00197973 /* SupervisionPrintViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				22E4FB0028072E2700EA194F /* ErrorPresenter.swift */,
 				22E4FB08280B891600EA194F /* DataStorage.swift */,
 				2254607C280DC1B9007EB1A4 /* Binder.swift */,
+				22E58473285D4BE8005A0F44 /* PDFCreator.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				22E4FB0128072E2700EA194F /* ErrorPresenter.swift in Sources */,
 				22546079280DC183007EB1A4 /* EventViewModel.swift in Sources */,
 				22546077280DC17C007EB1A4 /* CamperViewModel.swift in Sources */,
+				22DE2A53285BF05D00197973 /* SupervisionPrintViewController.swift in Sources */,
 				22E4FB09280B891600EA194F /* DataStorage.swift in Sources */,
 				22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */,
 				22A1467F281D968F0027CC7C /* ConcertCollectionViewCell.swift in Sources */,
@@ -377,6 +384,7 @@
 				22E4FAFB28072A5A00EA194F /* User.swift in Sources */,
 				22956B7D27FF708700F9AA46 /* Groups.swift in Sources */,
 				229B2E6928307F5B00335D71 /* CounselorOptionsTableViewCell.swift in Sources */,
+				22E58474285D4BE8005A0F44 /* PDFCreator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
