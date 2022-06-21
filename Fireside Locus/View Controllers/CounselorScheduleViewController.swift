@@ -13,6 +13,8 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     
 //    let margin: CGFloat = 1
     
+    var reminderCount = 0
+    
     var textDictionary: [RVS_AutofillTextFieldDataSourceType] = []
     
     let titleLabels = ["","8:30 – 12:00", "12:30 – 4:00", "6:30 – Cabin In", "Evening Activity", "Nightwatch", "Day Off", "MOT", "Activity", "Arts & Crafts/North Village", "South Village", "Beach", "Store", "North Practice Cabins", "South Practice Cabins", "Roam"]
@@ -535,7 +537,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
 //    }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
-        
+        reminderCount = 1
         switch sender.tag {
         case 0:
             concertList[sender.tag] = sender.selectedSegmentIndex
@@ -665,7 +667,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     
     @objc
     func printSchedule() {
-        performSegue(withIdentifier: "toPrintSupervision", sender: nil)
+        performSegue(withIdentifier: "toNewSchedules", sender: nil)
     }
     
     
@@ -679,7 +681,13 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             performSegue(withIdentifier: "TwoChoice", sender: nil)
         } else if indexPath.section == 6 {
             selectedIndexPath = indexPath
-            performSegue(withIdentifier: "DayOffSelect", sender: nil)
+            if reminderCount < 1 || concertList == [0,0,0,0,0,0,0] || auditionList == [0,0,0,0,0,0,0] {
+                let ac = UIAlertController(title: "Oop!", message: "Don't forget to mark any concerts or auditions for the week!", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                present(ac, animated: true)
+            } else {
+                performSegue(withIdentifier: "DayOffSelect", sender: nil)
+            }
         } else if indexPath.section == 16 {
             
         } else {
@@ -1189,6 +1197,47 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             destVC.saturdayNightwatchTwoContent.text = masterList?[6][5].counselors[1]?.name ?? ""
             destVC.saturdayDayOffContentOne.text = masterList?[6][6].counselors[0]?.name ?? ""
             destVC.saturdayDayOffContentTwo.text = masterList?[6][6].counselors[1]?.name ?? ""
+        } else if segue.identifier == "toNewSchedules" {
+            let destVC = segue.destination as! PrintSchedulesViewController
+            destVC.loadViewIfNeeded()
+            for day in 0...6 {
+                var localList = [String]()
+                localList.append("")
+                localList.append(masterList?[day][1].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][1].counselors[1]?.name ?? "")
+                localList.append(masterList?[day][1].counselors[2]?.name ?? "")
+                localList.append(masterList?[day][1].counselors[3]?.name ?? "")
+                localList.append(masterList?[day][2].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][2].counselors[1]?.name ?? "")
+                localList.append(masterList?[day][2].counselors[2]?.name ?? "")
+                localList.append(masterList?[day][2].counselors[3]?.name ?? "")
+                localList.append(masterList?[day][3].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][3].counselors[1]?.name ?? "")
+                localList.append("")
+                localList.append(masterList?[day][5].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][5].counselors[1]?.name ?? "")
+                localList.append(masterList?[day][6].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][6].counselors[1]?.name ?? "")
+                print("HERE IS THE SENT LIST \(localList)")
+                destVC.supervisionCounselors[day+1] = localList
+            }
+            
+            for day in 0...6 {
+                var localList = [String]()
+                localList.append("")
+                localList.append("")
+                localList.append(masterList?[day][8].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][9].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][10].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][11].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][11].counselors[1]?.name ?? "")
+                localList.append(masterList?[day][12].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][13].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][14].counselors[0]?.name ?? "")
+                localList.append(masterList?[day][15].counselors[0]?.name ?? "")
+                destVC.recreationCounselors[day+1] = localList
+                print("HERE IS REC LIST \(localList)")
+            }
         }
     }
     

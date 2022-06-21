@@ -54,11 +54,26 @@
 		22E4FB09280B891600EA194F /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB08280B891600EA194F /* DataStorage.swift */; };
 		22E4FB0C280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22E4FB0A280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld */; };
 		22E58474285D4BE8005A0F44 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E58473285D4BE8005A0F44 /* PDFCreator.swift */; };
+		22E5849B286200A2005A0F44 /* ShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5849A286200A2005A0F44 /* ShiftCollectionViewCell.swift */; };
+		22E5849D286200B4005A0F44 /* CounselorSingleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5849C286200B4005A0F44 /* CounselorSingleCollectionViewCell.swift */; };
+		22E5849F286200C0005A0F44 /* CounselorDoubleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5849E286200C0005A0F44 /* CounselorDoubleCollectionViewCell.swift */; };
+		22E584A1286200C8005A0F44 /* EveningActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E584A0286200C8005A0F44 /* EveningActivityCollectionViewCell.swift */; };
+		22E584A3286201A3005A0F44 /* BlankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E584A2286201A3005A0F44 /* BlankCollectionViewCell.swift */; };
+		22E584A52862024F005A0F44 /* EveningActivityShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E584A42862024F005A0F44 /* EveningActivityShiftCollectionViewCell.swift */; };
+		22E584A72862025A005A0F44 /* DoubleShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E584A62862025A005A0F44 /* DoubleShiftCollectionViewCell.swift */; };
+		22E584A9286203DB005A0F44 /* PrintSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E584A8286203DB005A0F44 /* PrintSchedulesViewController.swift */; };
 		22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED61280094F000A537F1 /* ScheduleViewController.swift */; };
 		22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED662800BC1500A537F1 /* ScheduledEvent.swift */; };
 		22FAED692800CA1900A537F1 /* ScheduleDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */; };
 		22FAED722800EE1600A537F1 /* CamperSearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED712800EE1600A537F1 /* CamperSearchDataSource.swift */; };
 		22FAED742800EE1D00A537F1 /* CamperSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FAED732800EE1D00A537F1 /* CamperSearchDelegate.swift */; };
+		22FEDD55286205D100ECEAE5 /* DayLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD54286205D100ECEAE5 /* DayLabelCollectionViewCell.swift */; };
+		22FEDD57286237C400ECEAE5 /* RecShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD56286237C400ECEAE5 /* RecShiftCollectionViewCell.swift */; };
+		22FEDD59286237CC00ECEAE5 /* RecCounselorSingleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD58286237CC00ECEAE5 /* RecCounselorSingleCollectionViewCell.swift */; };
+		22FEDD5B286237D700ECEAE5 /* RecCounselorDoubleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD5A286237D700ECEAE5 /* RecCounselorDoubleCollectionViewCell.swift */; };
+		22FEDD5D286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD5C286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift */; };
+		22FEDD5F286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD5E286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift */; };
+		22FEDD612862380300ECEAE5 /* RecDayLableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD602862380300ECEAE5 /* RecDayLableCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,11 +124,26 @@
 		22E4FB08280B891600EA194F /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		22E4FB0B280BC2AE00EA194F /* FiresideLocusModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiresideLocusModel.xcdatamodel; sourceTree = "<group>"; };
 		22E58473285D4BE8005A0F44 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
+		22E5849A286200A2005A0F44 /* ShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E5849C286200B4005A0F44 /* CounselorSingleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorSingleCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E5849E286200C0005A0F44 /* CounselorDoubleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorDoubleCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E584A0286200C8005A0F44 /* EveningActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveningActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E584A2286201A3005A0F44 /* BlankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E584A42862024F005A0F44 /* EveningActivityShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveningActivityShiftCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E584A62862025A005A0F44 /* DoubleShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleShiftCollectionViewCell.swift; sourceTree = "<group>"; };
+		22E584A8286203DB005A0F44 /* PrintSchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintSchedulesViewController.swift; sourceTree = "<group>"; };
 		22FAED61280094F000A537F1 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		22FAED662800BC1500A537F1 /* ScheduledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledEvent.swift; sourceTree = "<group>"; };
 		22FAED682800CA1900A537F1 /* ScheduleDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsTableViewController.swift; sourceTree = "<group>"; };
 		22FAED712800EE1600A537F1 /* CamperSearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperSearchDataSource.swift; sourceTree = "<group>"; };
 		22FAED732800EE1D00A537F1 /* CamperSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperSearchDelegate.swift; sourceTree = "<group>"; };
+		22FEDD54286205D100ECEAE5 /* DayLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayLabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD56286237C400ECEAE5 /* RecShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecShiftCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD58286237CC00ECEAE5 /* RecCounselorSingleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecCounselorSingleCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD5A286237D700ECEAE5 /* RecCounselorDoubleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecCounselorDoubleCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD5C286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecBlankCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD5E286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecDoubleShiftCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD602862380300ECEAE5 /* RecDayLableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecDayLableCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +222,7 @@
 				22E4FB042809CCE900EA194F /* AdminTableViewController.swift */,
 				22588CEF281066D800661012 /* CounselorScheduleViewController.swift */,
 				22DE2A52285BF05D00197973 /* SupervisionPrintViewController.swift */,
+				22E584A8286203DB005A0F44 /* PrintSchedulesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -214,6 +245,7 @@
 		22956B8027FF743800F9AA46 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				22E584972862007C005A0F44 /* Print Shift Views */,
 				22C653EA281B8A34007FACF4 /* FourCollectionViewCell.swift */,
 				22C653EC281B8E3B007FACF4 /* TwoCollectionViewCell.swift */,
 				22C653EE281B91FA007FACF4 /* OneCollectionViewCell.swift */,
@@ -248,6 +280,27 @@
 				22E58473285D4BE8005A0F44 /* PDFCreator.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		22E584972862007C005A0F44 /* Print Shift Views */ = {
+			isa = PBXGroup;
+			children = (
+				22E5849A286200A2005A0F44 /* ShiftCollectionViewCell.swift */,
+				22E5849C286200B4005A0F44 /* CounselorSingleCollectionViewCell.swift */,
+				22E5849E286200C0005A0F44 /* CounselorDoubleCollectionViewCell.swift */,
+				22E584A0286200C8005A0F44 /* EveningActivityCollectionViewCell.swift */,
+				22E584A2286201A3005A0F44 /* BlankCollectionViewCell.swift */,
+				22E584A42862024F005A0F44 /* EveningActivityShiftCollectionViewCell.swift */,
+				22E584A62862025A005A0F44 /* DoubleShiftCollectionViewCell.swift */,
+				22FEDD54286205D100ECEAE5 /* DayLabelCollectionViewCell.swift */,
+				22FEDD56286237C400ECEAE5 /* RecShiftCollectionViewCell.swift */,
+				22FEDD58286237CC00ECEAE5 /* RecCounselorSingleCollectionViewCell.swift */,
+				22FEDD5A286237D700ECEAE5 /* RecCounselorDoubleCollectionViewCell.swift */,
+				22FEDD5C286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift */,
+				22FEDD5E286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift */,
+				22FEDD602862380300ECEAE5 /* RecDayLableCollectionViewCell.swift */,
+			);
+			path = "Print Shift Views";
 			sourceTree = "<group>";
 		};
 		22FAED702800EE0800A537F1 /* Table Methods */ = {
@@ -346,40 +399,55 @@
 				2254607D280DC1B9007EB1A4 /* Binder.swift in Sources */,
 				22B212FD280331C7006BA092 /* FilteredCamperTableViewController.swift in Sources */,
 				22C653F6281BB014007FACF4 /* ChooseTwoTableViewController.swift in Sources */,
+				22FEDD57286237C400ECEAE5 /* RecShiftCollectionViewCell.swift in Sources */,
 				22956B7527FF639D00F9AA46 /* ResourceRequest.swift in Sources */,
+				22E584A1286200C8005A0F44 /* EveningActivityCollectionViewCell.swift in Sources */,
+				22E584A9286203DB005A0F44 /* PrintSchedulesViewController.swift in Sources */,
 				22C653F8281C7E04007FACF4 /* ChooseOneTableViewController.swift in Sources */,
 				22956B6127FF636900F9AA46 /* AppDelegate.swift in Sources */,
 				22E4FB052809CCE900EA194F /* AdminTableViewController.swift in Sources */,
 				22E4FAF7280729F400EA194F /* Auth.swift in Sources */,
 				22E4FB0C280BC2AE00EA194F /* FiresideLocusModel.xcdatamodeld in Sources */,
 				22588CF8281335A600661012 /* Counselor.swift in Sources */,
+				22E5849F286200C0005A0F44 /* CounselorDoubleCollectionViewCell.swift in Sources */,
 				22861D0128471A2F00CEFC57 /* ThreeCollectionViewCell.swift in Sources */,
+				22E584A3286201A3005A0F44 /* BlankCollectionViewCell.swift in Sources */,
 				22C653FC281CB16C007FACF4 /* ShiftViewModel.swift in Sources */,
+				22FEDD5F286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift in Sources */,
 				22588CF0281066D800661012 /* CounselorScheduleViewController.swift in Sources */,
 				22861CFF28470C0700CEFC57 /* DayOffTableViewController.swift in Sources */,
 				22956B8227FFB17C00F9AA46 /* CamperDetailTableViewController.swift in Sources */,
 				22E4FAF928072A2000EA194F /* Auth+Keychain.swift in Sources */,
 				22FAED742800EE1D00A537F1 /* CamperSearchDelegate.swift in Sources */,
+				22E5849B286200A2005A0F44 /* ShiftCollectionViewCell.swift in Sources */,
 				22C653EF281B91FA007FACF4 /* OneCollectionViewCell.swift in Sources */,
 				22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */,
+				22FEDD5B286237D700ECEAE5 /* RecCounselorDoubleCollectionViewCell.swift in Sources */,
 				22588CFA2813364500661012 /* CounselorViewModel.swift in Sources */,
 				22C653F4281BA31F007FACF4 /* ChooseFourTableViewController.swift in Sources */,
 				22861D03284740A300CEFC57 /* DayOffConflict.swift in Sources */,
 				22C653F1281B9419007FACF4 /* DayCollectionViewCell.swift in Sources */,
 				22C653FA281CAD30007FACF4 /* Shift.swift in Sources */,
+				22E584A72862025A005A0F44 /* DoubleShiftCollectionViewCell.swift in Sources */,
 				22E4FB0128072E2700EA194F /* ErrorPresenter.swift in Sources */,
+				22FEDD612862380300ECEAE5 /* RecDayLableCollectionViewCell.swift in Sources */,
+				22E584A52862024F005A0F44 /* EveningActivityShiftCollectionViewCell.swift in Sources */,
 				22546079280DC183007EB1A4 /* EventViewModel.swift in Sources */,
+				22FEDD55286205D100ECEAE5 /* DayLabelCollectionViewCell.swift in Sources */,
 				22546077280DC17C007EB1A4 /* CamperViewModel.swift in Sources */,
 				22DE2A53285BF05D00197973 /* SupervisionPrintViewController.swift in Sources */,
 				22E4FB09280B891600EA194F /* DataStorage.swift in Sources */,
 				22956B7F27FF710800F9AA46 /* Cabin.swift in Sources */,
 				22A1467F281D968F0027CC7C /* ConcertCollectionViewCell.swift in Sources */,
 				22E4FAFF28072C5B00EA194F /* LoginTableViewController.swift in Sources */,
+				22E5849D286200B4005A0F44 /* CounselorSingleCollectionViewCell.swift in Sources */,
+				22FEDD5D286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift in Sources */,
 				22956B7827FF687800F9AA46 /* CampersTableViewController.swift in Sources */,
 				22C653EB281B8A34007FACF4 /* FourCollectionViewCell.swift in Sources */,
 				22956B6327FF636900F9AA46 /* SceneDelegate.swift in Sources */,
 				22C653ED281B8E3B007FACF4 /* TwoCollectionViewCell.swift in Sources */,
 				22956B7B27FF68B800F9AA46 /* Campers.swift in Sources */,
+				22FEDD59286237CC00ECEAE5 /* RecCounselorSingleCollectionViewCell.swift in Sources */,
 				22FAED672800BC1500A537F1 /* ScheduledEvent.swift in Sources */,
 				22E4FAFB28072A5A00EA194F /* User.swift in Sources */,
 				22956B7D27FF708700F9AA46 /* Groups.swift in Sources */,

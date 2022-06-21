@@ -90,67 +90,80 @@ class SupervisionPrintViewController: UIViewController, UITextFieldDelegate, UIT
     
     @IBOutlet var morningBasketballLabel: UILabel! {
         didSet {
-            morningBasketballLabel.text = "8:30–12 Basketball Court"
+            morningBasketballLabel.text = "8:30 – 12:00\nBasketball Court"
+            morningBasketballLabel.numberOfLines = 2
         }
     }
     @IBOutlet var morningNorthPracticeVillageLabel: UILabel! {
         didSet {
-            morningNorthPracticeVillageLabel.text = "8:30–12 North Practice Village"
+            morningNorthPracticeVillageLabel.text = "8:30 – 12:00\nNorth Practice Village"
+            morningNorthPracticeVillageLabel.numberOfLines = 2
         }
     }
     @IBOutlet var morningSouthPracticeVillageLabel: UILabel! {
         didSet {
-            morningSouthPracticeVillageLabel.text = "8:30–12 South Practice Village"
+            morningSouthPracticeVillageLabel.text = "8:30 – 12:00\nSouth Practice Village"
+            morningSouthPracticeVillageLabel.numberOfLines = 2
         }
     }
     @IBOutlet var morningTentThreeLabel: UILabel! {
         didSet {
-            morningTentThreeLabel.text = "8:30–12 Tent 3"
+            morningTentThreeLabel.text = "8:30 – 12:00\nTent 3"
+            morningTentThreeLabel.numberOfLines = 2
         }
     }
     @IBOutlet var afternoonBasketballLabel: UILabel! {
         didSet {
-            afternoonBasketballLabel.text = "12:30–4 Basketball Court"
+            afternoonBasketballLabel.text = "12:30 – 4:00\nBasketball Court"
+            afternoonBasketballLabel.numberOfLines = 2
         }
     }
     @IBOutlet var afternoonNorthPracticeVillageLabel: UILabel! {
         didSet {
-            afternoonNorthPracticeVillageLabel.text = "12:30–4 North Practice Village"
+            afternoonNorthPracticeVillageLabel.text = "12:30 – 4:00\nNorth Practice Village"
+            afternoonNorthPracticeVillageLabel.numberOfLines = 2
         }
     }
     @IBOutlet var afternoonSouthPracticeVillageLabel: UILabel! {
         didSet {
-            afternoonSouthPracticeVillageLabel.text = "12:30–4 South Practice Village"
+            afternoonSouthPracticeVillageLabel.text = "12:30 – 4:00\nSouth Practice Village"
+            afternoonSouthPracticeVillageLabel.numberOfLines = 2
         }
     }
     @IBOutlet var afternoonTentThreeLabel: UILabel! {
         didSet {
-            afternoonTentThreeLabel.text = "12:30–4 Tent 3"
+            afternoonTentThreeLabel.text = "12:30 – 4:00\nTent 3"
+            afternoonTentThreeLabel.numberOfLines = 2
         }
     }
     @IBOutlet var eveningNorthLabel: UILabel! {
         didSet {
-            eveningNorthLabel.text = "6:30–CI North Village"
+            eveningNorthLabel.text = "6:30 – CI\nNorth Village"
+            eveningNorthLabel.numberOfLines = 2
         }
     }
     @IBOutlet var eveningSouthLabel: UILabel! {
         didSet {
-            eveningSouthLabel.text = "6:30–CI South Village"
+            eveningSouthLabel.text = "6:30 – CI\nSouth Village"
+            eveningSouthLabel.numberOfLines = 2
         }
     }
     @IBOutlet var eveningActivityLabel: UILabel! {
         didSet {
             eveningActivityLabel.text = "Evening Activity"
+            
         }
     }
     @IBOutlet var nightwatchOneLabel: UILabel! {
         didSet {
-            nightwatchOneLabel.text = "10PM – 3AM Nightwatch"
+            nightwatchOneLabel.text = "10PM – 3AM\nNightwatch"
+            nightwatchOneLabel.numberOfLines = 2
         }
     }
     @IBOutlet var nightwatchTwoLabel: UILabel! {
         didSet {
-            nightwatchTwoLabel.text = "3AM – 8AM Nightwatch"
+            nightwatchTwoLabel.text = "3AM – 8AM\nNightwatch"
+            nightwatchTwoLabel.numberOfLines = 2
         }
     }
     @IBOutlet var dayOffLabel: UILabel! {
@@ -1405,18 +1418,18 @@ class SupervisionPrintViewController: UIViewController, UITextFieldDelegate, UIT
     }
     
     @objc func sharePDF() {
-        print("PRESSING THE DAMN BUTTON")
-        let image = pdfSchedule.asImage()
-
-        let pdfCreator = PDFCreator(image: image)
-        let pdfData = pdfCreator.makePDF()
-        let vc = UIActivityViewController(activityItems: [pdfData], applicationActivities: [])
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            vc.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
-            vc.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
-            vc.popoverPresentationController?.permittedArrowDirections = [.left]
-        }
-        present(vc, animated: true, completion: nil)
+//        print("PRESSING THE DAMN BUTTON")
+//        let image = pdfSchedule.asImage()
+//
+//        let pdfCreator = PDFCreator(image1: image1)
+//        let pdfData = pdfCreator.makePDF()
+//        let vc = UIActivityViewController(activityItems: [pdfData], applicationActivities: [])
+//        if UIDevice.current.userInterfaceIdiom == .pad {
+//            vc.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
+//            vc.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 300, height: 350)
+//            vc.popoverPresentationController?.permittedArrowDirections = [.left]
+//        }
+//        present(vc, animated: true, completion: nil)
     }
     
 //    func textFieldShouldReturn(textField: UITextField!) -> Bool {
