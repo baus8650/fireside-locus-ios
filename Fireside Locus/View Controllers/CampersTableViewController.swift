@@ -37,6 +37,7 @@ class CampersTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         camperViewModel = CamperViewModel()
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
@@ -45,6 +46,12 @@ class CampersTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData()
         searchBar.delegate = self
         tableView.keyboardDismissMode = .onDrag
+        if Auth().user?.isAdmin == true {
+            
+        } else {
+            tabBarController?.viewControllers?.remove(at: 2)
+            tabBarController?.viewControllers?.remove(at: 2)
+        }
         updateData()
         let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         navigationItem.leftBarButtonItem = logoutButton

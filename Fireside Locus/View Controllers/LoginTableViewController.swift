@@ -9,6 +9,12 @@ import UIKit
 
 class LoginTableViewController: UITableViewController, UITextFieldDelegate {
     
+    
+    @IBOutlet var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.isHidden = true
+        }
+    }
     @IBOutlet var emailField: UITextField! {
         didSet {
             emailField.keyboardType = .emailAddress
@@ -47,6 +53,8 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func login() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         guard let email = emailField.text,
               !email.isEmpty
         else {
@@ -65,6 +73,7 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
             switch result {
             case .success:
                 DispatchQueue.main.async {
+                    
                     Auth().setUpCoreData()
                     Auth().fetchCampers()
                     Auth().fetchEvents()

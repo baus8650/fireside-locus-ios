@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvy-75-j6q">
-                                <rect key="frame" x="15" y="0.0" width="1170" height="834"/>
+                                <rect key="frame" x="15" y="0.0" width="1164" height="834"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q03-8I-We0" userLabel="Schedule View">
-                                        <rect key="frame" x="0.0" y="0.0" width="1170" height="1700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1164" height="1700"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fWA-IE-9wp">
                                                 <rect key="frame" x="0.0" y="0.0" width="1170" height="1700"/>
@@ -533,12 +533,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLI-eC-hZM">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qd0-C3-HPS">
-                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -1580,12 +1580,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9V2-qk-LtT">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byX-hB-va7">
-                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>

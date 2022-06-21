@@ -96,6 +96,27 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="tEx-yj-hWN">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="36" id="4zc-Pl-Su1">
+                                        <rect key="frame" x="0.0" y="380.5" width="414" height="36"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4zc-Pl-Su1" id="N7Y-gQ-JiX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rRU-VT-MoG">
+                                                    <rect key="frame" x="188.5" y="-0.5" width="37" height="37"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rRU-VT-MoG" firstAttribute="centerY" secondItem="N7Y-gQ-JiX" secondAttribute="centerY" id="jEB-ME-W2X"/>
+                                                <constraint firstItem="rRU-VT-MoG" firstAttribute="centerX" secondItem="N7Y-gQ-JiX" secondAttribute="centerX" id="wI3-pT-qks"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="PEL-Lm-dm4" id="bDY-lT-uiG"/>
@@ -104,6 +125,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="6eO-ev-CEU"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="rRU-VT-MoG" id="mBo-Om-K4V"/>
                         <outlet property="emailField" destination="1Bl-z8-vJa" id="bnk-Bh-p91"/>
                         <outlet property="passwordField" destination="HcF-uw-eeA" id="AsL-je-7dQ"/>
                     </connections>
