@@ -17,7 +17,11 @@ protocol ShiftDelegate {
 
 class ShiftViewModel {
     
-    var prevWeekNightWatch: [Counselor?] = [nil, nil]
+    var prevWeekNightWatch: [Counselor?] = [nil, nil] {
+        didSet {
+            print("HERE IS PREVIOUS WEEK NIGHTWATCH",prevWeekNightWatch)
+        }
+    }
     
     var sundaySupervisionList: [Counselor]?
     var sundayRecList: [Counselor]?

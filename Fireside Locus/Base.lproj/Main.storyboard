@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvy-75-j6q">
-                                <rect key="frame" x="15" y="0.0" width="1164" height="834"/>
+                                <rect key="frame" x="15" y="0.0" width="1170" height="834"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q03-8I-We0" userLabel="Schedule View">
-                                        <rect key="frame" x="0.0" y="0.0" width="1164" height="1700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1170" height="1700"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fWA-IE-9wp">
                                                 <rect key="frame" x="0.0" y="0.0" width="1170" height="1700"/>
@@ -1318,12 +1318,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146.5" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QWi-Nu-l5o">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-hZ-ZT6">
-                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -1580,12 +1580,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9V2-qk-LtT">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byX-hB-va7">
-                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -1842,12 +1842,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146.5" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHm-PY-5S7">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmM-b9-9iQ">
-                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -2432,7 +2432,7 @@
         <!--Print Schedules View Controller-->
         <scene sceneID="9fy-GU-gWe">
             <objects>
-                <viewController id="RZ0-Iy-qWJ" customClass="PrintSchedulesViewController" customModule="Fireside_Locus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="RZ0-Iy-qWJ" customClass="PrintSchedulesViewController" customModule="Fireside_Locus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UvX-lJ-KC7">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2655,7 +2655,7 @@
                                                         </cells>
                                                     </collectionView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Iay-jF-Tbf" firstAttribute="top" secondItem="v73-xc-YtD" secondAttribute="top" id="3Pz-UH-bc0"/>
                                                     <constraint firstAttribute="bottom" secondItem="Iay-jF-Tbf" secondAttribute="bottom" id="NmX-7L-Bf1"/>
@@ -2817,7 +2817,7 @@
                                                         </cells>
                                                     </collectionView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="UVg-qy-DDY" secondAttribute="bottom" id="5rF-T1-FfP"/>
                                                     <constraint firstItem="UVg-qy-DDY" firstAttribute="top" secondItem="fY9-0e-7Hb" secondAttribute="top" id="FOk-HO-Yc2"/>
@@ -3786,6 +3786,9 @@
                         </segue>
                         <segue destination="ywe-6w-248" kind="show" identifier="toPrintSupervision" id="x8S-I8-BVL"/>
                         <segue destination="RZ0-Iy-qWJ" kind="show" identifier="toNewSchedules" id="VMo-IN-PzA"/>
+                        <segue destination="Ebr-kx-ff5" kind="popoverPresentation" identifier="lastWeek" popoverAnchorView="bDK-xt-i25" id="eYP-4u-fAS">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4QS-qL-bsc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4449,6 +4452,101 @@
             </objects>
             <point key="canvasLocation" x="2227" y="4308"/>
         </scene>
+        <!--Yesterday View Controller-->
+        <scene sceneID="016-6p-jKQ">
+            <objects>
+                <viewController id="Ebr-kx-ff5" customClass="YesterdayViewController" customModule="Fireside_Locus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PWt-i9-tFp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEo-A6-Od0">
+                                <rect key="frame" x="0.0" y="13" width="375" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday's Nightwatch Shifts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5if-dp-TDZ">
+                                        <rect key="frame" x="0.0" y="20" width="375" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Snn-mk-NVi">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="136"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="w1l-W0-L5F">
+                                                <rect key="frame" x="20" y="0.0" width="335" height="136"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Counselor one..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HjF-F7-eBV" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Counselor two..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8U-hR-kW1" customClass="RVS_AutofillTextField" customModule="RVS_AutofillTextField">
+                                                        <rect key="frame" x="0.0" y="78" width="335" height="58"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isCaseSensitive" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardBefore" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isWildcardAfter" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="w1l-W0-L5F" secondAttribute="bottom" id="4WU-IU-3io"/>
+                                            <constraint firstItem="w1l-W0-L5F" firstAttribute="leading" secondItem="Snn-mk-NVi" secondAttribute="leading" constant="20" id="s8h-qS-JV5"/>
+                                            <constraint firstItem="w1l-W0-L5F" firstAttribute="top" secondItem="Snn-mk-NVi" secondAttribute="top" id="u5p-85-a1W"/>
+                                            <constraint firstAttribute="trailing" secondItem="w1l-W0-L5F" secondAttribute="trailing" constant="20" id="vMA-8I-ji8"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2Y-OS-dur">
+                                        <rect key="frame" x="160" y="235" width="55.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                        <connections>
+                                            <action selector="savePressed:" destination="Ebr-kx-ff5" eventType="touchUpInside" id="h7G-73-FkI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Snn-mk-NVi" secondAttribute="bottom" constant="100" id="1Il-Dv-mWu"/>
+                                    <constraint firstItem="Snn-mk-NVi" firstAttribute="top" secondItem="5if-dp-TDZ" secondAttribute="bottom" constant="20" id="E49-cK-8aO"/>
+                                    <constraint firstItem="E2Y-OS-dur" firstAttribute="centerX" secondItem="mEo-A6-Od0" secondAttribute="centerX" id="E7P-9v-FAD"/>
+                                    <constraint firstItem="5if-dp-TDZ" firstAttribute="leading" secondItem="mEo-A6-Od0" secondAttribute="leading" id="GBz-Oe-cY6"/>
+                                    <constraint firstAttribute="trailing" secondItem="5if-dp-TDZ" secondAttribute="trailing" id="Tqz-xq-4Px"/>
+                                    <constraint firstItem="5if-dp-TDZ" firstAttribute="top" secondItem="mEo-A6-Od0" secondAttribute="top" constant="20" id="bxC-vD-TYJ"/>
+                                    <constraint firstItem="Snn-mk-NVi" firstAttribute="leading" secondItem="mEo-A6-Od0" secondAttribute="leading" id="mNd-CR-PGz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Snn-mk-NVi" secondAttribute="trailing" id="v7w-dU-c67"/>
+                                    <constraint firstItem="E2Y-OS-dur" firstAttribute="top" secondItem="Snn-mk-NVi" secondAttribute="bottom" constant="35" id="w8I-Rd-8li"/>
+                                    <constraint firstAttribute="height" constant="300" id="ylk-ed-uG5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gek-35-Bw8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mEo-A6-Od0" firstAttribute="top" secondItem="Gek-35-Bw8" secondAttribute="top" id="H9R-D0-LV9"/>
+                            <constraint firstItem="mEo-A6-Od0" firstAttribute="leading" secondItem="Gek-35-Bw8" secondAttribute="leading" id="jYt-m6-XJh"/>
+                            <constraint firstItem="Gek-35-Bw8" firstAttribute="trailing" secondItem="mEo-A6-Od0" secondAttribute="trailing" id="o74-zk-liW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="counselorOne" destination="HjF-F7-eBV" id="VAp-WK-Pn6"/>
+                        <outlet property="counselorTwo" destination="v8U-hR-kW1" id="l1t-4t-vIV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtw-O8-car" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555" y="3085"/>
+        </scene>
         <!--Admin Table View Controller-->
         <scene sceneID="Esy-Fi-HwK">
             <objects>
@@ -4553,6 +4651,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

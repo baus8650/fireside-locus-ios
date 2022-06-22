@@ -178,6 +178,7 @@ class PrintSchedulesViewController: UIViewController, UICollectionViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         supervisionSchedule.delegate = self
         supervisionSchedule.dataSource = self
         recreationSchedule.delegate = self

@@ -74,6 +74,7 @@
 		22FEDD5D286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD5C286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift */; };
 		22FEDD5F286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD5E286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift */; };
 		22FEDD612862380300ECEAE5 /* RecDayLableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD602862380300ECEAE5 /* RecDayLableCollectionViewCell.swift */; };
+		22FEDD652862B4C800ECEAE5 /* YesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEDD642862B4C800ECEAE5 /* YesterdayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +145,7 @@
 		22FEDD5C286237DF00ECEAE5 /* RecBlankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecBlankCollectionViewCell.swift; sourceTree = "<group>"; };
 		22FEDD5E286237F400ECEAE5 /* RecDoubleShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecDoubleShiftCollectionViewCell.swift; sourceTree = "<group>"; };
 		22FEDD602862380300ECEAE5 /* RecDayLableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecDayLableCollectionViewCell.swift; sourceTree = "<group>"; };
+		22FEDD642862B4C800ECEAE5 /* YesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				22588CEF281066D800661012 /* CounselorScheduleViewController.swift */,
 				22DE2A52285BF05D00197973 /* SupervisionPrintViewController.swift */,
 				22E584A8286203DB005A0F44 /* PrintSchedulesViewController.swift */,
+				22FEDD642862B4C800ECEAE5 /* YesterdayViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				22C653EF281B91FA007FACF4 /* OneCollectionViewCell.swift in Sources */,
 				22FAED62280094F000A537F1 /* ScheduleViewController.swift in Sources */,
 				22FEDD5B286237D700ECEAE5 /* RecCounselorDoubleCollectionViewCell.swift in Sources */,
+				22FEDD652862B4C800ECEAE5 /* YesterdayViewController.swift in Sources */,
 				22588CFA2813364500661012 /* CounselorViewModel.swift in Sources */,
 				22C653F4281BA31F007FACF4 /* ChooseFourTableViewController.swift in Sources */,
 				22861D03284740A300CEFC57 /* DayOffConflict.swift in Sources */,

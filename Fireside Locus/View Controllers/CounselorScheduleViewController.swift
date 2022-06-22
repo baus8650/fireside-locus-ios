@@ -69,6 +69,8 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     var saturdayOffList: [Counselor]?
     var saturdayNightWatch: [Counselor]?
     
+    var lastWeekNightWatch = [Counselor]()
+    
     var searchTerm: String?
     
 //    @IBOutlet var searchBar: UISearchBar!
@@ -504,6 +506,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     @IBOutlet var counselorTable: UICollectionView!
     var populateButton: UIBarButtonItem!
     var printButton: UIBarButtonItem!
+    var clearButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         counselorTable.dataSource = self
@@ -517,10 +520,19 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         populateButton = UIBarButtonItem(title: "Populate", style: .plain, target: self, action: #selector(populateTable))
         printButton = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(printSchedule))
         printButton.isEnabled = false
+        clearButton = UIBarButtonItem(title: "Clear Previous Nightwatch", style: .plain, target: nil, action: #selector(clearYesterday))
+        clearButton.tintColor = .red
         navigationItem.rightBarButtonItems = [printButton, populateButton]
+        navigationItem.leftBarButtonItem = clearButton
+        
         counselorTable.keyboardDismissMode = .onDrag
         updateData()
         // Do any additional setup after loading the view.
+    }
+    
+    @objc
+    func clearYesterday() {
+        lastWeekNightWatch = []
     }
     
     func generateTextDictionary(counselors: [String], roles: [String]) {
@@ -658,6 +670,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         passData()
         shiftViewModel?.compileSingleLists()
         shiftViewModel?.populateSchedule()
+        shiftViewModel?.prevWeekNightWatch = self.lastWeekNightWatch
         printButton.isEnabled = true
         shiftViewModel?.masterList.bind(listener: { shift in
             self.masterList = shift
@@ -681,6 +694,9 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
             performSegue(withIdentifier: "TwoChoice", sender: nil)
         } else if indexPath.section == 6 {
             selectedIndexPath = indexPath
+            if indexPath.row == 0 && lastWeekNightWatch == [] {
+                performSegue(withIdentifier: "lastWeek", sender: nil)
+            }
             if reminderCount < 1 || concertList == [0,0,0,0,0,0,0] || auditionList == [0,0,0,0,0,0,0] {
                 let ac = UIAlertController(title: "Oop!", message: "Don't forget to mark any concerts or auditions for the week!", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -1238,7 +1254,13 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
                 destVC.recreationCounselors[day+1] = localList
                 print("HERE IS REC LIST \(localList)")
             }
+        } else if segue.identifier == "lastWeek" {
+            let destVC = segue.destination as! YesterdayViewController
+            destVC.loadViewIfNeeded()
+            destVC.delegate = self
+            destVC.masterCounselorList = self.counselors
         }
+        
     }
     
     
@@ -1604,6 +1626,14 @@ extension CounselorScheduleViewController: ShiftDelegate {
         self.fridaySupervisionList = friday
         self.saturdaySupervisionList = saturday
     }
+    
+}
+
+extension CounselorScheduleViewController: YesterdayDelegate {
+    func updateYesterdayShifts(counselorOne: Counselor, counselorTwo: Counselor) {
+        self.lastWeekNightWatch = [counselorOne, counselorTwo]
+    }
+    
     
 }
 
