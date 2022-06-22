@@ -23,6 +23,8 @@ class ShiftViewModel {
         }
     }
     
+    var cancelledShifts = [(Int, Int)]()
+    
     var sundaySupervisionList: [Counselor]?
     var sundayRecList: [Counselor]?
     var sundayOffList: [Counselor]?
@@ -671,10 +673,17 @@ class ShiftViewModel {
                             availableIndices.remove(at: idx)
                         }
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
                     switch counselor.recreationPreferences {
                     case let role where counselor.roles.contains("Stage Manager"):
-                        
-                        
                         if concertList.value[day] == 1 {
                             if let idx = availableIndices.firstIndex(where: { $0 == 1 }) {
                                 availableIndices.remove(at: idx)
@@ -1158,6 +1167,16 @@ class ShiftViewModel {
                         }
                         
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
+
                     switch counselor.recreationPreferences {
                     case let role where counselor.roles.contains("Stage Manager"):
                         
@@ -1633,6 +1652,16 @@ class ShiftViewModel {
                             availableIndices.remove(at: idx)
                         }
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
+
                     switch counselor.recreationPreferences {
                     case let role where counselor.roles.contains("Stage Manager"):
 //
@@ -2075,6 +2104,16 @@ class ShiftViewModel {
                             availableIndices.remove(at: idx)
                         }
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
+
                     switch counselor.recreationPreferences {
 //                    case let role where counselor.roles.contains("Stage Manager"):
 //
@@ -2541,6 +2580,16 @@ class ShiftViewModel {
                             availableIndices.remove(at: idx)
                         }
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
+
                     switch counselor.recreationPreferences {
 //                    case let role where counselor.roles.contains("Stage Manager"):
 //
@@ -3009,6 +3058,16 @@ class ShiftViewModel {
                             availableIndices.remove(at: idx)
                         }
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
+
                     switch counselor.recreationPreferences {
                     case let role where counselor.roles.contains("Stage Manager"):
                         
@@ -3489,6 +3548,16 @@ class ShiftViewModel {
                             availableIndices.remove(at: idx)
                         }
                     }
+                    for i in 0...3 {
+                        if let cncl = cancelledShifts.firstIndex(where: {$0 == (day, i)}) {
+                            if let idx = availableIndices.firstIndex(where: {$0 == cancelledShifts[cncl].1}) {
+                                availableIndices.remove(at: idx)
+                                print("HERE ARE NEW AVAILABLE INDICES \(availableIndices) compared to cancelled shifts \(cancelledShifts) for day \(day) and i \(i)")
+                            }
+                        }
+                        
+                    }
+
                     switch counselor.recreationPreferences {
                     case let role where counselor.roles.contains("Stage Manager"):
                         
@@ -5236,6 +5305,7 @@ class ShiftViewModel {
     }
     
     func populateSchedule() {
+        print("HERE ARE CANCELLED SHIFTS", cancelledShifts)
         assignNightwatch()
         //        assignRecShifts()
         //        print("Populationg \(concertList.value)")

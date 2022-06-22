@@ -27,6 +27,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
     
     var concertList = [0,0,0,0,0,0,0]
     var auditionList = [0,0,0,0,0,0,0]
+    var cancelledShifts = [(Int, Int)]()
     
     var masterList: [[Shift]]?
     var shiftViewModel: ShiftViewModel? 
@@ -520,7 +521,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         populateButton = UIBarButtonItem(title: "Populate", style: .plain, target: self, action: #selector(populateTable))
         printButton = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(printSchedule))
         printButton.isEnabled = false
-        clearButton = UIBarButtonItem(title: "Clear Previous Nightwatch", style: .plain, target: nil, action: #selector(clearYesterday))
+        clearButton = UIBarButtonItem(title: "Clear Last Week Nightwatch Assignments", style: .plain, target: nil, action: #selector(clearYesterday))
         clearButton.tintColor = .red
         navigationItem.rightBarButtonItems = [printButton, populateButton]
         navigationItem.leftBarButtonItem = clearButton
@@ -660,6 +661,8 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         shiftViewModel?.saturdayRecList = self.saturdayRecList
         shiftViewModel?.saturdayOffList = self.saturdayOffList
         shiftViewModel?.saturdayNightWatch = self.saturdayNightWatch ?? [nil,nil]
+        
+        shiftViewModel?.cancelledShifts = self.cancelledShifts
     }
     
     @objc
@@ -1293,7 +1296,7 @@ extension CounselorScheduleViewController: UpdateFourShiftDelegate {
                 self.masterList = shifts
             })
         } else {
-            print("cancelled")
+            cancelledShifts.append((indexPath.row, indexPath.section-1))
         }
         self.counselorTable.reloadData()
     }
@@ -1362,7 +1365,7 @@ extension CounselorScheduleViewController: UpdateTwoShiftDelegate {
                 self.masterList = shifts
             })
         } else {
-            print("cancelled")
+            cancelledShifts.append((indexPath.row, indexPath.section-1))
         }
         self.counselorTable.reloadData()
     }
@@ -1493,7 +1496,7 @@ extension CounselorScheduleViewController: UpdateOneShiftDelegate {
                 self.masterList = shifts
             })
         } else {
-            print("cancelled")
+            cancelledShifts.append((indexPath.row, indexPath.section-1))
         }
         self.counselorTable.reloadData()
     }
@@ -1560,7 +1563,7 @@ extension CounselorScheduleViewController: UpdateOffShiftDelegate {
                 self.masterList = shifts
             })
         } else {
-            print("cancelled")
+            cancelledShifts.append((indexPath.row, indexPath.section-1))
         }
         self.counselorTable.reloadData()
     }
