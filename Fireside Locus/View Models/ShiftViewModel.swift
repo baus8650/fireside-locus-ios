@@ -682,7 +682,7 @@ class ShiftViewModel {
                         }
                         
                     }
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
                     case let role where counselor.roles.contains("Stage Manager"):
                         if concertList.value[day] == 1 {
                             if let idx = availableIndices.firstIndex(where: { $0 == 1 }) {
@@ -1177,7 +1177,7 @@ class ShiftViewModel {
                         
                     }
 
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
                     case let role where counselor.roles.contains("Stage Manager"):
                         
                         if concertList.value[day] == 1 {
@@ -1662,7 +1662,7 @@ class ShiftViewModel {
                         
                     }
 
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
                     case let role where counselor.roles.contains("Stage Manager"):
 //
 //                        if concertList.value[day] == 1 {
@@ -2114,7 +2114,7 @@ class ShiftViewModel {
                         
                     }
 
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
 //                    case let role where counselor.roles.contains("Stage Manager"):
 //
 //                        if concertList.value[day] == 1 {
@@ -2590,7 +2590,7 @@ class ShiftViewModel {
                         
                     }
 
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
 //                    case let role where counselor.roles.contains("Stage Manager"):
 //
 //                        if concertList.value[day] == 1 {
@@ -3068,7 +3068,7 @@ class ShiftViewModel {
                         
                     }
 
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
                     case let role where counselor.roles.contains("Stage Manager"):
                         
                         if concertList.value[day] == 1 {
@@ -3558,7 +3558,7 @@ class ShiftViewModel {
                         
                     }
 
-                    switch counselor.recreationPreferences {
+                    switch counselor.roles {
                     case let role where counselor.roles.contains("Stage Manager"):
                         
                         if concertList.value[day] == 1 {
