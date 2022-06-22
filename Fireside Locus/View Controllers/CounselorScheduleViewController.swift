@@ -521,7 +521,7 @@ class CounselorScheduleViewController: UIViewController, UICollectionViewDelegat
         populateButton = UIBarButtonItem(title: "Populate", style: .plain, target: self, action: #selector(populateTable))
         printButton = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(printSchedule))
         printButton.isEnabled = false
-        clearButton = UIBarButtonItem(title: "Clear Last Week Nightwatch Assignments", style: .plain, target: nil, action: #selector(clearYesterday))
+        clearButton = UIBarButtonItem(title: "Clear Prev Assignments", style: .plain, target: nil, action: #selector(clearYesterday))
         clearButton.tintColor = .red
         navigationItem.rightBarButtonItems = [printButton, populateButton]
         navigationItem.leftBarButtonItem = clearButton

@@ -37,6 +37,16 @@ class CounselorViewModel {
         populateCounselors(counselors: self.counselors.value)
     }
     
+    func deleteAllCounselors() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CounselorModel")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+        } catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
+    
     func populateCounselors(counselors: [NSManagedObject]) {
         self.counselorList.value = []
         for counselor in counselors {

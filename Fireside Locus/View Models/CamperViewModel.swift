@@ -28,6 +28,16 @@ class CamperViewModel {
         self.context = appDelegate.persistentContainer.viewContext
     }
     
+    func deleteAllCampers() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CamperModel")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+        } catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
+    
     func fetchCampers() {
         Auth().fetchCampers()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CamperModel")

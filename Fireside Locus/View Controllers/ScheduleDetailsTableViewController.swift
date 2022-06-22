@@ -91,12 +91,17 @@ class ScheduleDetailsTableViewController: UITableViewController, UITextFieldDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ScheduleDetailsToSchedule" {
             if let destVC = segue.destination as? ScheduleViewController {
-                destVC.camper = camperSearch
-                let weekNum = weekPicker.selectedRow(inComponent: 0)
-                let dayNum = weekPicker.selectedRow(inComponent: 1)
-                let newDate = Calendar.current.date(from: DateComponents(year: 2022, month: 6, day: 19 + ((weekNum * 7)+dayNum)))
-                destVC.specifiedDate = formatter.string(from: newDate!)
-                
+                if camperSearchField.text == "" {
+                    let ac = UIAlertController(title: "Empty Search", message: "Please make sure you've selected a camper in the search field above before attempting to view a schedule", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    present(ac, animated: true)
+                } else {
+                    destVC.camper = camperSearch
+                    let weekNum = weekPicker.selectedRow(inComponent: 0)
+                    let dayNum = weekPicker.selectedRow(inComponent: 1)
+                    let newDate = Calendar.current.date(from: DateComponents(year: 2022, month: 6, day: 19 + ((weekNum * 7)+dayNum)))
+                    destVC.specifiedDate = formatter.string(from: newDate!)
+                }
             }
         }
     }

@@ -533,12 +533,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLI-eC-hZM">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qd0-C3-HPS">
-                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -794,12 +794,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146.5" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-gu-BzC">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uZr-3o-6mE">
-                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -1580,12 +1580,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9V2-qk-LtT">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byX-hB-va7">
-                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -1842,12 +1842,12 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="146.5" height="113.5"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHm-PY-5S7">
-                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="95"/>
+                                                                                        <rect key="frame" x="71" y="0.0" width="4" height="18.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmM-b9-9iQ">
-                                                                                        <rect key="frame" x="71" y="95" width="4" height="18.5"/>
+                                                                                        <rect key="frame" x="71" y="18.5" width="4" height="95"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                     </textField>
@@ -2888,8 +2888,8 @@
                     <connections>
                         <segue destination="0sH-Sa-GSV" kind="relationship" relationship="viewControllers" id="0FH-ZI-GEf"/>
                         <segue destination="Sx4-Ij-gy7" kind="relationship" relationship="viewControllers" id="gCd-Ua-dEG"/>
-                        <segue destination="d2G-T7-BCo" kind="relationship" relationship="viewControllers" id="9mp-5s-C6d"/>
                         <segue destination="IXm-mx-HUF" kind="relationship" relationship="viewControllers" id="8mK-dh-opn"/>
+                        <segue destination="d2G-T7-BCo" kind="relationship" relationship="viewControllers" id="9mp-5s-C6d"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyv-cG-8EJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3209,11 +3209,11 @@
             </objects>
             <point key="canvasLocation" x="1693" y="727"/>
         </scene>
-        <!--Admin-->
+        <!--Settings-->
         <scene sceneID="waw-lO-IwG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d2G-T7-BCo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Admin" image="pencil" catalog="system" id="8bN-9h-eJ3"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="8bN-9h-eJ3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fmK-oj-bPN">
                         <rect key="frame" x="0.0" y="24" width="1194" height="50"/>
@@ -4634,8 +4634,8 @@
     </designables>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <namedColor name="luzerneColor">
             <color red="0.0039215686274509803" green="0.33333333333333331" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

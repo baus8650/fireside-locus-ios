@@ -39,6 +39,16 @@ class EventViewModel {
         populateEvents(eventsFromCore: eventsCore)
     }
     
+    func deleteAllEvents() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduledEventModel")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(batchDeleteRequest)
+        } catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
+    
     func populateEvents(eventsFromCore: [NSManagedObject]) {
         self.allEvents.value = []
         for event in eventsFromCore {
